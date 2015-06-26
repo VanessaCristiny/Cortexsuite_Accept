@@ -1,0 +1,1910 @@
+FUNCTION PURITY
+-----
+checking function gettimeofday
+definition not available
+-----
+checking function malloc
+definition not available
+-----
+checking function free
+definition not available
+-----
+checking function _fopen
+definition not available
+-----
+checking function fprintf
+definition not available
+-----
+checking function fclose
+definition not available
+-----
+checking function llvm.dbg.declare
+only reads memory
+-----
+checking function round
+only reads memory
+-----
+checking function printf
+definition not available
+-----
+checking function __sprintf_chk
+definition not available
+-----
+checking function feof
+definition not available
+-----
+checking function fscanf
+definition not available
+-----
+checking function ceil
+only reads memory
+-----
+checking function floor
+only reads memory
+-----
+checking function log
+only reads memory
+-----
+checking function perror
+definition not available
+-----
+checking function fread
+definition not available
+-----
+checking function fseek
+definition not available
+-----
+checking function abs
+only reads memory
+-----
+checking function accept_roi_begin at acceptrt.default.c:8
+precise-impure function: accept_roi_begin
+ * acceptrt.default.c:10: call to gettimeofday()
+ * acceptrt.default.c:11: store to time_begin
+2 blockers
+-----
+checking function accept_roi_end at acceptrt.default.c:14
+precise-impure function: accept_roi_end
+ * acceptrt.default.c:16: call to gettimeofday()
+ * acceptrt.default.c:20: call to _fopen()
+ * acceptrt.default.c:21: call to fprintf()
+ * acceptrt.default.c:22: call to fclose()
+4 blockers
+-----
+checking function calcSobel_dX at common/calcSobel_dX.c:10
+precise-impure function: calcSobel_dX
+ * common/calcSobel_dX.c:11: call to accept_roi_begin()
+ * common/calcSobel_dX.c:22: call to fSetArray()
+ * common/calcSobel_dX.c:23: call to fSetArray()
+ * common/calcSobel_dX.c:24: call to fMallocHandle()
+ * common/calcSobel_dX.c:25: call to fMallocHandle()
+ * common/calcSobel_dX.c:27: store to arrayidx
+ * common/calcSobel_dX.c:28: store to arrayidx5
+ * common/calcSobel_dX.c:29: store to arrayidx7
+ * common/calcSobel_dX.c:34: store to arrayidx9
+ * common/calcSobel_dX.c:35: store to arrayidx11
+ * common/calcSobel_dX.c:36: store to arrayidx13
+ * common/calcSobel_dX.c:56: store to arrayidx37
+ * common/calcSobel_dX.c:69: store to arrayidx80
+ * common/calcSobel_dX.c:73: call to fFreeHandle()
+ * common/calcSobel_dX.c:74: call to fFreeHandle()
+ * common/calcSobel_dX.c:75: call to fFreeHandle()
+ * common/calcSobel_dX.c:76: call to accept_roi_end()
+17 blockers
+-----
+checking function calcSobel_dY at common/calcSobel_dY.c:7
+precise-impure function: calcSobel_dY
+ * common/calcSobel_dY.c:25: call to fSetArray()
+ * common/calcSobel_dY.c:26: call to fSetArray()
+ * common/calcSobel_dY.c:27: call to iMallocHandle()
+ * common/calcSobel_dY.c:28: call to iMallocHandle()
+ * common/calcSobel_dY.c:30: store to arrayidx
+ * common/calcSobel_dY.c:31: store to arrayidx5
+ * common/calcSobel_dY.c:32: store to arrayidx7
+ * common/calcSobel_dY.c:36: store to arrayidx9
+ * common/calcSobel_dY.c:37: store to arrayidx11
+ * common/calcSobel_dY.c:38: store to arrayidx13
+ * common/calcSobel_dY.c:57: store to arrayidx37
+ * common/calcSobel_dY.c:70: store to arrayidx81
+ * common/calcSobel_dY.c:74: call to fFreeHandle()
+ * common/calcSobel_dY.c:75: call to iFreeHandle()
+ * common/calcSobel_dY.c:76: call to iFreeHandle()
+15 blockers
+-----
+checking function convertF2DtoI2D at common/convertF2DtoI2D.c:3
+precise-impure function: convertF2DtoI2D
+ * common/convertF2DtoI2D.c:5: call to iSetArray()
+ * common/convertF2DtoI2D.c:10: store to arrayidx14
+2 blockers
+-----
+checking function convertI2DtoF2D at common/convertI2DtoF2D.c:3
+precise-impure function: convertI2DtoF2D
+ * common/convertI2DtoF2D.c:5: call to fSetArray()
+ * common/convertI2DtoF2D.c:10: store to arrayidx12
+2 blockers
+-----
+checking function fDeepCopy at common/fDeepCopy.c:7
+precise-impure function: fDeepCopy
+ * common/fDeepCopy.c:16: call to fMallocHandle()
+ * common/fDeepCopy.c:20: store to arrayidx10
+2 blockers
+-----
+checking function fDeepCopyRange at common/fDeepCopyRange.c:7
+precise-impure function: fDeepCopyRange
+ * common/fDeepCopyRange.c:15: call to fMallocHandle()
+ * common/fDeepCopyRange.c:20: store to arrayidx8
+2 blockers
+-----
+checking function fDivide at common/fDivide.c:7
+precise-impure function: fDivide
+ * common/fDivide.c:15: call to fMallocHandle()
+ * common/fDivide.c:19: store to arrayidx3
+2 blockers
+-----
+checking function fFind3 at common/fFind3.c:7
+precise-impure function: fFind3
+ * common/fFind3.c:25: call to fSetArray()
+ * common/fFind3.c:34: store to arrayidx31
+ * common/fFind3.c:35: store to arrayidx40
+ * common/fFind3.c:36: store to arrayidx52
+4 blockers
+-----
+checking function fFreeHandle at common/fFreeHandle.c:9
+precise-impure function: fFreeHandle
+ * common/fFreeHandle.c:12: call to free()
+1 blocker
+-----
+checking function fHorzcat at common/fHorzcat.c:7
+precise-impure function: fHorzcat
+ * common/fHorzcat.c:20: call to fMallocHandle()
+ * common/fHorzcat.c:27: store to arrayidx13
+ * common/fHorzcat.c:32: store to arrayidx29
+3 blockers
+-----
+checking function fMallocHandle at common/fMallocHandle.c:9
+precise-impure function: fMallocHandle
+ * common/fMallocHandle.c:14: call to malloc()
+ * common/fMallocHandle.c:15: store to height
+ * common/fMallocHandle.c:16: store to width
+3 blockers
+-----
+checking function fMdivide at common/fMdivide.c:7
+precise-impure function: fMdivide
+ * common/fMdivide.c:17: call to printf()
+ * common/fMdivide.c:21: call to fMallocHandle()
+ * common/fMdivide.c:24: store to arrayidx13
+3 blockers
+-----
+checking function fMinus at common/fMinus.c:7
+precise-impure function: fMinus
+ * common/fMinus.c:15: call to fMallocHandle()
+ * common/fMinus.c:18: store to arrayidx6
+2 blockers
+-----
+checking function fMtimes at common/fMtimes.c:7
+precise-impure function: fMtimes
+ * common/fMtimes.c:19: call to fMallocHandle()
+ * common/fMtimes.c:30: store to arrayidx23
+2 blockers
+-----
+checking function fPlus at common/fPlus.c:7
+precise-impure function: fPlus
+ * common/fPlus.c:15: call to fMallocHandle()
+ * common/fPlus.c:18: store to arrayidx6
+2 blockers
+-----
+checking function fReshape at common/fReshape.c:7
+precise-impure function: fReshape
+ * common/fReshape.c:16: call to fMallocHandle()
+ * common/fReshape.c:21: store to arrayidx7
+2 blockers
+-----
+checking function fSelfCheck at common/fSelfCheck.c:7
+precise-impure function: fSelfCheck
+ * common/fSelfCheck.c:18: call to malloc()
+ * common/fSelfCheck.c:20: call to __sprintf_chk
+ * common/fSelfCheck.c:21: call to _fopen()
+ * common/fSelfCheck.c:25: call to printf()
+ * common/fSelfCheck.c:29: call to feof()
+ * common/fSelfCheck.c:31: call to fscanf()
+ * common/fSelfCheck.c:38: call to printf()
+ * common/fSelfCheck.c:47: call to printf()
+ * common/fSelfCheck.c:52: call to fclose()
+ * common/fSelfCheck.c:53: call to printf()
+ * common/fSelfCheck.c:54: call to free()
+11 blockers
+-----
+checking function fSetArray at common/fSetArray.c:9
+precise-impure function: fSetArray
+ * common/fSetArray.c:13: call to fMallocHandle()
+ * common/fSetArray.c:17: store to arrayidx
+2 blockers
+-----
+checking function fSort at common/fSort.c:7
+precise-impure function: fSort
+ * common/fSort.c:15: call to fDeepCopy()
+1 blocker
+-----
+checking function fSortIndices at common/fSortIndices.c:8
+precise-impure function: fSortIndices
+ * common/fSortIndices.c:18: call to fDeepCopy()
+ * common/fSortIndices.c:19: call to iMallocHandle()
+ * common/fSortIndices.c:21: store to int
+ * common/fSortIndices.c:21: store to int
+ * common/fSortIndices.c:22: store to unsigned int
+ * common/fSortIndices.c:22: store to unsigned int
+ * common/fSortIndices.c:23: store to arrayidx
+ * common/fSortIndices.c:29: call to accept_roi_begin()
+ * common/fSortIndices.c:32: store to int
+ * common/fSortIndices.c:32: store to int
+ * common/fSortIndices.c:36: store to arrayidx27
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:41: store to arrayidx44
+ * common/fSortIndices.c:46: store to arrayidx59
+ * common/fSortIndices.c:50: call to fFreeHandle()
+ * common/fSortIndices.c:51: call to accept_roi_end()
+ * common/fSortIndices.c:54: call to accept_roi_begin()
+ * common/fSortIndices.c:57: store to int
+ * common/fSortIndices.c:57: store to int
+ * common/fSortIndices.c:61: store to arrayidx86
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:66: store to arrayidx103
+ * common/fSortIndices.c:71: store to arrayidx119
+ * common/fSortIndices.c:75: call to fFreeHandle()
+ * common/fSortIndices.c:76: call to accept_roi_end()
+27 blockers
+-----
+checking function fSum at common/fSum.c:7
+precise-impure function: fSum
+ * common/fSum.c:23: call to fSetArray()
+ * common/fSum.c:30: store to arrayidx8
+ * common/fSum.c:37: store to arrayidx23
+ * common/fSum.c:46: store to arrayidx43
+4 blockers
+-----
+checking function fSum2 at common/fSum2.c:7
+precise-impure function: fSum2
+ * common/fSum2.c:28: call to fSetArray()
+ * common/fSum2.c:37: store to arrayidx11
+ * common/fSum2.c:47: store to arrayidx37
+3 blockers
+-----
+checking function fTimes at common/fTimes.c:7
+precise-impure function: fTimes
+ * common/fTimes.c:15: call to fMallocHandle()
+ * common/fTimes.c:18: store to arrayidx7
+2 blockers
+-----
+checking function fTranspose at common/fTranspose.c:8
+precise-impure function: fTranspose
+ * common/fTranspose.c:10: call to accept_roi_begin()
+ * common/fTranspose.c:18: call to fMallocHandle()
+ * common/fTranspose.c:23: store to arrayidx7
+ * common/fTranspose.c:26: call to accept_roi_end()
+4 blockers
+-----
+checking function fWriteMatrix at common/fWriteMatrix.c:9
+precise-impure function: fWriteMatrix
+ * common/fWriteMatrix.c:15: call to __sprintf_chk
+ * common/fWriteMatrix.c:16: call to _fopen()
+ * common/fWriteMatrix.c:25: call to fprintf()
+ * common/fWriteMatrix.c:27: call to fprintf()
+ * common/fWriteMatrix.c:30: call to fclose()
+5 blockers
+-----
+checking function ffConv2 at common/ffConv2.c:7
+precise-impure function: ffConv2
+ * common/ffConv2.c:22: call to fSetArray()
+ * common/ffConv2.c:40: store to arrayidx39
+2 blockers
+-----
+checking function ffConv2_dY at common/ffConv2_dY.c:7
+precise-impure function: ffConv2_dY
+ * common/ffConv2_dY.c:25: call to fSetArray()
+ * common/ffConv2_dY.c:36: store to arrayidx56
+ * common/ffConv2_dY.c:42: call to fMallocHandle()
+ * common/ffConv2_dY.c:47: store to arrayidx91
+4 blockers
+-----
+checking function ffDivide at common/ffDivide.c:7
+precise-impure function: ffDivide
+ * common/ffDivide.c:15: call to fMallocHandle()
+ * common/ffDivide.c:18: store to arrayidx6
+2 blockers
+-----
+checking function ffTimes at common/ffTimes.c:7
+precise-impure function: ffTimes
+ * common/ffTimes.c:15: call to fMallocHandle()
+ * common/ffTimes.c:18: store to arrayidx4
+2 blockers
+-----
+checking function ffVertcat at common/ffVertcat.c:7
+precise-impure function: ffVertcat
+ * common/ffVertcat.c:18: call to fMallocHandle()
+ * common/ffVertcat.c:24: store to arrayidx13
+ * common/ffVertcat.c:28: store to arrayidx29
+3 blockers
+-----
+checking function ffiConv2 at common/ffiConv2.c:7
+precise-impure function: ffiConv2
+ * common/ffiConv2.c:26: call to fSetArray()
+ * common/ffiConv2.c:37: store to arrayidx57
+ * common/ffiConv2.c:44: call to fMallocHandle()
+ * common/ffiConv2.c:49: store to arrayidx92
+4 blockers
+-----
+checking function fiConv2 at common/fiConv2.c:7
+precise-impure function: fiConv2
+ * common/fiConv2.c:26: call to fSetArray()
+ * common/fiConv2.c:37: store to arrayidx57
+ * common/fiConv2.c:44: call to fMallocHandle()
+ * common/fiConv2.c:49: store to arrayidx92
+4 blockers
+-----
+checking function fiDeepCopy at common/fiDeepCopy.c:7
+precise-impure function: fiDeepCopy
+ * common/fiDeepCopy.c:16: call to fMallocHandle()
+ * common/fiDeepCopy.c:20: store to arrayidx12
+2 blockers
+-----
+checking function horzcat at common/horzcat.c:7
+precise-impure function: horzcat
+ * common/horzcat.c:23: call to fMallocHandle()
+ * common/horzcat.c:30: store to arrayidx15
+ * common/horzcat.c:35: store to arrayidx31
+ * common/horzcat.c:40: store to arrayidx50
+4 blockers
+-----
+checking function iDeepCopy at common/iDeepCopy.c:7
+precise-impure function: iDeepCopy
+ * common/iDeepCopy.c:16: call to iMallocHandle()
+ * common/iDeepCopy.c:20: store to arrayidx10
+2 blockers
+-----
+checking function iDeepCopyRange at common/iDeepCopyRange.c:7
+precise-impure function: iDeepCopyRange
+ * common/iDeepCopyRange.c:15: call to iMallocHandle()
+ * common/iDeepCopyRange.c:20: store to arrayidx8
+2 blockers
+-----
+checking function iFreeHandle at common/iFreeHandle.c:9
+precise-impure function: iFreeHandle
+ * common/iFreeHandle.c:12: call to free()
+1 blocker
+-----
+checking function iHorzcat at common/iHorzcat.c:7
+precise-impure function: iHorzcat
+ * common/iHorzcat.c:21: call to iMallocHandle()
+ * common/iHorzcat.c:28: store to arrayidx13
+ * common/iHorzcat.c:33: store to arrayidx29
+3 blockers
+-----
+checking function iMallocHandle at common/iMallocHandle.c:9
+precise-impure function: iMallocHandle
+ * common/iMallocHandle.c:14: call to malloc()
+ * common/iMallocHandle.c:15: store to height
+ * common/iMallocHandle.c:16: store to width
+3 blockers
+-----
+checking function iMinus at common/iMinus.c:7
+precise-impure function: iMinus
+ * common/iMinus.c:15: call to iMallocHandle()
+ * common/iMinus.c:18: store to arrayidx6
+2 blockers
+-----
+checking function iReshape at common/iReshape.c:7
+precise-impure function: iReshape
+ * common/iReshape.c:16: call to iMallocHandle()
+ * common/iReshape.c:21: store to arrayidx7
+2 blockers
+-----
+checking function iSetArray at common/iSetArray.c:9
+precise-impure function: iSetArray
+ * common/iSetArray.c:13: call to iMallocHandle()
+ * common/iSetArray.c:17: store to arrayidx
+2 blockers
+-----
+checking function iSort at common/iSort.c:7
+precise-impure function: iSort
+ * common/iSort.c:15: call to iDeepCopy()
+1 blocker
+-----
+checking function iSortIndices at common/iSortIndices.c:7
+precise-impure function: iSortIndices
+ * common/iSortIndices.c:16: call to iDeepCopy()
+ * common/iSortIndices.c:17: call to iMallocHandle()
+ * common/iSortIndices.c:21: store to arrayidx
+ * common/iSortIndices.c:29: store to arrayidx26
+ * common/iSortIndices.c:34: store to arrayidx42
+ * common/iSortIndices.c:39: store to arrayidx57
+6 blockers
+-----
+checking function iTimes at common/iTimes.c:7
+precise-impure function: iTimes
+ * common/iTimes.c:15: call to iMallocHandle()
+ * common/iTimes.c:18: store to arrayidx7
+2 blockers
+-----
+checking function iTranspose at common/iTranspose.c:7
+precise-impure function: iTranspose
+ * common/iTranspose.c:16: call to iMallocHandle()
+ * common/iTranspose.c:21: store to arrayidx7
+2 blockers
+-----
+checking function iVertcat at common/iVertcat.c:7
+precise-impure function: iVertcat
+ * common/iVertcat.c:18: call to iMallocHandle()
+ * common/iVertcat.c:24: store to arrayidx13
+ * common/iVertcat.c:28: store to arrayidx29
+3 blockers
+-----
+checking function ifDeepCopy at common/ifDeepCopy.c:8
+precise-impure function: ifDeepCopy
+ * common/ifDeepCopy.c:17: call to iMallocHandle()
+ * common/ifDeepCopy.c:21: store to arrayidx10
+2 blockers
+-----
+checking function ifMtimes at common/ifMtimes.c:7
+precise-impure function: ifMtimes
+ * common/ifMtimes.c:19: call to fMallocHandle()
+ * common/ifMtimes.c:30: store to arrayidx23
+2 blockers
+-----
+checking function iiConv2 at common/iiConv2.c:7
+precise-impure function: iiConv2
+ * common/iiConv2.c:26: call to iSetArray()
+ * common/iiConv2.c:37: store to arrayidx56
+ * common/iiConv2.c:44: call to iMallocHandle()
+ * common/iiConv2.c:49: store to arrayidx91
+4 blockers
+-----
+checking function imageBlur at common/imageBlur.c:7
+precise-impure function: imageBlur
+ * common/imageBlur.c:9: call to accept_roi_begin()
+ * common/imageBlur.c:19: call to fSetArray()
+ * common/imageBlur.c:20: call to fSetArray()
+ * common/imageBlur.c:21: call to iMallocHandle()
+ * common/imageBlur.c:23: store to arrayidx
+ * common/imageBlur.c:24: store to arrayidx4
+ * common/imageBlur.c:25: store to arrayidx6
+ * common/imageBlur.c:26: store to arrayidx8
+ * common/imageBlur.c:27: store to arrayidx10
+ * common/imageBlur.c:46: store to arrayidx35
+ * common/imageBlur.c:59: store to arrayidx79
+ * common/imageBlur.c:63: call to fFreeHandle()
+ * common/imageBlur.c:64: call to iFreeHandle()
+13 blockers
+-----
+checking function imageResize at common/imageResize.c:7
+precise-impure function: imageResize
+ * common/imageResize.c:25: call to fSetArray()
+ * common/imageResize.c:26: call to fSetArray()
+ * common/imageResize.c:27: call to iMallocHandle()
+ * common/imageResize.c:29: store to arrayidx
+ * common/imageResize.c:30: store to arrayidx11
+ * common/imageResize.c:31: store to arrayidx13
+ * common/imageResize.c:32: store to arrayidx15
+ * common/imageResize.c:33: store to arrayidx17
+ * common/imageResize.c:54: store to arrayidx48
+ * common/imageResize.c:69: store to arrayidx93
+ * common/imageResize.c:74: call to fFreeHandle()
+ * common/imageResize.c:75: call to iFreeHandle()
+12 blockers
+-----
+checking function isMinus at common/isMinus.c:9
+precise-impure function: isMinus
+ * common/isMinus.c:17: call to iMallocHandle()
+ * common/isMinus.c:20: store to arrayidx3
+2 blockers
+-----
+checking function isPlus at common/isPlus.c:7
+precise-impure function: isPlus
+ * common/isPlus.c:15: call to iMallocHandle()
+ * common/isPlus.c:18: store to arrayidx3
+2 blockers
+-----
+checking function randWrapper at common/randWrapper.c:7
+precise-impure function: randWrapper
+ * common/randWrapper.c:13: call to fSetArray()
+ * common/randWrapper.c:21: store to arrayidx
+ * common/randWrapper.c:23: store to arrayidx24
+3 blockers
+-----
+checking function randnWrapper at common/randnWrapper.c:7
+precise-impure function: randnWrapper
+ * common/randnWrapper.c:13: call to fSetArray()
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
+ * common/randnWrapper.c:34: store to arrayidx53
+4 blockers
+-----
+checking function readFile at common/readFile.c:8
+precise-impure function: readFile
+ * common/readFile.c:10: call to accept_roi_begin()
+ * common/readFile.c:17: call to _fopen()
+ * common/readFile.c:20: call to printf()
+ * common/readFile.c:24: call to fscanf()
+ * common/readFile.c:25: call to fscanf()
+ * common/readFile.c:27: call to fSetArray()
+ * common/readFile.c:33: call to fscanf()
+ * common/readFile.c:37: call to fclose()
+ * common/readFile.c:38: call to accept_roi_end()
+9 blockers
+-----
+checking function readImage at common/readImage.c:9
+precise-impure function: readImage
+ * common/readImage.c:39: call to _fopen()
+ * common/readImage.c:39: store to input
+ * common/readImage.c:42: call to perror()
+ * common/readImage.c:48: call to fread()
+ * common/readImage.c:49: call to fread()
+ * common/readImage.c:50: call to fread()
+ * common/readImage.c:51: call to fread()
+ * common/readImage.c:52: call to fread()
+ * common/readImage.c:54: call to fread()
+ * common/readImage.c:55: call to fread()
+ * common/readImage.c:56: call to fread()
+ * common/readImage.c:57: call to fread()
+ * common/readImage.c:58: call to fread()
+ * common/readImage.c:59: call to fread()
+ * common/readImage.c:60: call to fread()
+ * common/readImage.c:62: call to fread()
+ * common/readImage.c:63: call to fread()
+ * common/readImage.c:64: call to fread()
+ * common/readImage.c:65: call to fread()
+ * common/readImage.c:68: call to iMallocHandle()
+ * common/readImage.c:73: call to printf()
+ * common/readImage.c:76: call to fseek()
+ * common/readImage.c:84: call to fread()
+ * common/readImage.c:85: store to arrayidx54
+ * common/readImage.c:95: call to fread()
+ * common/readImage.c:96: call to fread()
+ * common/readImage.c:97: call to fread()
+ * common/readImage.c:100: store to arrayidx87
+ * common/readImage.c:109: call to fclose()
+29 blockers
+-----
+checking function selfCheck at common/selfCheck.c:10
+precise-impure function: selfCheck
+ * common/selfCheck.c:21: call to malloc()
+ * common/selfCheck.c:23: call to __sprintf_chk
+ * common/selfCheck.c:24: call to _fopen()
+ * common/selfCheck.c:27: call to printf()
+ * common/selfCheck.c:31: call to feof()
+ * common/selfCheck.c:33: call to fscanf()
+ * common/selfCheck.c:40: call to printf()
+ * common/selfCheck.c:48: call to printf()
+ * common/selfCheck.c:49: call to printf()
+ * common/selfCheck.c:54: call to fclose()
+ * common/selfCheck.c:55: call to free()
+ * common/selfCheck.c:56: call to printf()
+12 blockers
+-----
+checking function uiFreeHandle at common/uiFreeHandle.c:9
+precise-impure function: uiFreeHandle
+ * common/uiFreeHandle.c:11: call to free()
+1 blocker
+-----
+checking function uiMallocHandle at common/uiMallocHandle.c:9
+precise-impure function: uiMallocHandle
+ * common/uiMallocHandle.c:14: call to malloc()
+ * common/uiMallocHandle.c:15: store to height
+ * common/uiMallocHandle.c:16: store to width
+3 blockers
+-----
+checking function uiSetArray at common/uiSetArray.c:9
+precise-impure function: uiSetArray
+ * common/uiSetArray.c:13: call to uiMallocHandle()
+ * common/uiSetArray.c:17: store to arrayidx
+2 blockers
+-----
+checking function writeMatrix at common/writeMatrix.c:9
+precise-impure function: writeMatrix
+ * common/writeMatrix.c:15: call to __sprintf_chk
+ * common/writeMatrix.c:16: call to _fopen()
+ * common/writeMatrix.c:25: call to fprintf()
+ * common/writeMatrix.c:27: call to fprintf()
+ * common/writeMatrix.c:30: call to fclose()
+5 blockers
+-----
+checking function photonStartTiming at includes/photonTiming.c:14
+precise-impure function: photonStartTiming
+ * includes/photonTiming.c:18: call to malloc()
+ * includes/photonTiming.c:19: indirect function call
+ * includes/photonTiming.c:19: store to arrayidx
+ * includes/photonTiming.c:19: store to arrayidx1
+4 blockers
+-----
+checking function photonReportTiming at includes/photonTiming.c:23
+precise-impure function: photonReportTiming
+ * includes/photonTiming.c:27: call to malloc()
+ * includes/photonTiming.c:31: store to arrayidx12
+ * includes/photonTiming.c:32: store to arrayidx14
+3 blockers
+-----
+checking function photonPrintTiming at includes/photonTiming.c:37
+precise-impure function: photonPrintTiming
+ * includes/photonTiming.c:40: call to printf()
+ * includes/photonTiming.c:42: call to printf()
+2 blockers
+-----
+checking function photonEndTiming at includes/photonTiming.c:45
+precise-impure function: photonEndTiming
+ * includes/photonTiming.c:48: call to malloc()
+ * includes/photonTiming.c:50: indirect function call
+ * includes/photonTiming.c:50: store to arrayidx
+ * includes/photonTiming.c:50: store to arrayidx1
+4 blockers
+
+
+LOOP OPTIMIZATION
+-----
+loop at common/calcSobel_dX.c:47
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:49: store to unsigned int
+ * common/calcSobel_dX.c:49: store to unsigned int
+ * common/calcSobel_dX.c:51: store to temp
+ * common/calcSobel_dX.c:52: store to k
+ * common/calcSobel_dX.c:52: store to k
+ * common/calcSobel_dX.c:54: store to temp
+ * common/calcSobel_dX.c:56: store to arrayidx37
+7 blockers
+-----
+loop at common/calcSobel_dX.c:49
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:51: store to temp
+ * common/calcSobel_dX.c:52: store to k
+ * common/calcSobel_dX.c:52: store to k
+ * common/calcSobel_dX.c:54: store to temp
+ * common/calcSobel_dX.c:56: store to arrayidx37
+5 blockers
+-----
+loop at common/calcSobel_dX.c:52
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:54: store to temp
+1 blocker
+-----
+loop at common/calcSobel_dX.c:60
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:69: store to arrayidx80
+1 blocker
+-----
+loop at common/calcSobel_dX.c:62
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:69: store to arrayidx80
+1 blocker
+-----
+loop at common/calcSobel_dX.c:65
+within function calcSobel_dX
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dX.c:67: store to temp
+1 blocker
+-----
+loop at common/calcSobel_dY.c:48
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:50: store to unsigned int
+ * common/calcSobel_dY.c:50: store to unsigned int
+ * common/calcSobel_dY.c:52: store to temp
+ * common/calcSobel_dY.c:53: store to k
+ * common/calcSobel_dY.c:53: store to k
+ * common/calcSobel_dY.c:55: store to temp
+ * common/calcSobel_dY.c:57: store to arrayidx37
+7 blockers
+-----
+loop at common/calcSobel_dY.c:50
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:52: store to temp
+ * common/calcSobel_dY.c:53: store to k
+ * common/calcSobel_dY.c:53: store to k
+ * common/calcSobel_dY.c:55: store to temp
+ * common/calcSobel_dY.c:57: store to arrayidx37
+5 blockers
+-----
+loop at common/calcSobel_dY.c:53
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:55: store to temp
+1 blocker
+-----
+loop at common/calcSobel_dY.c:61
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:70: store to arrayidx81
+1 blocker
+-----
+loop at common/calcSobel_dY.c:63
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:70: store to arrayidx81
+1 blocker
+-----
+loop at common/calcSobel_dY.c:66
+within function calcSobel_dY
+for-like loop
+cannot perforate loop
+ * common/calcSobel_dY.c:68: store to temp
+1 blocker
+-----
+loop at common/convertF2DtoI2D.c:8
+within function convertF2DtoI2D
+for-like loop
+cannot perforate loop
+ * common/convertF2DtoI2D.c:10: store to arrayidx14
+1 blocker
+-----
+loop at common/convertF2DtoI2D.c:9
+within function convertF2DtoI2D
+for-like loop
+cannot perforate loop
+ * common/convertF2DtoI2D.c:10: store to arrayidx14
+1 blocker
+-----
+loop at common/convertI2DtoF2D.c:8
+within function convertI2DtoF2D
+for-like loop
+cannot perforate loop
+ * common/convertI2DtoF2D.c:10: store to arrayidx12
+1 blocker
+-----
+loop at common/convertI2DtoF2D.c:9
+within function convertI2DtoF2D
+for-like loop
+cannot perforate loop
+ * common/convertI2DtoF2D.c:10: store to arrayidx12
+1 blocker
+-----
+loop at common/fDeepCopy.c:18
+within function fDeepCopy
+for-like loop
+cannot perforate loop
+ * common/fDeepCopy.c:20: store to arrayidx10
+1 blocker
+-----
+loop at common/fDeepCopy.c:19
+within function fDeepCopy
+for-like loop
+cannot perforate loop
+ * common/fDeepCopy.c:20: store to arrayidx10
+1 blocker
+-----
+loop at common/fDeepCopyRange.c:18
+within function fDeepCopyRange
+for-like loop
+cannot perforate loop
+ * common/fDeepCopyRange.c:20: store to arrayidx8
+1 blocker
+-----
+loop at common/fDeepCopyRange.c:19
+within function fDeepCopyRange
+for-like loop
+cannot perforate loop
+ * common/fDeepCopyRange.c:20: store to arrayidx8
+1 blocker
+-----
+loop at common/fDivide.c:17
+within function fDivide
+for-like loop
+cannot perforate loop
+ * common/fDivide.c:19: store to arrayidx3
+1 blocker
+-----
+loop at common/fFind3.c:16
+within function fFind3
+for-like loop
+cannot perforate loop
+ * common/fFind3.c:18: store to unsigned int
+ * common/fFind3.c:18: store to unsigned int
+ * common/fFind3.c:21: store to r
+3 blockers
+-----
+loop at common/fFind3.c:18
+within function fFind3
+for-like loop
+cannot perforate loop
+ * common/fFind3.c:21: store to r
+1 blocker
+-----
+loop at common/fFind3.c:28
+within function fFind3
+for-like loop
+cannot perforate loop
+ * common/fFind3.c:34: store to arrayidx31
+ * common/fFind3.c:35: store to arrayidx40
+ * common/fFind3.c:36: store to arrayidx52
+3 blockers
+-----
+loop at common/fFind3.c:30
+within function fFind3
+for-like loop
+cannot perforate loop
+ * common/fFind3.c:34: store to arrayidx31
+ * common/fFind3.c:35: store to arrayidx40
+ * common/fFind3.c:36: store to arrayidx52
+3 blockers
+-----
+loop at common/fHorzcat.c:22
+within function fHorzcat
+for-like loop
+cannot perforate loop
+ * common/fHorzcat.c:27: store to arrayidx13
+ * common/fHorzcat.c:32: store to arrayidx29
+2 blockers
+-----
+loop at common/fHorzcat.c:25
+within function fHorzcat
+for-like loop
+cannot perforate loop
+ * common/fHorzcat.c:27: store to arrayidx13
+ * common/fHorzcat.c:28: store to k
+2 blockers
+-----
+loop at common/fHorzcat.c:30
+within function fHorzcat
+for-like loop
+cannot perforate loop
+ * common/fHorzcat.c:32: store to arrayidx29
+ * common/fHorzcat.c:33: store to k
+2 blockers
+-----
+loop at common/fMdivide.c:23
+within function fMdivide
+for-like loop
+cannot perforate loop
+ * common/fMdivide.c:24: store to arrayidx13
+1 blocker
+-----
+loop at common/fMinus.c:17
+within function fMinus
+for-like loop
+cannot perforate loop
+ * common/fMinus.c:18: store to arrayidx6
+1 blocker
+-----
+loop at common/fMtimes.c:21
+within function fMtimes
+for-like loop
+cannot perforate loop
+ * common/fMtimes.c:30: store to arrayidx23
+1 blocker
+-----
+loop at common/fMtimes.c:23
+within function fMtimes
+for-like loop
+cannot perforate loop
+ * common/fMtimes.c:30: store to arrayidx23
+1 blocker
+-----
+loop at common/fMtimes.c:26
+within function fMtimes
+for-like loop
+cannot perforate loop
+ * common/fMtimes.c:28: store to temp
+1 blocker
+-----
+loop at common/fPlus.c:17
+within function fPlus
+for-like loop
+cannot perforate loop
+ * common/fPlus.c:18: store to arrayidx6
+1 blocker
+-----
+loop at common/fReshape.c:19
+within function fReshape
+for-like loop
+cannot perforate loop
+ * common/fReshape.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/fReshape.c:20
+within function fReshape
+for-like loop
+cannot perforate loop
+ * common/fReshape.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/fSelfCheck.c:29
+within function fSelfCheck
+while-like loop
+cannot perforate loop
+ * common/fSelfCheck.c:31: call to fscanf()
+ * common/fSelfCheck.c:32: store to count
+2 blockers
+-----
+loop at common/fSelfCheck.c:41
+within function fSelfCheck
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at common/fSetArray.c:15
+within function fSetArray
+for-like loop
+cannot perforate loop
+ * common/fSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/fSetArray.c:16
+within function fSetArray
+for-like loop
+cannot perforate loop
+ * common/fSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/fSort.c:17
+within function fSort
+for-like loop
+can perforate loop
+-----
+loop at common/fSort.c:19
+within function fSort
+for-like loop
+can perforate loop
+-----
+loop at common/fSort.c:21
+within function fSort
+for-like loop
+can perforate loop
+-----
+loop at common/fSortIndices.c:21
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:22: store to unsigned int
+ * common/fSortIndices.c:22: store to unsigned int
+ * common/fSortIndices.c:23: store to arrayidx
+3 blockers
+-----
+loop at common/fSortIndices.c:22
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:23: store to arrayidx
+1 blocker
+-----
+loop at common/fSortIndices.c:30
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:32: store to int
+ * common/fSortIndices.c:32: store to int
+ * common/fSortIndices.c:36: store to arrayidx27
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:41: store to arrayidx44
+ * common/fSortIndices.c:46: store to arrayidx59
+7 blockers
+-----
+loop at common/fSortIndices.c:32
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:36: store to arrayidx27
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:37: store to unsigned int
+ * common/fSortIndices.c:41: store to arrayidx44
+ * common/fSortIndices.c:46: store to arrayidx59
+5 blockers
+-----
+loop at common/fSortIndices.c:37
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:41: store to arrayidx44
+ * common/fSortIndices.c:43: store to localIndex
+2 blockers
+-----
+loop at common/fSortIndices.c:55
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:57: store to int
+ * common/fSortIndices.c:57: store to int
+ * common/fSortIndices.c:61: store to arrayidx86
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:66: store to arrayidx103
+ * common/fSortIndices.c:71: store to arrayidx119
+7 blockers
+-----
+loop at common/fSortIndices.c:57
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:61: store to arrayidx86
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:62: store to unsigned int
+ * common/fSortIndices.c:66: store to arrayidx103
+ * common/fSortIndices.c:71: store to arrayidx119
+5 blockers
+-----
+loop at common/fSortIndices.c:62
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:66: store to arrayidx103
+ * common/fSortIndices.c:68: store to localIndex80
+2 blockers
+-----
+loop at common/fSum.c:28
+within function fSum
+for-like loop
+cannot perforate loop
+ * common/fSum.c:29: store to temp
+1 blocker
+-----
+loop at common/fSum.c:35
+within function fSum
+for-like loop
+cannot perforate loop
+ * common/fSum.c:36: store to temp
+1 blocker
+-----
+loop at common/fSum.c:41
+within function fSum
+for-like loop
+cannot perforate loop
+ * common/fSum.c:46: store to arrayidx43
+1 blocker
+-----
+loop at common/fSum.c:44
+within function fSum
+for-like loop
+cannot perforate loop
+ * common/fSum.c:45: store to temp
+1 blocker
+-----
+loop at common/fSum2.c:32
+within function fSum2
+for-like loop
+cannot perforate loop
+ * common/fSum2.c:37: store to arrayidx11
+1 blocker
+-----
+loop at common/fSum2.c:35
+within function fSum2
+for-like loop
+cannot perforate loop
+ * common/fSum2.c:36: store to temp
+1 blocker
+-----
+loop at common/fSum2.c:42
+within function fSum2
+for-like loop
+cannot perforate loop
+ * common/fSum2.c:47: store to arrayidx37
+1 blocker
+-----
+loop at common/fSum2.c:45
+within function fSum2
+for-like loop
+cannot perforate loop
+ * common/fSum2.c:46: store to temp
+1 blocker
+-----
+loop at common/fTimes.c:17
+within function fTimes
+for-like loop
+cannot perforate loop
+ * common/fTimes.c:18: store to arrayidx7
+1 blocker
+-----
+loop at common/fTranspose.c:20
+within function fTranspose
+for-like loop
+cannot perforate loop
+ * common/fTranspose.c:23: store to arrayidx7
+1 blocker
+-----
+loop at common/fTranspose.c:22
+within function fTranspose
+for-like loop
+cannot perforate loop
+ * common/fTranspose.c:23: store to arrayidx7
+1 blocker
+-----
+loop at common/fWriteMatrix.c:21
+within function fWriteMatrix
+for-like loop
+cannot perforate loop
+ * common/fWriteMatrix.c:25: call to fprintf()
+ * common/fWriteMatrix.c:27: call to fprintf()
+2 blockers
+-----
+loop at common/fWriteMatrix.c:23
+within function fWriteMatrix
+for-like loop
+cannot perforate loop
+ * common/fWriteMatrix.c:25: call to fprintf()
+1 blocker
+-----
+loop at common/ffConv2.c:27
+within function ffConv2
+for-like loop
+cannot perforate loop
+ * common/ffConv2.c:40: store to arrayidx39
+1 blocker
+-----
+loop at common/ffConv2.c:29
+within function ffConv2
+for-like loop
+cannot perforate loop
+ * common/ffConv2.c:40: store to arrayidx39
+1 blocker
+-----
+loop at common/ffConv2.c:31
+within function ffConv2
+for-like loop
+cannot perforate loop
+ * common/ffConv2.c:40: store to arrayidx39
+1 blocker
+-----
+loop at common/ffConv2.c:34
+within function ffConv2
+for-like loop
+cannot perforate loop
+ * common/ffConv2.c:40: store to arrayidx39
+1 blocker
+-----
+loop at common/ffConv2_dY.c:27
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:29: store to unsigned int
+ * common/ffConv2_dY.c:29: store to unsigned int
+ * common/ffConv2_dY.c:36: store to arrayidx56
+3 blockers
+-----
+loop at common/ffConv2_dY.c:29
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:36: store to arrayidx56
+1 blocker
+-----
+loop at common/ffConv2_dY.c:31
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:36: store to arrayidx56
+1 blocker
+-----
+loop at common/ffConv2_dY.c:33
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:36: store to arrayidx56
+1 blocker
+-----
+loop at common/ffConv2_dY.c:43
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:47: store to arrayidx91
+1 blocker
+-----
+loop at common/ffConv2_dY.c:45
+within function ffConv2_dY
+for-like loop
+cannot perforate loop
+ * common/ffConv2_dY.c:47: store to arrayidx91
+1 blocker
+-----
+loop at common/ffDivide.c:17
+within function ffDivide
+for-like loop
+cannot perforate loop
+ * common/ffDivide.c:18: store to arrayidx6
+1 blocker
+-----
+loop at common/ffTimes.c:17
+within function ffTimes
+for-like loop
+cannot perforate loop
+ * common/ffTimes.c:18: store to arrayidx4
+1 blocker
+-----
+loop at common/ffVertcat.c:20
+within function ffVertcat
+for-like loop
+cannot perforate loop
+ * common/ffVertcat.c:24: store to arrayidx13
+ * common/ffVertcat.c:28: store to arrayidx29
+2 blockers
+-----
+loop at common/ffVertcat.c:22
+within function ffVertcat
+for-like loop
+cannot perforate loop
+ * common/ffVertcat.c:24: store to arrayidx13
+1 blocker
+-----
+loop at common/ffVertcat.c:26
+within function ffVertcat
+for-like loop
+cannot perforate loop
+ * common/ffVertcat.c:28: store to arrayidx29
+1 blocker
+-----
+loop at common/ffiConv2.c:28
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:30: store to unsigned int
+ * common/ffiConv2.c:30: store to unsigned int
+ * common/ffiConv2.c:37: store to arrayidx57
+3 blockers
+-----
+loop at common/ffiConv2.c:30
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/ffiConv2.c:32
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/ffiConv2.c:34
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/ffiConv2.c:45
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:49: store to arrayidx92
+1 blocker
+-----
+loop at common/ffiConv2.c:47
+within function ffiConv2
+for-like loop
+cannot perforate loop
+ * common/ffiConv2.c:49: store to arrayidx92
+1 blocker
+-----
+loop at common/fiConv2.c:28
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:30: store to unsigned int
+ * common/fiConv2.c:30: store to unsigned int
+ * common/fiConv2.c:37: store to arrayidx57
+3 blockers
+-----
+loop at common/fiConv2.c:30
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/fiConv2.c:32
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/fiConv2.c:34
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:37: store to arrayidx57
+1 blocker
+-----
+loop at common/fiConv2.c:45
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:49: store to arrayidx92
+1 blocker
+-----
+loop at common/fiConv2.c:47
+within function fiConv2
+for-like loop
+cannot perforate loop
+ * common/fiConv2.c:49: store to arrayidx92
+1 blocker
+-----
+loop at common/fiDeepCopy.c:18
+within function fiDeepCopy
+for-like loop
+cannot perforate loop
+ * common/fiDeepCopy.c:20: store to arrayidx12
+1 blocker
+-----
+loop at common/fiDeepCopy.c:19
+within function fiDeepCopy
+for-like loop
+cannot perforate loop
+ * common/fiDeepCopy.c:20: store to arrayidx12
+1 blocker
+-----
+loop at common/horzcat.c:25
+within function horzcat
+for-like loop
+cannot perforate loop
+ * common/horzcat.c:30: store to arrayidx15
+ * common/horzcat.c:35: store to arrayidx31
+ * common/horzcat.c:40: store to arrayidx50
+3 blockers
+-----
+loop at common/horzcat.c:28
+within function horzcat
+for-like loop
+cannot perforate loop
+ * common/horzcat.c:30: store to arrayidx15
+ * common/horzcat.c:31: store to k
+2 blockers
+-----
+loop at common/horzcat.c:33
+within function horzcat
+for-like loop
+cannot perforate loop
+ * common/horzcat.c:35: store to arrayidx31
+ * common/horzcat.c:36: store to k
+2 blockers
+-----
+loop at common/horzcat.c:38
+within function horzcat
+for-like loop
+cannot perforate loop
+ * common/horzcat.c:40: store to arrayidx50
+ * common/horzcat.c:41: store to k
+2 blockers
+-----
+loop at common/iDeepCopy.c:18
+within function iDeepCopy
+for-like loop
+cannot perforate loop
+ * common/iDeepCopy.c:20: store to arrayidx10
+1 blocker
+-----
+loop at common/iDeepCopy.c:19
+within function iDeepCopy
+for-like loop
+cannot perforate loop
+ * common/iDeepCopy.c:20: store to arrayidx10
+1 blocker
+-----
+loop at common/iDeepCopyRange.c:18
+within function iDeepCopyRange
+for-like loop
+cannot perforate loop
+ * common/iDeepCopyRange.c:20: store to arrayidx8
+1 blocker
+-----
+loop at common/iDeepCopyRange.c:19
+within function iDeepCopyRange
+for-like loop
+cannot perforate loop
+ * common/iDeepCopyRange.c:20: store to arrayidx8
+1 blocker
+-----
+loop at common/iHorzcat.c:23
+within function iHorzcat
+for-like loop
+cannot perforate loop
+ * common/iHorzcat.c:28: store to arrayidx13
+ * common/iHorzcat.c:33: store to arrayidx29
+2 blockers
+-----
+loop at common/iHorzcat.c:26
+within function iHorzcat
+for-like loop
+cannot perforate loop
+ * common/iHorzcat.c:28: store to arrayidx13
+ * common/iHorzcat.c:29: store to k
+2 blockers
+-----
+loop at common/iHorzcat.c:31
+within function iHorzcat
+for-like loop
+cannot perforate loop
+ * common/iHorzcat.c:33: store to arrayidx29
+ * common/iHorzcat.c:34: store to k
+2 blockers
+-----
+loop at common/iMinus.c:17
+within function iMinus
+for-like loop
+cannot perforate loop
+ * common/iMinus.c:18: store to arrayidx6
+1 blocker
+-----
+loop at common/iReshape.c:19
+within function iReshape
+for-like loop
+cannot perforate loop
+ * common/iReshape.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/iReshape.c:20
+within function iReshape
+for-like loop
+cannot perforate loop
+ * common/iReshape.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/iSetArray.c:15
+within function iSetArray
+for-like loop
+cannot perforate loop
+ * common/iSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/iSetArray.c:16
+within function iSetArray
+for-like loop
+cannot perforate loop
+ * common/iSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/iSort.c:17
+within function iSort
+for-like loop
+can perforate loop
+-----
+loop at common/iSort.c:19
+within function iSort
+for-like loop
+can perforate loop
+-----
+loop at common/iSort.c:21
+within function iSort
+for-like loop
+can perforate loop
+-----
+loop at common/iSortIndices.c:19
+within function iSortIndices
+for-like loop
+cannot perforate loop
+ * common/iSortIndices.c:20: store to unsigned int
+ * common/iSortIndices.c:20: store to unsigned int
+ * common/iSortIndices.c:21: store to arrayidx
+3 blockers
+-----
+loop at common/iSortIndices.c:20
+within function iSortIndices
+for-like loop
+cannot perforate loop
+ * common/iSortIndices.c:21: store to arrayidx
+1 blocker
+-----
+loop at common/iSortIndices.c:23
+within function iSortIndices
+for-like loop
+cannot perforate loop
+ * common/iSortIndices.c:29: store to arrayidx26
+ * common/iSortIndices.c:34: store to arrayidx42
+ * common/iSortIndices.c:39: store to arrayidx57
+3 blockers
+-----
+loop at common/iSortIndices.c:25
+within function iSortIndices
+for-like loop
+cannot perforate loop
+ * common/iSortIndices.c:29: store to arrayidx26
+ * common/iSortIndices.c:34: store to arrayidx42
+ * common/iSortIndices.c:39: store to arrayidx57
+3 blockers
+-----
+loop at common/iSortIndices.c:30
+within function iSortIndices
+for-like loop
+cannot perforate loop
+ * common/iSortIndices.c:34: store to arrayidx42
+ * common/iSortIndices.c:36: store to localIndex
+2 blockers
+-----
+loop at common/iTimes.c:17
+within function iTimes
+for-like loop
+cannot perforate loop
+ * common/iTimes.c:18: store to arrayidx7
+1 blocker
+-----
+loop at common/iTranspose.c:18
+within function iTranspose
+for-like loop
+cannot perforate loop
+ * common/iTranspose.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/iTranspose.c:20
+within function iTranspose
+for-like loop
+cannot perforate loop
+ * common/iTranspose.c:21: store to arrayidx7
+1 blocker
+-----
+loop at common/iVertcat.c:20
+within function iVertcat
+for-like loop
+cannot perforate loop
+ * common/iVertcat.c:24: store to arrayidx13
+ * common/iVertcat.c:28: store to arrayidx29
+2 blockers
+-----
+loop at common/iVertcat.c:22
+within function iVertcat
+for-like loop
+cannot perforate loop
+ * common/iVertcat.c:24: store to arrayidx13
+1 blocker
+-----
+loop at common/iVertcat.c:26
+within function iVertcat
+for-like loop
+cannot perforate loop
+ * common/iVertcat.c:28: store to arrayidx29
+1 blocker
+-----
+loop at common/ifDeepCopy.c:19
+within function ifDeepCopy
+for-like loop
+cannot perforate loop
+ * common/ifDeepCopy.c:21: store to arrayidx10
+1 blocker
+-----
+loop at common/ifDeepCopy.c:20
+within function ifDeepCopy
+for-like loop
+cannot perforate loop
+ * common/ifDeepCopy.c:21: store to arrayidx10
+1 blocker
+-----
+loop at common/ifMtimes.c:21
+within function ifMtimes
+for-like loop
+cannot perforate loop
+ * common/ifMtimes.c:30: store to arrayidx23
+1 blocker
+-----
+loop at common/ifMtimes.c:23
+within function ifMtimes
+for-like loop
+cannot perforate loop
+ * common/ifMtimes.c:30: store to arrayidx23
+1 blocker
+-----
+loop at common/ifMtimes.c:26
+within function ifMtimes
+for-like loop
+cannot perforate loop
+ * common/ifMtimes.c:28: store to temp
+1 blocker
+-----
+loop at common/iiConv2.c:28
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:30: store to unsigned int
+ * common/iiConv2.c:30: store to unsigned int
+ * common/iiConv2.c:37: store to arrayidx56
+3 blockers
+-----
+loop at common/iiConv2.c:30
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:37: store to arrayidx56
+1 blocker
+-----
+loop at common/iiConv2.c:32
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:37: store to arrayidx56
+1 blocker
+-----
+loop at common/iiConv2.c:34
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:37: store to arrayidx56
+1 blocker
+-----
+loop at common/iiConv2.c:45
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:49: store to arrayidx91
+1 blocker
+-----
+loop at common/iiConv2.c:47
+within function iiConv2
+for-like loop
+cannot perforate loop
+ * common/iiConv2.c:49: store to arrayidx91
+1 blocker
+-----
+loop at common/imageBlur.c:38
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:39: store to unsigned int
+ * common/imageBlur.c:39: store to unsigned int
+ * common/imageBlur.c:41: store to temp
+ * common/imageBlur.c:42: store to k
+ * common/imageBlur.c:42: store to k
+ * common/imageBlur.c:44: store to temp
+ * common/imageBlur.c:46: store to arrayidx35
+7 blockers
+-----
+loop at common/imageBlur.c:39
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:41: store to temp
+ * common/imageBlur.c:42: store to k
+ * common/imageBlur.c:42: store to k
+ * common/imageBlur.c:44: store to temp
+ * common/imageBlur.c:46: store to arrayidx35
+5 blockers
+-----
+loop at common/imageBlur.c:42
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:44: store to temp
+1 blocker
+-----
+loop at common/imageBlur.c:50
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:59: store to arrayidx79
+1 blocker
+-----
+loop at common/imageBlur.c:52
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:59: store to arrayidx79
+1 blocker
+-----
+loop at common/imageBlur.c:55
+within function imageBlur
+for-like loop
+cannot perforate loop
+ * common/imageBlur.c:57: store to temp
+1 blocker
+-----
+loop at common/imageResize.c:44
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:46: store to unsigned long
+ * common/imageResize.c:47: store to unsigned int
+ * common/imageResize.c:47: store to unsigned int
+ * common/imageResize.c:49: store to tempVal
+ * common/imageResize.c:50: store to k
+ * common/imageResize.c:50: store to k
+ * common/imageResize.c:52: store to tempVal
+ * common/imageResize.c:54: store to arrayidx48
+ * common/imageResize.c:55: store to unsigned long
+9 blockers
+-----
+loop at common/imageResize.c:47
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:49: store to tempVal
+ * common/imageResize.c:50: store to k
+ * common/imageResize.c:50: store to k
+ * common/imageResize.c:52: store to tempVal
+ * common/imageResize.c:54: store to arrayidx48
+ * common/imageResize.c:55: store to unsigned long
+6 blockers
+-----
+loop at common/imageResize.c:50
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:52: store to tempVal
+1 blocker
+-----
+loop at common/imageResize.c:60
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:69: store to arrayidx93
+1 blocker
+-----
+loop at common/imageResize.c:62
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:69: store to arrayidx93
+1 blocker
+-----
+loop at common/imageResize.c:65
+within function imageResize
+for-like loop
+cannot perforate loop
+ * common/imageResize.c:67: store to tempVal
+1 blocker
+-----
+loop at common/isMinus.c:19
+within function isMinus
+for-like loop
+cannot perforate loop
+ * common/isMinus.c:20: store to arrayidx3
+1 blocker
+-----
+loop at common/isPlus.c:17
+within function isPlus
+for-like loop
+cannot perforate loop
+ * common/isPlus.c:18: store to arrayidx3
+1 blocker
+-----
+loop at common/randWrapper.c:16
+within function randWrapper
+for-like loop
+cannot perforate loop
+ * common/randWrapper.c:21: store to arrayidx
+ * common/randWrapper.c:23: store to arrayidx24
+2 blockers
+-----
+loop at common/randWrapper.c:18
+within function randWrapper
+for-like loop
+cannot perforate loop
+ * common/randWrapper.c:21: store to arrayidx
+ * common/randWrapper.c:23: store to arrayidx24
+2 blockers
+-----
+loop at common/randnWrapper.c:16
+within function randnWrapper
+for-like loop
+cannot perforate loop
+ * common/randnWrapper.c:18: store to unsigned int
+ * common/randnWrapper.c:18: store to unsigned int
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
+4 blockers
+-----
+loop at common/randnWrapper.c:18
+within function randnWrapper
+for-like loop
+cannot perforate loop
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
+2 blockers
+-----
+loop at common/randnWrapper.c:27
+within function randnWrapper
+for-like loop
+cannot perforate loop
+ * common/randnWrapper.c:34: store to arrayidx53
+1 blocker
+-----
+loop at common/randnWrapper.c:29
+within function randnWrapper
+for-like loop
+cannot perforate loop
+ * common/randnWrapper.c:34: store to arrayidx53
+1 blocker
+-----
+loop at common/readFile.c:29
+within function readFile
+for-like loop
+cannot perforate loop
+ * common/readFile.c:33: call to fscanf()
+1 blocker
+-----
+loop at common/readFile.c:31
+within function readFile
+for-like loop
+cannot perforate loop
+ * common/readFile.c:33: call to fscanf()
+1 blocker
+-----
+loop at common/readImage.c:80
+within function readImage
+for-like loop
+cannot perforate loop
+ * common/readImage.c:84: call to fread()
+ * common/readImage.c:85: store to arrayidx54
+2 blockers
+-----
+loop at common/readImage.c:82
+within function readImage
+for-like loop
+cannot perforate loop
+ * common/readImage.c:84: call to fread()
+ * common/readImage.c:85: store to arrayidx54
+2 blockers
+-----
+loop at common/readImage.c:91
+within function readImage
+for-like loop
+cannot perforate loop
+ * common/readImage.c:95: call to fread()
+ * common/readImage.c:96: call to fread()
+ * common/readImage.c:97: call to fread()
+ * common/readImage.c:100: store to arrayidx87
+4 blockers
+-----
+loop at common/readImage.c:93
+within function readImage
+for-like loop
+cannot perforate loop
+ * common/readImage.c:95: call to fread()
+ * common/readImage.c:96: call to fread()
+ * common/readImage.c:97: call to fread()
+ * common/readImage.c:100: store to arrayidx87
+4 blockers
+-----
+loop at common/selfCheck.c:31
+within function selfCheck
+while-like loop
+cannot perforate loop
+ * common/selfCheck.c:33: call to fscanf()
+ * common/selfCheck.c:34: store to count
+2 blockers
+-----
+loop at common/selfCheck.c:44
+within function selfCheck
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at common/uiSetArray.c:15
+within function uiSetArray
+for-like loop
+cannot perforate loop
+ * common/uiSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/uiSetArray.c:16
+within function uiSetArray
+for-like loop
+cannot perforate loop
+ * common/uiSetArray.c:17: store to arrayidx
+1 blocker
+-----
+loop at common/writeMatrix.c:21
+within function writeMatrix
+for-like loop
+cannot perforate loop
+ * common/writeMatrix.c:25: call to fprintf()
+ * common/writeMatrix.c:27: call to fprintf()
+2 blockers
+-----
+loop at common/writeMatrix.c:23
+within function writeMatrix
+for-like loop
+cannot perforate loop
+ * common/writeMatrix.c:25: call to fprintf()
+1 blocker
+
