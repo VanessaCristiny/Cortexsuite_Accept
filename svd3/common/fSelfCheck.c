@@ -1,7 +1,6 @@
 /********************************
 Author: Sravanthi Kota Venkata
 ********************************/
-
 #include "sdvbs_common.h"
 
 int fSelfCheck(F2D* in1, char* path, float tol)

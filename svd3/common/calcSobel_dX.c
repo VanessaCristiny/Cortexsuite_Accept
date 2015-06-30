@@ -11,7 +11,7 @@ F2D* calcSobel_dX(F2D* imageIn)
 {   accept_roi_begin();
     int rows, cols;
     F2D *kernel_1, *kernel_2;
-    float temp;
+    APPROX float temp;
     int kernelSize, startCol, endCol, halfKernel, startRow, endRow, i, j, kernelSum;
     int k, kernelSum_1, kernelSum_2;
     F2D *imageOut, *tempOut;
@@ -53,7 +53,7 @@ F2D* calcSobel_dX(F2D* imageIn)
             {
                 temp += subsref(imageIn,i,j+k) * asubsref(kernel_2,k+halfKernel);
             }
-            subsref(tempOut,i,j) = temp/kernelSum_2;
+            subsref(tempOut,i,j) = (ENDORSE(temp))/kernelSum_2;
         }
     }
     
@@ -66,7 +66,7 @@ F2D* calcSobel_dX(F2D* imageIn)
             {
                 temp += subsref(tempOut,(i+k),j) * asubsref(kernel_1,k+halfKernel);
             }
-            subsref(imageOut,i,j) = temp/(float)kernelSum_1;
+            subsref(imageOut,i,j) = (ENDORSE(temp))/(float)kernelSum_1;
         }
     }
 

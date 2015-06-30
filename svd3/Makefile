@@ -1,9 +1,12 @@
 TARGET := svd
-LDFLAGS := -lm 
 
-SOURCES := $(wildcard common/*.c) $(wildcard *.c) $(wildcard includes/*.c)
+LDFLAGS := -lm
 
-RUNARGS := small.txt results/result_U.txt results/result_V.txt
+SOURCES := $(wildcard common/*.c) $(wildcard includes/*.c) $(wildcard *.c)
+
+RUNARGS := small.txt result/result_U.txt 
+
+CLEANMETOO := result/result_U.txt
 
 ACCEPT_DIR := ../../accept
 include $(ACCEPT_DIR)/accept.mk

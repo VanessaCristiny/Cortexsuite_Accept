@@ -2,13 +2,15 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* ifMtimes(I2D* a, F2D* b)
 {
+    accept_roi_begin();
     F2D *out;
     int m, p, p1, n, i, j, k;
-    float temp;
+    APPROX float temp;
 
     m = a->height;
     p = a->width;
@@ -18,6 +20,7 @@ F2D* ifMtimes(I2D* a, F2D* b)
 
     out = fMallocHandle(m,n);
 
+    
     for(i=0; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -27,9 +30,10 @@ F2D* ifMtimes(I2D* a, F2D* b)
             {
                 temp += subsref(b,k,j) * subsref(a,i,k);
             }
-            subsref(out,i,j) = temp;
+            subsref(out,i,j) = ENDORSE(temp);
         }
     }
+    accept_roi_end();
     
     return out;
 }

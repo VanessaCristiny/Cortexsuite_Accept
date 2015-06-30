@@ -2,15 +2,13 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
-#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* readFile(char* fileName)
 {
-    accept_roi_begin();
     FILE* fp;
     F2D *fill;
-    APPROX float temp;
+    float temp; // again, why is this here?
     int rows, cols;
     int i, j;
 
@@ -35,7 +33,6 @@ F2D* readFile(char* fileName)
     }
 
     fclose(fp);
-    accept_roi_end();
     return fill;
 }
 

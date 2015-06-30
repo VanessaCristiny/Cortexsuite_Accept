@@ -2,15 +2,14 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
-#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* fTranspose(F2D* a)
 {
-    accept_roi_begin();
     F2D *out;
     int m, p, p1, n, i, j, k;
-    APPROX float temp;
+    //I don't know why this is here 
+    float temp;
 
     m = a->height;
     n = a->width;
@@ -23,7 +22,6 @@ F2D* fTranspose(F2D* a)
             asubsref(out,k++) = subsref(a,j,i);
     }
     
-    accept_roi_end();
     return out;
 }
 

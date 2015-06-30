@@ -38,6 +38,7 @@ static double PYTHAG(double a, double b)
 
 int svd(F2D *input, F2D *sOut, F2D *vOut)
 {
+    accept_roi_begin();
     int flag, i, its, j, jj, k, l, nm;
     double c, f, h, s, x, y, z;
     double anorm = 0.0, g = 0.0, scale = 0.0;
@@ -306,5 +307,6 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
     }
 
     free((void*) rv1);
+    accept_roi_end();
     return(1);
 }

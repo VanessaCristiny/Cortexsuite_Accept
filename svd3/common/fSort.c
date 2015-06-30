@@ -13,7 +13,6 @@ F2D* fSort(F2D* in, int dim)
     cols = in->width;
 
     sorted = fDeepCopy(in);
-
     for(k=0; k<cols; k++)
     {
         for(i=0; i<rows; i++)
@@ -33,7 +32,6 @@ F2D* fSort(F2D* in, int dim)
             }
         }
     }
-
     return sorted;
 
 }

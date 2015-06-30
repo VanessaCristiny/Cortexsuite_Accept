@@ -51,13 +51,13 @@ void printIntSubMatrix(I2D *m, int size)
 }
 
 
-int main(int argc, char **argv)
+int main(int argc, char ** argv)
 {
-	if (argc != 2)
+	/*if (argc != 2)
 	{
 		printf("Usage: ./a.out [input]\n");
 		return 1;
-	}
+	}*/
     //** Timing **//
  	unsigned int *start, *stop, *elapsed;
 	char * inputPath = argv[1];
@@ -96,10 +96,17 @@ int main(int argc, char **argv)
 	}
   stop = photonEndTiming();
 
+  	// I'm slightly modifying this part
+  	
+  	int temp = remove("result_U.txt");
+
 	fWriteMatrix(u, "result", "result_U.txt");
+	/*
 	fWriteMatrix(v, "result", "result_V.txt");
+	*/
+	fWriteMatrix(v, "result", "result_U.txt");
 
-
+	//until here
 	free(u);
 	free(s);
 	free(v);

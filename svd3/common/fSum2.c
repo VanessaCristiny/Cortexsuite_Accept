@@ -2,13 +2,14 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* fSum2(F2D* inMat, int dir)
 {
     F2D *outMat;
     int rows, cols, i, j, k;
-    float temp;
+    APPROX float temp;
     int newRow, newCols;
 
     rows = inMat->height;
@@ -27,6 +28,7 @@ F2D* fSum2(F2D* inMat, int dir)
 
     outMat = fSetArray(newRow,newCols,0);
 
+    accept_roi_begin();
     if(dir == 1)
     {
         for (i=0; i<cols; i++)
@@ -34,7 +36,7 @@ F2D* fSum2(F2D* inMat, int dir)
             temp = 0;
             for( j=0; j<rows; j++)
                 temp = temp + subsref(inMat,j,i);
-            asubsref(outMat,i) = temp;
+            asubsref(outMat,i) = ENDORSE(temp);
         }
     }
     else
@@ -44,10 +46,11 @@ F2D* fSum2(F2D* inMat, int dir)
             temp = 0;
             for( j=0; j<cols; j++)
                 temp = temp + subsref(inMat,i,j);
-            subsref(outMat,i,0) = temp;
+            subsref(outMat,i,0) = ENDORSE(temp);
         }
     }
     
+    accept_roi_end();
     return outMat;
 }
 

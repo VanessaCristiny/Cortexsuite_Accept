@@ -13,7 +13,7 @@ void fWriteMatrix(F2D* input, char* inpath, char* fileName)
     int rows,cols, i, j;
 
     sprintf(im, "%s/%s", inpath, fileName);
-    fp = fopen(im, "w");
+    fp = fopen(im, "a+");
 
     rows = input->height;
     cols = input->width;

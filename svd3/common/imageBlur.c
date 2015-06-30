@@ -2,6 +2,7 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* imageBlur(I2D* imageIn)
@@ -9,7 +10,7 @@ F2D* imageBlur(I2D* imageIn)
     accept_roi_begin();
     int rows, cols;
     F2D *imageOut, *tempOut;
-    float temp;
+    APPROX float temp;
     I2D *kernel;
     int k, kernelSize, startCol, endCol, halfKernel, startRow, endRow, i, j, kernelSum;
 
@@ -43,7 +44,7 @@ F2D* imageBlur(I2D* imageIn)
             {
                 temp += subsref(imageIn,i,j+k) * asubsref(kernel,k+halfKernel);
             }
-            subsref(tempOut,i,j) = temp/kernelSum;
+            subsref(tempOut,i,j) = (ENDORSE(temp))/kernelSum;
         }
     }
     
@@ -56,9 +57,10 @@ F2D* imageBlur(I2D* imageIn)
             {
                 temp += subsref(tempOut,(i+k),j) * asubsref(kernel,k+halfKernel);
             }
-            subsref(imageOut,i,j) = temp/kernelSum;
+            subsref(imageOut,i,j) = (ENDORSE(temp))/kernelSum;
         }
     }
+    accept_roi_end();
 
     fFreeHandle(tempOut);
     iFreeHandle(kernel);
