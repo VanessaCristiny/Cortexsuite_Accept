@@ -1,0 +1,11 @@
+TARGET := srr
+
+CFLAGS := -02
+LD FLAGS := -lm
+
+SOURCES :=
+
+RUNARGS :=
+
+ACCEPT_DIR := ../../accept
+include $(ACCEPT_DIR)/accept.mk

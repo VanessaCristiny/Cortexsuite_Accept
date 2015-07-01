@@ -2,7 +2,6 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
-#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* randnWrapper(int m, int n)
@@ -25,18 +24,16 @@ F2D* randnWrapper(int m, int n)
         }
     }
 
-    accept_roi_begin();
     for(i=0; i<m ;i++)
     {
         for(j=0; j<n; j++)
         {
-            APPROX float w;
+            float w;
             w = subsref(out,i,j);
             w = ((-2.0 * log(w))/w);
-            subsref(out,i,j) = ENDORSE(w);
+            subsref(out,i,j) = w;
         }
     }
-    accept_roi_end();
     
     return out;
 }

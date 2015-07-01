@@ -22,14 +22,18 @@
 #include "common/sdvbs_common.h"
 #include "defs_and_types.h"
 
-static double PYTHAG(double a, double b)
+static APPROX double PYTHAG(APPROX double a, APPROX double b)
 {
-    double at = fabs(a), bt = fabs(b), ct, result;
+    accept_roi_begin();
+    APPROX double at, bt, ct, result;
+    at = fabs((ENDORSE(a)));
+    bt = fabs((ENDORSE(b)));
 
-    if (at > bt)       { ct = bt / at; result = at * sqrt(1.0 + ct * ct); }
-    else if (bt > 0.0) { ct = at / bt; result = bt * sqrt(1.0 + ct * ct); }
+    if (ENDORSE(at) > ENDORSE(bt))       { ct = bt / at; result = at * sqrt(1.0 + ct * ct); }
+    else if (ENDORSE(bt) > 0.0) { ct = at / bt; result = bt * sqrt(1.0 + ct * ct); }
     else result = 0.0;
     return(result);
+    accept_roi_end();
 }
 
 #define a(i,j) subsref(input, i, j)
@@ -40,9 +44,10 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
 {
     accept_roi_begin();
     int flag, i, its, j, jj, k, l, nm;
-    double c, f, h, s, x, y, z;
-    double anorm = 0.0, g = 0.0, scale = 0.0;
-    double *rv1;
+    double c, f, h, x, y, z;
+    double anorm = 0.0, g = 0.0;
+    APPROX double s, scale = 0.0;
+    APPROX double *rv1;
 
     int m = input->height;
     int n = input->width;
@@ -61,21 +66,23 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
         /* left-hand reduction */
         l = i + 1;
         rv1[i] = scale * g;
-        g = s = scale = 0.0;
+        s = scale = g = 0.0;
         if (i < m)
         {
             for (k = i; k < m; k++)
                 scale += fabs((double)a(k, i));
-            if (scale)
+            if (ENDORSE(scale))
             {
                 for (k = i; k < m; k++)
                 {
-                    a(k,i) = (float)((double)a(k,i)/(scale));
+                    a(k,i) = (float)((double)a(k,i)/(ENDORSE(scale)));
                     s += ((double)a(k,i) * (double)a(k,i));
                 }
                 f = (double)a(i,i);
-                g = -SIGN(sqrt(s), f);
-                h = f * g - s;
+                //adding code
+                double temp = ENDORSE(s);
+                g = -SIGN(sqrt(temp), f);
+                h = f * g - (ENDORSE(s));
                 a(i,i) = (float)(f - g);
                 if (i != n - 1)
                 {
@@ -83,36 +90,40 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                     {
                         for (s = 0.0, k = i; k < m; k++)
                             s += ((double)a(k,i) * (double)a(k,j));
-                        f = s / h;
+                        f = (ENDORSE(s)) / h;
                         for (k = i; k < m; k++)
                             a(k,j) += (float)(f * (double)a(k,i));
                     }
                 }
                 for (k = i; k < m; k++)
-                    a(k,i) = (float)((double)a(k,i)*scale);
+                    a(k,i) = (float)((double)(a(k,i)*(ENDORSE(scale))));
             }
         }
-        w(i) = (float)(scale * g);
+        w(i) = (float)(ENDORSE(scale * g));
 
         /* right-hand reduction */
-        g = s = scale = 0.0;
+        g = 0.0; 
+        s = scale = 0.0;
         if (i < m && i != n - 1)
         {
             for (k = l; k < n; k++)
                 scale += fabs((double)a(i,k));
-            if (scale)
+            if (ENDORSE(scale))
             {
                 for (k = l; k < n; k++)
                 {
-                    a(i,k) = (float)((double)a(i,k)/scale);
+                    a(i,k) = (float)((double)(a(i,k)/(ENDORSE(scale))));
                     s += ((double)a(i,k) * (double)a(i,k));
                 }
                 f = (double)a(i,l);
-                g = -SIGN(sqrt(s), f);
-                h = f * g - s;
+                //adding code
+                double temp = ENDORSE(s);
+
+                g = -SIGN(sqrt(temp), f);
+                h = f * g - (ENDORSE(s));
                 a(i,l) = (float)(f - g);
                 for (k = l; k < n; k++)
-                    rv1[k] = (double)a(i,k) / h;
+                    rv1[k] = (double)(a(i,k) / h);
                 if (i != m - 1)
                 {
                     for (j = l; j < m; j++)
@@ -120,14 +131,15 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                         for (s = 0.0, k = l; k < n; k++)
                             s += ((double)a(j,k) * (double)a(i,k));
                         for (k = l; k < n; k++)
-                            a(j,k) += (float)(s * rv1[k]);
+                            a(j,k) += (float)(ENDORSE(s * rv1[k]));
                     }
                 }
                 for (k = l; k < n; k++)
-                    a(i,k) = (float)((double)a(i,k)*scale);
+                    a(i,k) = (float)((double)(ENDORSE(a(i,k)*scale)));
             }
         }
-        anorm = MAX(anorm, (fabs((double)w(i)) + fabs(rv1[i])));
+        float temp = ENDORSE(rv1[i]);
+        anorm = MAX(anorm, (fabs((double)w(i)) + fabs(temp)));
     }
 
     /* accumulate the right-hand transformation */
@@ -135,24 +147,24 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
     {
         if (i < n - 1)
         {
-            if (g)
+            if (ENDORSE(g))
             {
                 for (j = l; j < n; j++)
-                    v(j,i) = (float)(((double)a(i,j) / (double)a(i,l)) / g);
+                    v(j,i) = (float)(((double)a(i,j) / (double)( (a(i,l)) / g)));
                     /* double division to avoid underflow */
                 for (j = l; j < n; j++)
                 {
                     for (s = 0.0, k = l; k < n; k++)
                         s += ((double)a(i,k) * (double)v(k,j));
                     for (k = l; k < n; k++)
-                        v(k,j) += (float)(s * (double)v(k,i));
+                        v(k,j) += (float)(ENDORSE(s * (double)v(k,i)));
                 }
             }
             for (j = l; j < n; j++)
                 v(i,j) = v(j,i) = 0.0;
         }
         v(i,i) = 1.0;
-        g = rv1[i];
+        g = ENDORSE(rv1[i]);
         l = i;
     }
 
@@ -173,13 +185,13 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                 {
                     for (s = 0.0, k = l; k < m; k++)
                         s += ((double)a(k,i) * (double)a(k,j));
-                    f = (s / (double)a(i,i)) * g;
+                    f = ((ENDORSE(s)) / (double)a(i,i)) * g;
                     for (k = i; k < m; k++)
                         a(k,j) += (float)(f * (double)a(k,i));
                 }
             }
             for (j = i; j < m; j++)
-                a(j,i) = (float)((double)a(j,i)*g);
+                a(j,i) = (float)((double)(a(j,i)*g));
         }
         else
         {
@@ -198,12 +210,13 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
             for (l = k; l >= 0; l--)
             {                     /* test for splitting */
                 nm = l - 1;
-                if (fabs(rv1[l]) + anorm == anorm)
+                float temp = ENDORSE(rv1[l]);
+                if (fabs(temp) + anorm == anorm)
                 {
                     flag = 0;
                     break;
                 }
-                if (fabs((double)w(nm)) + anorm == anorm)
+                if (fabs((double)w(nm)) + ENDORSE(anorm) == ENDORSE(anorm))
                     break;
             }
             if (flag)
@@ -212,11 +225,11 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                 s = 1.0;
                 for (i = l; i <= k; i++)
                 {
-                    f = s * rv1[i];
+                    f = (ENDORSE(s)) * ENDORSE(rv1[i]);
                     if (fabs(f) + anorm != anorm)
                     {
                         g = (double)w(i);
-                        h = PYTHAG(f, g);
+                        h = ENDORSE(PYTHAG(f, g));
                         w(i) = (float)h;
                         h = 1.0 / h;
                         c = g * h;
@@ -225,8 +238,8 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                         {
                             y = (double)a(j,nm);
                             z = (double)a(j,i);
-                            a(j,nm) = (float)(y * c + z * s);
-                            a(j,i) = (float)(z * c - y * s);
+                            a(j,nm) = (float)(ENDORSE(y * c + z * s));
+                            a(j,i) = (float)(ENDORSE(z * c - y * s));
                         }
                     }
                 }
@@ -252,37 +265,38 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
             x = (double)w(l);
             nm = k - 1;
             y = (double)w(nm);
-            g = rv1[nm];
-            h = rv1[k];
+            g = ENDORSE(rv1[nm]);
+            h = ENDORSE(rv1[k]);
             f = ((y - z) * (y + z) + (g - h) * (g + h)) / (2.0 * h * y);
-            g = PYTHAG(f, 1.0);
+            g = ENDORSE(PYTHAG(f, 1.0));
             f = ((x - z) * (x + z) + h * ((y / (f + SIGN(g, f))) - h)) / x;
 
             /* next QR transformation */
-            c = s = 1.0;
+            c = 1.0;
+            s = 1.0;
             for (j = l; j <= nm; j++)
             {
                 i = j + 1;
-                g = rv1[i];
+                g = ENDORSE(rv1[i]);
                 y = (double)w(i);
-                h = s * g;
+                h = (ENDORSE(s)) * g;
                 g = c * g;
-                z = PYTHAG(f, h);
+                z = ENDORSE(PYTHAG(f, h));
                 rv1[j] = z;
                 c = f / z;
                 s = h / z;
-                f = x * c + g * s;
-                g = g * c - x * s;
-                h = y * s;
+                f = x * c + g * (ENDORSE(s));
+                g = g * c - x * (ENDORSE(s));
+                h = y * (ENDORSE(s));
                 y = y * c;
                 for (jj = 0; jj < n; jj++)
                 {
                     x = (double)v(jj,j);
                     z = (double)v(jj,i);
-                    v(jj,j) = (float)(x * c + z * s);
-                    v(jj,i) = (float)(z * c - x * s);
+                    v(jj,j) = (float)(ENDORSE(x * c + z * s));
+                    v(jj,i) = (float)(ENDORSE(z * c - x * s));
                 }
-                z = PYTHAG(f, h);
+                z = ENDORSE(PYTHAG(f, h));
                 w(j) = (float)z;
                 if (z)
                 {
@@ -290,14 +304,14 @@ int svd(F2D *input, F2D *sOut, F2D *vOut)
                     c = f * z;
                     s = h * z;
                 }
-                f = (c * g) + (s * y);
-                x = (c * y) - (s * g);
+                f = (c * g) + ((ENDORSE(s))  * y);
+                x = (c * y) - ((ENDORSE(s)) * g);
                 for (jj = 0; jj < m; jj++)
                 {
                     y = (double)a(jj,j);
                     z = (double)a(jj,i);
-                    a(jj,j) = (float)(y * c + z * s);
-                    a(jj,i) = (float)(z * c - y * s);
+                    a(jj,j) = (float)(ENDORSE(y * c + z * s));
+                    a(jj,i) = (float)(ENDORSE(z * c - y * s));
                 }
             }
             rv1[l] = 0.0;

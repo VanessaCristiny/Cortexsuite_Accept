@@ -1,0 +1,45 @@
+06/29
+
+4 optimal, 23 suboptimal, 24 bad
+loop at common/fSum.c:46 @ 1
+0 % error
+1.05224 speedup
+loop at common/fSum.c:30 @ 2
+0 % error
+1.04163 speedup
+loop at common/fSum.c:30 @ 1
+0 % error
+1.02591 speedup
+loop at common/fSum.c:37 @ 1
+0 % error
+1.01537 speedup
+
+__________________________________________________________________
+
+06/30
+
+8 optimal, 43 suboptimal, 17 bad
+loop at svd.c:88 @ 2
+0 % error
+1.16564 speedup
+loop at svd.c:128 @ 2
+0 % error
+1.15282 speedup
+loop at svd.c:182 @ 2
+0 % error
+1.108 speedup
+loop at common/fSort.c:16 @ 1
+0 % error
+1.08967 speedup
+loop at common/imageResize.c:67 @ 1
+0 % error
+1.07538 speedup
+loop at svd.c:128 @ 1
+0 % error
+1.0624 speedup
+loop at common/calcSobel_dX.c:52 @ 2, loop at common/calcSobel_dY.c:55 @ 2, loop at common/calcSobel_dY.c:68 @ 3, loop at common/fSort.c:16 @ 1, loop at common/fSum.c:30 @ 1, loop at common/fSum.c:46 @ 1, loop at common/fSum2.c:47 @ 1, loop at common/iSort.c:19 @ 1, loop at common/ifMtimes.c:29 @ 2, loop at common/imageResize.c:52 @ 1, loop at svd.c:106 @ 1, loop at svd.c:128 @ 2, loop at svd.c:153 @ 4, loop at svd.c:182 @ 2, loop at svd.c:69 @ 1, loop at svd.c:88 @ 2
+0 % error
+1.03202 speedup
+loop at svd.c:106 @ 1, loop at svd.c:128 @ 2, loop at svd.c:182 @ 2, loop at svd.c:88 @ 2
+0 % error
+1.0109 speedup

@@ -1,12 +1,9 @@
 FUNCTION PURITY
 -----
-checking function gettimeofday
-definition not available
------
-checking function malloc
-definition not available
------
 checking function free
+definition not available
+-----
+checking function gettimeofday
 definition not available
 -----
 checking function _fopen
@@ -16,6 +13,9 @@ checking function fprintf
 definition not available
 -----
 checking function fclose
+definition not available
+-----
+checking function malloc
 definition not available
 -----
 checking function llvm.dbg.declare
@@ -248,41 +248,39 @@ precise-impure function: fSetArray
  * common/fSetArray.c:17: store to arrayidx
 2 blockers
 -----
-checking function fSort at common/fSort.c:7
+checking function fSort at common/fSort.c:8
 precise-impure function: fSort
- * common/fSort.c:15: call to fDeepCopy()
-1 blocker
+ * common/fSort.c:16: call to fDeepCopy()
+ * common/fSort.c:17: call to accept_roi_begin()
+ * common/fSort.c:37: call to accept_roi_end()
+3 blockers
 -----
-checking function fSortIndices at common/fSortIndices.c:8
+checking function fSortIndices at common/fSortIndices.c:7
 precise-impure function: fSortIndices
- * common/fSortIndices.c:18: call to fDeepCopy()
- * common/fSortIndices.c:19: call to iMallocHandle()
- * common/fSortIndices.c:21: store to int
- * common/fSortIndices.c:21: store to int
- * common/fSortIndices.c:22: store to unsigned int
- * common/fSortIndices.c:22: store to unsigned int
- * common/fSortIndices.c:23: store to arrayidx
- * common/fSortIndices.c:29: call to accept_roi_begin()
- * common/fSortIndices.c:32: store to int
- * common/fSortIndices.c:32: store to int
- * common/fSortIndices.c:36: store to arrayidx27
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:41: store to arrayidx44
- * common/fSortIndices.c:46: store to arrayidx59
- * common/fSortIndices.c:50: call to fFreeHandle()
- * common/fSortIndices.c:51: call to accept_roi_end()
- * common/fSortIndices.c:54: call to accept_roi_begin()
- * common/fSortIndices.c:57: store to int
- * common/fSortIndices.c:57: store to int
- * common/fSortIndices.c:61: store to arrayidx86
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:66: store to arrayidx103
- * common/fSortIndices.c:71: store to arrayidx119
- * common/fSortIndices.c:75: call to fFreeHandle()
- * common/fSortIndices.c:76: call to accept_roi_end()
-27 blockers
+ * common/fSortIndices.c:17: call to fDeepCopy()
+ * common/fSortIndices.c:18: call to iMallocHandle()
+ * common/fSortIndices.c:20: store to int
+ * common/fSortIndices.c:20: store to int
+ * common/fSortIndices.c:21: store to unsigned int
+ * common/fSortIndices.c:21: store to unsigned int
+ * common/fSortIndices.c:22: store to arrayidx
+ * common/fSortIndices.c:30: store to int
+ * common/fSortIndices.c:30: store to int
+ * common/fSortIndices.c:34: store to arrayidx27
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:39: store to arrayidx44
+ * common/fSortIndices.c:44: store to arrayidx59
+ * common/fSortIndices.c:48: call to fFreeHandle()
+ * common/fSortIndices.c:54: store to int
+ * common/fSortIndices.c:54: store to int
+ * common/fSortIndices.c:58: store to arrayidx86
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:63: store to arrayidx103
+ * common/fSortIndices.c:68: store to arrayidx119
+ * common/fSortIndices.c:72: call to fFreeHandle()
+23 blockers
 -----
 checking function fSum at common/fSum.c:8
 precise-impure function: fSum
@@ -521,8 +519,8 @@ precise-impure function: imageResize
  * common/imageResize.c:33: store to arrayidx15
  * common/imageResize.c:34: store to arrayidx17
  * common/imageResize.c:45: call to accept_roi_begin()
- * common/imageResize.c:56: store to arrayidx49
- * common/imageResize.c:71: store to arrayidx95
+ * common/imageResize.c:56: store to arrayidx48
+ * common/imageResize.c:71: store to arrayidx93
  * common/imageResize.c:75: call to accept_roi_end()
  * common/imageResize.c:77: call to fFreeHandle()
  * common/imageResize.c:78: call to iFreeHandle()
@@ -547,15 +545,13 @@ precise-impure function: randWrapper
  * common/randWrapper.c:23: store to arrayidx24
 3 blockers
 -----
-checking function randnWrapper at common/randnWrapper.c:8
+checking function randnWrapper at common/randnWrapper.c:7
 precise-impure function: randnWrapper
- * common/randnWrapper.c:14: call to fSetArray()
- * common/randnWrapper.c:22: store to arrayidx
- * common/randnWrapper.c:24: store to arrayidx24
- * common/randnWrapper.c:28: call to accept_roi_begin()
- * common/randnWrapper.c:36: store to arrayidx53
- * common/randnWrapper.c:39: call to accept_roi_end()
-6 blockers
+ * common/randnWrapper.c:13: call to fSetArray()
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
+ * common/randnWrapper.c:34: store to arrayidx53
+4 blockers
 -----
 checking function readFile at common/readFile.c:7
 precise-impure function: readFile
@@ -734,181 +730,165 @@ precise-impure function: sortSVDResult
 11 blockers
 -----
 checking function PYTHAG at svd.c:25
-precise-pure function: PYTHAG
+precise-impure function: PYTHAG
+ * svd.c:27: call to accept_roi_begin()
+1 blocker
 -----
-checking function svd at svd.c:39
+checking function svd at svd.c:43
 precise-impure function: svd
  * (svd_all.bc):0: store to input.addr
  * (svd_all.bc):0: store to sOut.addr
  * (svd_all.bc):0: store to vOut.addr
- * svd.c:41: call to accept_roi_begin()
- * svd.c:44: store to __float128
- * svd.c:48: store to __int128
- * svd.c:52: call to fprintf()
- * svd.c:56: call to malloc()
- * svd.c:59: store to int
- * svd.c:59: store to int
- * svd.c:62: store to long
- * svd.c:63: store to arrayidx
- * svd.c:64: store to short
- * svd.c:64: store to __float128
- * svd.c:67: store to k
- * svd.c:67: store to k
- * svd.c:71: store to k
- * svd.c:71: store to k
- * svd.c:73: store to arrayidx38
- * svd.c:74: store to short
- * svd.c:76: store to float
- * svd.c:77: store to __float128
- * svd.c:78: store to unsigned char
- * svd.c:79: store to arrayidx81
- * svd.c:82: store to unsigned int
- * svd.c:82: store to unsigned int
- * svd.c:84: store to short
- * svd.c:84: store to k
- * svd.c:84: store to k
- * svd.c:85: store to short
- * svd.c:86: store to float
- * svd.c:87: store to k
- * svd.c:87: store to k
- * svd.c:88: store to arrayidx132
+ * svd.c:45: call to accept_roi_begin()
+ * svd.c:48: store to __float128
+ * svd.c:53: store to __int128
+ * svd.c:57: call to fprintf()
+ * svd.c:61: call to malloc()
+ * svd.c:64: store to int
+ * svd.c:64: store to int
+ * svd.c:67: store to long
+ * svd.c:69: store to __float128
+ * svd.c:72: store to k
+ * svd.c:72: store to k
+ * svd.c:76: store to k
+ * svd.c:76: store to k
+ * svd.c:78: store to arrayidx38
+ * svd.c:81: store to float
+ * svd.c:84: store to __float128
+ * svd.c:85: store to unsigned char
+ * svd.c:86: store to arrayidx81
+ * svd.c:89: store to unsigned int
+ * svd.c:89: store to unsigned int
  * svd.c:91: store to k
  * svd.c:91: store to k
- * svd.c:92: store to arrayidx159
- * svd.c:95: store to arrayidx172
- * svd.c:98: store to short
- * svd.c:98: store to __float128
- * svd.c:101: store to k
- * svd.c:101: store to k
- * svd.c:105: store to k
- * svd.c:105: store to k
- * svd.c:107: store to arrayidx215
- * svd.c:108: store to short
- * svd.c:110: store to float
- * svd.c:111: store to __float128
- * svd.c:112: store to unsigned char
- * svd.c:113: store to arrayidx263
- * svd.c:114: store to k
- * svd.c:114: store to k
- * svd.c:115: store to arrayidx277
- * svd.c:118: store to unsigned int
- * svd.c:118: store to unsigned int
- * svd.c:120: store to short
- * svd.c:120: store to k
- * svd.c:120: store to k
- * svd.c:121: store to short
- * svd.c:122: store to k
- * svd.c:122: store to k
- * svd.c:123: store to arrayidx325
- * svd.c:126: store to k
- * svd.c:126: store to k
- * svd.c:127: store to arrayidx352
- * svd.c:134: store to int
- * svd.c:134: store to int
- * svd.c:140: store to unsigned int
- * svd.c:140: store to unsigned int
- * svd.c:141: store to arrayidx428
- * svd.c:143: store to unsigned int
- * svd.c:143: store to unsigned int
- * svd.c:145: store to short
- * svd.c:145: store to k
- * svd.c:145: store to k
- * svd.c:146: store to short
- * svd.c:147: store to k
- * svd.c:147: store to k
- * svd.c:148: store to arrayidx477
- * svd.c:151: store to unsigned int
- * svd.c:151: store to unsigned int
- * svd.c:152: store to arrayidx495
- * svd.c:152: store to arrayidx501
- * svd.c:154: store to arrayidx511
- * svd.c:155: store to __float128
- * svd.c:156: store to long
- * svd.c:160: store to int
- * svd.c:160: store to int
- * svd.c:162: store to long
- * svd.c:163: store to __float128
- * svd.c:165: store to unsigned int
- * svd.c:165: store to unsigned int
- * svd.c:166: store to arrayidx542
- * svd.c:169: store to __float128
- * svd.c:172: store to unsigned int
- * svd.c:172: store to unsigned int
- * svd.c:174: store to short
- * svd.c:174: store to k
- * svd.c:174: store to k
- * svd.c:175: store to short
- * svd.c:176: store to float
- * svd.c:177: store to k
- * svd.c:177: store to k
- * svd.c:178: store to arrayidx608
- * svd.c:181: store to unsigned int
- * svd.c:181: store to unsigned int
- * svd.c:182: store to arrayidx635
- * svd.c:186: store to unsigned int
- * svd.c:186: store to unsigned int
- * svd.c:187: store to arrayidx648
- * svd.c:189: store to arrayidx658
- * svd.c:193: store to k
- * svd.c:193: store to k
- * svd.c:198: store to long
- * svd.c:198: store to long
- * svd.c:212: store to short
- * svd.c:213: store to int
- * svd.c:213: store to int
- * svd.c:215: store to float
- * svd.c:218: store to __float128
- * svd.c:219: store to unsigned char
- * svd.c:220: store to arrayidx729
- * svd.c:221: store to unsigned char
- * svd.c:223: store to short
- * svd.c:224: store to unsigned int
- * svd.c:224: store to unsigned int
- * svd.c:227: store to ...
- * svd.c:228: store to arrayidx761
- * svd.c:229: store to arrayidx771
- * svd.c:234: store to ...
- * svd.c:239: store to arrayidx800
- * svd.c:240: store to unsigned int
- * svd.c:240: store to unsigned int
- * svd.c:241: store to arrayidx817
- * svd.c:246: call to free()
- * svd.c:247: call to fprintf()
- * svd.c:255: store to __float128
- * svd.c:256: store to unsigned char
- * svd.c:257: store to float
- * svd.c:258: store to __float128
- * svd.c:259: store to float
- * svd.c:262: store to short
- * svd.c:263: store to unsigned int
- * svd.c:263: store to unsigned int
- * svd.c:265: store to int
- * svd.c:266: store to __float128
- * svd.c:268: store to unsigned char
- * svd.c:269: store to __float128
- * svd.c:270: store to ...
- * svd.c:271: store to arrayidx894
- * svd.c:273: store to short
- * svd.c:274: store to float
- * svd.c:275: store to __float128
- * svd.c:276: store to unsigned char
- * svd.c:281: store to ...
- * svd.c:282: store to arrayidx932
- * svd.c:283: store to arrayidx942
- * svd.c:285: store to ...
- * svd.c:286: store to arrayidx953
- * svd.c:289: store to ...
- * svd.c:291: store to short
- * svd.c:293: store to float
- * svd.c:298: store to ...
- * svd.c:299: store to arrayidx993
- * svd.c:300: store to arrayidx1003
- * svd.c:303: store to arrayidx1011
- * svd.c:304: store to arrayidx1013
- * svd.c:305: store to arrayidx1020
- * svd.c:309: call to free()
- * svd.c:310: call to accept_roi_end()
-170 blockers
+ * svd.c:93: store to float
+ * svd.c:94: store to k
+ * svd.c:94: store to k
+ * svd.c:95: store to arrayidx132
+ * svd.c:98: store to k
+ * svd.c:98: store to k
+ * svd.c:99: store to arrayidx159
+ * svd.c:102: store to arrayidx172
+ * svd.c:105: store to __float128
+ * svd.c:109: store to k
+ * svd.c:109: store to k
+ * svd.c:113: store to k
+ * svd.c:113: store to k
+ * svd.c:115: store to arrayidx215
+ * svd.c:118: store to float
+ * svd.c:122: store to __float128
+ * svd.c:123: store to unsigned char
+ * svd.c:124: store to arrayidx264
+ * svd.c:125: store to k
+ * svd.c:125: store to k
+ * svd.c:129: store to unsigned int
+ * svd.c:129: store to unsigned int
+ * svd.c:131: store to k
+ * svd.c:131: store to k
+ * svd.c:133: store to k
+ * svd.c:133: store to k
+ * svd.c:134: store to arrayidx326
+ * svd.c:137: store to k
+ * svd.c:137: store to k
+ * svd.c:138: store to arrayidx353
+ * svd.c:146: store to int
+ * svd.c:146: store to int
+ * svd.c:152: store to unsigned int
+ * svd.c:152: store to unsigned int
+ * svd.c:153: store to arrayidx431
+ * svd.c:155: store to unsigned int
+ * svd.c:155: store to unsigned int
+ * svd.c:157: store to k
+ * svd.c:157: store to k
+ * svd.c:159: store to k
+ * svd.c:159: store to k
+ * svd.c:160: store to arrayidx480
+ * svd.c:163: store to unsigned int
+ * svd.c:163: store to unsigned int
+ * svd.c:164: store to arrayidx498
+ * svd.c:164: store to arrayidx504
+ * svd.c:166: store to arrayidx514
+ * svd.c:167: store to __float128
+ * svd.c:168: store to long
+ * svd.c:172: store to int
+ * svd.c:172: store to int
+ * svd.c:174: store to long
+ * svd.c:175: store to __float128
+ * svd.c:177: store to unsigned int
+ * svd.c:177: store to unsigned int
+ * svd.c:178: store to arrayidx545
+ * svd.c:181: store to __float128
+ * svd.c:184: store to unsigned int
+ * svd.c:184: store to unsigned int
+ * svd.c:186: store to k
+ * svd.c:186: store to k
+ * svd.c:188: store to float
+ * svd.c:189: store to k
+ * svd.c:189: store to k
+ * svd.c:190: store to arrayidx611
+ * svd.c:193: store to unsigned int
+ * svd.c:193: store to unsigned int
+ * svd.c:194: store to arrayidx638
+ * svd.c:198: store to unsigned int
+ * svd.c:198: store to unsigned int
+ * svd.c:199: store to arrayidx651
+ * svd.c:201: store to arrayidx661
+ * svd.c:205: store to k
+ * svd.c:205: store to k
+ * svd.c:210: store to long
+ * svd.c:210: store to long
+ * svd.c:226: store to int
+ * svd.c:226: store to int
+ * svd.c:228: store to float
+ * svd.c:231: store to __float128
+ * svd.c:232: call to PYTHAG()
+ * svd.c:232: store to unsigned char
+ * svd.c:233: store to arrayidx735
+ * svd.c:234: store to unsigned char
+ * svd.c:237: store to unsigned int
+ * svd.c:237: store to unsigned int
+ * svd.c:240: store to ...
+ * svd.c:241: store to arrayidx767
+ * svd.c:242: store to arrayidx777
+ * svd.c:247: store to ...
+ * svd.c:252: store to arrayidx806
+ * svd.c:253: store to unsigned int
+ * svd.c:253: store to unsigned int
+ * svd.c:254: store to arrayidx823
+ * svd.c:259: call to free()
+ * svd.c:260: call to fprintf()
+ * svd.c:268: store to __float128
+ * svd.c:269: store to unsigned char
+ * svd.c:270: store to float
+ * svd.c:271: call to PYTHAG()
+ * svd.c:271: store to __float128
+ * svd.c:272: store to float
+ * svd.c:277: store to unsigned int
+ * svd.c:277: store to unsigned int
+ * svd.c:279: store to int
+ * svd.c:280: store to __float128
+ * svd.c:282: store to unsigned char
+ * svd.c:283: store to __float128
+ * svd.c:284: call to PYTHAG()
+ * svd.c:284: store to ...
+ * svd.c:288: store to float
+ * svd.c:289: store to __float128
+ * svd.c:290: store to unsigned char
+ * svd.c:295: store to ...
+ * svd.c:296: store to arrayidx938
+ * svd.c:297: store to arrayidx948
+ * svd.c:299: call to PYTHAG()
+ * svd.c:299: store to ...
+ * svd.c:300: store to arrayidx959
+ * svd.c:303: store to ...
+ * svd.c:307: store to float
+ * svd.c:312: store to ...
+ * svd.c:313: store to arrayidx999
+ * svd.c:314: store to arrayidx1009
+ * svd.c:319: store to arrayidx1026
+ * svd.c:323: call to free()
+ * svd.c:324: call to accept_roi_end()
+152 blockers
 -----
 checking function pythag at svd2.c:23
 precise-impure function: pythag
@@ -920,179 +900,158 @@ checking function svd2 at svd2.c:42
 precise-impure function: svd2
  * (svd_all.bc):0: store to a.addr
  * (svd_all.bc):0: store to nCols.addr
- * svd2.c:46: call to malloc()
- * svd2.c:48: call to printf()
- * svd2.c:52: store to __float128
- * svd2.c:53: store to int
- * svd2.c:53: store to int
- * svd2.c:54: store to long
- * svd2.c:55: store to arrayidx
- * svd2.c:56: store to short
- * svd2.c:56: store to __float128
- * svd2.c:58: store to k
- * svd2.c:58: store to k
+ * svd2.c:43: call to accept_roi_begin()
+ * svd2.c:48: call to malloc()
+ * svd2.c:50: call to printf()
+ * svd2.c:54: store to __float128
+ * svd2.c:55: store to int
+ * svd2.c:55: store to int
+ * svd2.c:56: store to long
+ * svd2.c:58: store to __float128
  * svd2.c:60: store to k
  * svd2.c:60: store to k
- * svd2.c:61: store to arrayidx30
- * svd2.c:62: store to short
- * svd2.c:64: store to float
- * svd2.c:65: store to __float128
- * svd2.c:66: store to unsigned char
- * svd2.c:67: store to arrayidx65
- * svd2.c:68: store to unsigned int
- * svd2.c:68: store to unsigned int
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:70: store to float
- * svd2.c:71: store to k
- * svd2.c:71: store to arrayidx100
- * svd2.c:71: store to k
- * svd2.c:73: store to k
- * svd2.c:73: store to arrayidx115
- * svd2.c:73: store to k
- * svd2.c:76: store to arrayidx124
- * svd2.c:77: store to short
- * svd2.c:77: store to __float128
- * svd2.c:79: store to k
- * svd2.c:79: store to k
- * svd2.c:81: store to k
- * svd2.c:81: store to k
- * svd2.c:82: store to arrayidx156
- * svd2.c:83: store to short
- * svd2.c:85: store to float
- * svd2.c:86: store to __float128
- * svd2.c:87: store to unsigned char
- * svd2.c:88: store to arrayidx197
- * svd2.c:89: store to k
- * svd2.c:89: store to arrayidx208
- * svd2.c:89: store to k
- * svd2.c:90: store to unsigned int
- * svd2.c:90: store to unsigned int
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:92: store to k
- * svd2.c:92: store to arrayidx243
- * svd2.c:92: store to k
- * svd2.c:94: store to k
- * svd2.c:94: store to arrayidx258
- * svd2.c:94: store to k
- * svd2.c:97: store to maxarg1
- * svd2.c:97: store to maxarg2
- * svd2.c:100: store to int
- * svd2.c:100: store to int
- * svd2.c:103: store to unsigned int
- * svd2.c:103: store to unsigned int
- * svd2.c:104: store to arrayidx312
- * svd2.c:105: store to unsigned int
- * svd2.c:105: store to unsigned int
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:107: store to k
- * svd2.c:107: store to arrayidx349
- * svd2.c:107: store to k
- * svd2.c:110: store to unsigned int
- * svd2.c:110: store to arrayidx365
- * svd2.c:110: store to arrayidx369
- * svd2.c:110: store to unsigned int
- * svd2.c:112: store to arrayidx377
- * svd2.c:113: store to __float128
- * svd2.c:114: store to long
- * svd2.c:117: store to iminarg1
- * svd2.c:117: store to iminarg2
- * svd2.c:117: store to int
- * svd2.c:117: store to int
- * svd2.c:118: store to long
- * svd2.c:119: store to __float128
- * svd2.c:120: store to unsigned int
- * svd2.c:120: store to arrayidx403
- * svd2.c:120: store to unsigned int
+ * svd2.c:62: store to k
+ * svd2.c:62: store to k
+ * svd2.c:63: store to arrayidx30
+ * svd2.c:66: store to float
+ * svd2.c:69: store to __float128
+ * svd2.c:71: store to unsigned char
+ * svd2.c:72: store to arrayidx65
+ * svd2.c:73: store to unsigned int
+ * svd2.c:73: store to unsigned int
+ * svd2.c:74: store to k
+ * svd2.c:74: store to k
+ * svd2.c:75: store to float
+ * svd2.c:76: store to k
+ * svd2.c:76: store to arrayidx100
+ * svd2.c:76: store to k
+ * svd2.c:78: store to k
+ * svd2.c:78: store to arrayidx115
+ * svd2.c:78: store to k
+ * svd2.c:81: store to arrayidx124
+ * svd2.c:82: store to __float128
+ * svd2.c:84: store to k
+ * svd2.c:84: store to k
+ * svd2.c:86: store to k
+ * svd2.c:86: store to k
+ * svd2.c:87: store to arrayidx156
+ * svd2.c:90: store to float
+ * svd2.c:93: store to __float128
+ * svd2.c:94: store to unsigned char
+ * svd2.c:95: store to arrayidx198
+ * svd2.c:96: store to k
+ * svd2.c:96: store to k
+ * svd2.c:97: store to unsigned int
+ * svd2.c:97: store to unsigned int
+ * svd2.c:98: store to k
+ * svd2.c:98: store to k
+ * svd2.c:99: store to k
+ * svd2.c:99: store to arrayidx244
+ * svd2.c:99: store to k
+ * svd2.c:101: store to k
+ * svd2.c:101: store to arrayidx259
+ * svd2.c:101: store to k
+ * svd2.c:106: store to maxarg1
+ * svd2.c:106: store to maxarg2
+ * svd2.c:109: store to int
+ * svd2.c:109: store to int
+ * svd2.c:112: store to unsigned int
+ * svd2.c:112: store to unsigned int
+ * svd2.c:113: store to arrayidx314
+ * svd2.c:114: store to unsigned int
+ * svd2.c:114: store to unsigned int
+ * svd2.c:115: store to k
+ * svd2.c:115: store to k
+ * svd2.c:116: store to k
+ * svd2.c:116: store to arrayidx351
+ * svd2.c:116: store to k
+ * svd2.c:119: store to unsigned int
+ * svd2.c:119: store to arrayidx367
+ * svd2.c:119: store to arrayidx371
+ * svd2.c:119: store to unsigned int
+ * svd2.c:121: store to arrayidx379
  * svd2.c:122: store to __float128
- * svd2.c:123: store to unsigned int
- * svd2.c:123: store to unsigned int
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:125: store to float
- * svd2.c:126: store to k
- * svd2.c:126: store to arrayidx451
- * svd2.c:126: store to k
- * svd2.c:128: store to unsigned int
- * svd2.c:128: store to arrayidx466
- * svd2.c:128: store to unsigned int
- * svd2.c:131: store to unsigned int
- * svd2.c:131: store to arrayidx478
- * svd2.c:131: store to unsigned int
- * svd2.c:132: store to arrayidx486
+ * svd2.c:123: store to long
+ * svd2.c:126: store to iminarg1
+ * svd2.c:126: store to iminarg2
+ * svd2.c:126: store to int
+ * svd2.c:126: store to int
+ * svd2.c:127: store to long
+ * svd2.c:128: store to __float128
+ * svd2.c:129: store to unsigned int
+ * svd2.c:129: store to arrayidx405
+ * svd2.c:129: store to unsigned int
+ * svd2.c:131: store to __float128
+ * svd2.c:132: store to unsigned int
+ * svd2.c:132: store to unsigned int
+ * svd2.c:133: store to k
+ * svd2.c:133: store to k
+ * svd2.c:134: store to float
  * svd2.c:135: store to k
+ * svd2.c:135: store to arrayidx453
  * svd2.c:135: store to k
- * svd2.c:138: store to long
- * svd2.c:138: store to long
- * svd2.c:148: store to short
- * svd2.c:149: store to int
- * svd2.c:149: store to int
- * svd2.c:150: store to float
- * svd2.c:151: store to arrayidx543
- * svd2.c:153: store to __float128
- * svd2.c:154: call to pythag()
- * svd2.c:154: store to unsigned char
- * svd2.c:155: store to arrayidx557
- * svd2.c:156: store to unsigned char
- * svd2.c:158: store to short
- * svd2.c:159: store to unsigned int
- * svd2.c:159: store to unsigned int
- * svd2.c:161: store to ...
- * svd2.c:162: store to arrayidx582
- * svd2.c:163: store to arrayidx589
- * svd2.c:167: store to ...
- * svd2.c:170: store to arrayidx608
- * svd2.c:171: store to unsigned int
- * svd2.c:171: store to arrayidx621
- * svd2.c:171: store to unsigned int
- * svd2.c:175: call to printf()
- * svd2.c:179: store to __float128
- * svd2.c:180: store to unsigned char
- * svd2.c:181: store to float
- * svd2.c:182: call to pythag()
- * svd2.c:182: store to __float128
- * svd2.c:183: store to float
- * svd2.c:184: store to short
- * svd2.c:185: store to unsigned int
- * svd2.c:185: store to unsigned int
- * svd2.c:186: store to int
- * svd2.c:187: store to __float128
- * svd2.c:189: store to unsigned char
+ * svd2.c:137: store to unsigned int
+ * svd2.c:137: store to arrayidx468
+ * svd2.c:137: store to unsigned int
+ * svd2.c:140: store to unsigned int
+ * svd2.c:140: store to arrayidx480
+ * svd2.c:140: store to unsigned int
+ * svd2.c:141: store to arrayidx488
+ * svd2.c:144: store to k
+ * svd2.c:144: store to k
+ * svd2.c:147: store to long
+ * svd2.c:147: store to long
+ * svd2.c:160: store to int
+ * svd2.c:160: store to int
+ * svd2.c:161: store to float
+ * svd2.c:164: store to __float128
+ * svd2.c:165: call to pythag()
+ * svd2.c:165: store to unsigned char
+ * svd2.c:166: store to arrayidx560
+ * svd2.c:167: store to unsigned char
+ * svd2.c:170: store to unsigned int
+ * svd2.c:170: store to unsigned int
+ * svd2.c:172: store to ...
+ * svd2.c:173: store to arrayidx585
+ * svd2.c:174: store to arrayidx592
+ * svd2.c:178: store to ...
+ * svd2.c:181: store to arrayidx611
+ * svd2.c:182: store to unsigned int
+ * svd2.c:182: store to arrayidx624
+ * svd2.c:182: store to unsigned int
+ * svd2.c:186: call to printf()
  * svd2.c:190: store to __float128
- * svd2.c:191: call to pythag()
- * svd2.c:191: store to ...
- * svd2.c:192: store to arrayidx697
- * svd2.c:194: store to short
- * svd2.c:195: store to float
- * svd2.c:196: store to __float128
- * svd2.c:197: store to unsigned char
- * svd2.c:201: store to ...
- * svd2.c:202: store to arrayidx726
- * svd2.c:203: store to arrayidx733
- * svd2.c:205: call to pythag()
- * svd2.c:205: store to ...
- * svd2.c:206: store to arrayidx739
- * svd2.c:208: store to ...
- * svd2.c:210: store to short
- * svd2.c:212: store to float
+ * svd2.c:191: store to unsigned char
+ * svd2.c:192: store to float
+ * svd2.c:193: call to pythag()
+ * svd2.c:193: store to __float128
+ * svd2.c:194: store to float
+ * svd2.c:196: store to unsigned int
+ * svd2.c:196: store to unsigned int
+ * svd2.c:197: store to int
+ * svd2.c:198: store to __float128
+ * svd2.c:200: store to unsigned char
+ * svd2.c:201: store to __float128
+ * svd2.c:202: call to pythag()
+ * svd2.c:202: store to ...
+ * svd2.c:206: store to float
+ * svd2.c:207: store to __float128
+ * svd2.c:208: store to unsigned char
+ * svd2.c:212: store to ...
+ * svd2.c:213: store to arrayidx729
+ * svd2.c:214: store to arrayidx736
+ * svd2.c:216: call to pythag()
  * svd2.c:216: store to ...
- * svd2.c:217: store to arrayidx772
- * svd2.c:218: store to arrayidx779
- * svd2.c:221: store to arrayidx787
- * svd2.c:222: store to arrayidx789
- * svd2.c:223: store to arrayidx791
- * svd2.c:226: call to free()
-174 blockers
+ * svd2.c:217: store to arrayidx742
+ * svd2.c:219: store to ...
+ * svd2.c:223: store to float
+ * svd2.c:227: store to ...
+ * svd2.c:228: store to arrayidx775
+ * svd2.c:229: store to arrayidx782
+ * svd2.c:234: store to arrayidx794
+ * svd2.c:237: call to free()
+ * svd2.c:238: call to accept_roi_end()
+153 blockers
 
 
 LOOP OPTIMIZATION
@@ -1388,11 +1347,6 @@ cannot perforate loop
  * common/fSetArray.c:17: store to arrayidx
 1 blocker
 -----
-loop at common/fSort.c:16
-within function fSort
-for-like loop
-can perforate loop
------
 loop at common/fSort.c:18
 within function fSort
 for-like loop
@@ -1403,84 +1357,89 @@ within function fSort
 for-like loop
 can perforate loop
 -----
+loop at common/fSort.c:22
+within function fSort
+for-like loop
+can perforate loop
+-----
+loop at common/fSortIndices.c:20
+within function fSortIndices
+for-like loop
+cannot perforate loop
+ * common/fSortIndices.c:21: store to unsigned int
+ * common/fSortIndices.c:21: store to unsigned int
+ * common/fSortIndices.c:22: store to arrayidx
+3 blockers
+-----
 loop at common/fSortIndices.c:21
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:22: store to unsigned int
- * common/fSortIndices.c:22: store to unsigned int
- * common/fSortIndices.c:23: store to arrayidx
-3 blockers
+ * common/fSortIndices.c:22: store to arrayidx
+1 blocker
 -----
-loop at common/fSortIndices.c:22
+loop at common/fSortIndices.c:28
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:23: store to arrayidx
-1 blocker
+ * common/fSortIndices.c:30: store to int
+ * common/fSortIndices.c:30: store to int
+ * common/fSortIndices.c:34: store to arrayidx27
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:39: store to arrayidx44
+ * common/fSortIndices.c:44: store to arrayidx59
+7 blockers
 -----
 loop at common/fSortIndices.c:30
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:32: store to int
- * common/fSortIndices.c:32: store to int
- * common/fSortIndices.c:36: store to arrayidx27
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:41: store to arrayidx44
- * common/fSortIndices.c:46: store to arrayidx59
-7 blockers
------
-loop at common/fSortIndices.c:32
-within function fSortIndices
-for-like loop
-cannot perforate loop
- * common/fSortIndices.c:36: store to arrayidx27
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:37: store to unsigned int
- * common/fSortIndices.c:41: store to arrayidx44
- * common/fSortIndices.c:46: store to arrayidx59
+ * common/fSortIndices.c:34: store to arrayidx27
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:35: store to unsigned int
+ * common/fSortIndices.c:39: store to arrayidx44
+ * common/fSortIndices.c:44: store to arrayidx59
 5 blockers
 -----
-loop at common/fSortIndices.c:37
+loop at common/fSortIndices.c:35
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:41: store to arrayidx44
- * common/fSortIndices.c:43: store to localIndex
+ * common/fSortIndices.c:39: store to arrayidx44
+ * common/fSortIndices.c:41: store to localIndex
 2 blockers
 -----
-loop at common/fSortIndices.c:55
+loop at common/fSortIndices.c:52
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:57: store to int
- * common/fSortIndices.c:57: store to int
- * common/fSortIndices.c:61: store to arrayidx86
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:66: store to arrayidx103
- * common/fSortIndices.c:71: store to arrayidx119
+ * common/fSortIndices.c:54: store to int
+ * common/fSortIndices.c:54: store to int
+ * common/fSortIndices.c:58: store to arrayidx86
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:63: store to arrayidx103
+ * common/fSortIndices.c:68: store to arrayidx119
 7 blockers
 -----
-loop at common/fSortIndices.c:57
+loop at common/fSortIndices.c:54
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:61: store to arrayidx86
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:62: store to unsigned int
- * common/fSortIndices.c:66: store to arrayidx103
- * common/fSortIndices.c:71: store to arrayidx119
+ * common/fSortIndices.c:58: store to arrayidx86
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:59: store to unsigned int
+ * common/fSortIndices.c:63: store to arrayidx103
+ * common/fSortIndices.c:68: store to arrayidx119
 5 blockers
 -----
-loop at common/fSortIndices.c:62
+loop at common/fSortIndices.c:59
 within function fSortIndices
 for-like loop
 cannot perforate loop
- * common/fSortIndices.c:66: store to arrayidx103
- * common/fSortIndices.c:68: store to localIndex80
+ * common/fSortIndices.c:63: store to arrayidx103
+ * common/fSortIndices.c:65: store to localIndex80
 2 blockers
 -----
 loop at common/fSum.c:30
@@ -2125,7 +2084,7 @@ cannot perforate loop
  * common/imageResize.c:49: store to unsigned int
  * common/imageResize.c:52: store to k
  * common/imageResize.c:52: store to k
- * common/imageResize.c:56: store to arrayidx49
+ * common/imageResize.c:56: store to arrayidx48
  * common/imageResize.c:57: store to unsigned long
 7 blockers
 -----
@@ -2135,7 +2094,7 @@ for-like loop
 cannot perforate loop
  * common/imageResize.c:52: store to k
  * common/imageResize.c:52: store to k
- * common/imageResize.c:56: store to arrayidx49
+ * common/imageResize.c:56: store to arrayidx48
  * common/imageResize.c:57: store to unsigned long
 4 blockers
 -----
@@ -2148,14 +2107,14 @@ loop at common/imageResize.c:62
 within function imageResize
 for-like loop
 cannot perforate loop
- * common/imageResize.c:71: store to arrayidx95
+ * common/imageResize.c:71: store to arrayidx93
 1 blocker
 -----
 loop at common/imageResize.c:64
 within function imageResize
 for-like loop
 cannot perforate loop
- * common/imageResize.c:71: store to arrayidx95
+ * common/imageResize.c:71: store to arrayidx93
 1 blocker
 -----
 loop at common/imageResize.c:67
@@ -2193,36 +2152,36 @@ cannot perforate loop
  * common/randWrapper.c:23: store to arrayidx24
 2 blockers
 -----
-loop at common/randnWrapper.c:17
+loop at common/randnWrapper.c:16
 within function randnWrapper
 for-like loop
 cannot perforate loop
- * common/randnWrapper.c:19: store to unsigned int
- * common/randnWrapper.c:19: store to unsigned int
- * common/randnWrapper.c:22: store to arrayidx
- * common/randnWrapper.c:24: store to arrayidx24
+ * common/randnWrapper.c:18: store to unsigned int
+ * common/randnWrapper.c:18: store to unsigned int
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
 4 blockers
 -----
-loop at common/randnWrapper.c:19
+loop at common/randnWrapper.c:18
 within function randnWrapper
 for-like loop
 cannot perforate loop
- * common/randnWrapper.c:22: store to arrayidx
- * common/randnWrapper.c:24: store to arrayidx24
+ * common/randnWrapper.c:21: store to arrayidx
+ * common/randnWrapper.c:23: store to arrayidx24
 2 blockers
+-----
+loop at common/randnWrapper.c:27
+within function randnWrapper
+for-like loop
+cannot perforate loop
+ * common/randnWrapper.c:34: store to arrayidx53
+1 blocker
 -----
 loop at common/randnWrapper.c:29
 within function randnWrapper
 for-like loop
 cannot perforate loop
- * common/randnWrapper.c:36: store to arrayidx53
-1 blocker
------
-loop at common/randnWrapper.c:31
-within function randnWrapper
-for-like loop
-cannot perforate loop
- * common/randnWrapper.c:36: store to arrayidx53
+ * common/randnWrapper.c:34: store to arrayidx53
 1 blocker
 -----
 loop at common/readFile.c:27
@@ -2408,895 +2367,810 @@ cannot perforate loop
  * sortSVDResult.c:36: store to arrayidx51
 2 blockers
 -----
-loop at svd.c:59
+loop at svd.c:64
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:62: store to long
- * svd.c:63: store to arrayidx
- * svd.c:64: store to short
- * svd.c:64: store to __float128
- * svd.c:67: store to k
- * svd.c:67: store to k
- * svd.c:71: store to k
- * svd.c:71: store to k
- * svd.c:73: store to arrayidx38
- * svd.c:74: store to short
- * svd.c:76: store to float
- * svd.c:77: store to __float128
- * svd.c:78: store to unsigned char
- * svd.c:79: store to arrayidx81
- * svd.c:82: store to unsigned int
- * svd.c:82: store to unsigned int
- * svd.c:84: store to short
- * svd.c:84: store to k
- * svd.c:84: store to k
- * svd.c:85: store to short
- * svd.c:86: store to float
- * svd.c:87: store to k
- * svd.c:87: store to k
- * svd.c:88: store to arrayidx132
+ * svd.c:67: store to long
+ * svd.c:69: store to __float128
+ * svd.c:72: store to k
+ * svd.c:72: store to k
+ * svd.c:76: store to k
+ * svd.c:76: store to k
+ * svd.c:78: store to arrayidx38
+ * svd.c:81: store to float
+ * svd.c:84: store to __float128
+ * svd.c:85: store to unsigned char
+ * svd.c:86: store to arrayidx81
+ * svd.c:89: store to unsigned int
+ * svd.c:89: store to unsigned int
  * svd.c:91: store to k
  * svd.c:91: store to k
- * svd.c:92: store to arrayidx159
- * svd.c:95: store to arrayidx172
- * svd.c:98: store to short
- * svd.c:98: store to __float128
- * svd.c:101: store to k
- * svd.c:101: store to k
- * svd.c:105: store to k
- * svd.c:105: store to k
- * svd.c:107: store to arrayidx215
- * svd.c:108: store to short
- * svd.c:110: store to float
- * svd.c:111: store to __float128
- * svd.c:112: store to unsigned char
- * svd.c:113: store to arrayidx263
- * svd.c:114: store to k
- * svd.c:114: store to k
- * svd.c:115: store to arrayidx277
- * svd.c:118: store to unsigned int
- * svd.c:118: store to unsigned int
- * svd.c:120: store to short
- * svd.c:120: store to k
- * svd.c:120: store to k
- * svd.c:121: store to short
- * svd.c:122: store to k
- * svd.c:122: store to k
- * svd.c:123: store to arrayidx325
- * svd.c:126: store to k
- * svd.c:126: store to k
- * svd.c:127: store to arrayidx352
- * svd.c:130: store to anorm
-56 blockers
+ * svd.c:93: store to float
+ * svd.c:94: store to k
+ * svd.c:94: store to k
+ * svd.c:95: store to arrayidx132
+ * svd.c:98: store to k
+ * svd.c:98: store to k
+ * svd.c:99: store to arrayidx159
+ * svd.c:102: store to arrayidx172
+ * svd.c:105: store to __float128
+ * svd.c:109: store to k
+ * svd.c:109: store to k
+ * svd.c:113: store to k
+ * svd.c:113: store to k
+ * svd.c:115: store to arrayidx215
+ * svd.c:118: store to float
+ * svd.c:122: store to __float128
+ * svd.c:123: store to unsigned char
+ * svd.c:124: store to arrayidx264
+ * svd.c:125: store to k
+ * svd.c:125: store to k
+ * svd.c:129: store to unsigned int
+ * svd.c:129: store to unsigned int
+ * svd.c:131: store to k
+ * svd.c:131: store to k
+ * svd.c:133: store to k
+ * svd.c:133: store to k
+ * svd.c:134: store to arrayidx326
+ * svd.c:137: store to k
+ * svd.c:137: store to k
+ * svd.c:138: store to arrayidx353
+ * svd.c:142: store to anorm
+46 blockers
 -----
-loop at svd.c:67
+loop at svd.c:72
+within function svd
+for-like loop
+can perforate loop
+-----
+loop at svd.c:76
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:68: store to scale
+ * svd.c:78: store to arrayidx38
 1 blocker
 -----
-loop at svd.c:71
+loop at svd.c:89
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:73: store to arrayidx38
- * svd.c:74: store to short
-2 blockers
------
-loop at svd.c:82
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:84: store to short
- * svd.c:84: store to k
- * svd.c:84: store to k
- * svd.c:85: store to short
- * svd.c:86: store to float
- * svd.c:87: store to k
- * svd.c:87: store to k
- * svd.c:88: store to arrayidx132
-8 blockers
------
-loop at svd.c:84
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:85: store to short
-1 blocker
------
-loop at svd.c:87
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:88: store to arrayidx132
-1 blocker
+ * svd.c:91: store to k
+ * svd.c:91: store to k
+ * svd.c:93: store to float
+ * svd.c:94: store to k
+ * svd.c:94: store to k
+ * svd.c:95: store to arrayidx132
+6 blockers
 -----
 loop at svd.c:91
 within function svd
 for-like loop
-cannot perforate loop
- * svd.c:92: store to arrayidx159
-1 blocker
+can perforate loop
 -----
-loop at svd.c:101
+loop at svd.c:94
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:102: store to scale
+ * svd.c:95: store to arrayidx132
 1 blocker
 -----
-loop at svd.c:105
+loop at svd.c:98
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:107: store to arrayidx215
- * svd.c:108: store to short
+ * svd.c:99: store to arrayidx159
+1 blocker
+-----
+loop at svd.c:109
+within function svd
+for-like loop
+can perforate loop
+-----
+loop at svd.c:113
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:115: store to arrayidx215
+1 blocker
+-----
+loop at svd.c:125
+within function svd
+for-like loop
+can perforate loop
+-----
+loop at svd.c:129
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:131: store to k
+ * svd.c:131: store to k
+ * svd.c:133: store to k
+ * svd.c:133: store to k
+ * svd.c:134: store to arrayidx326
+5 blockers
+-----
+loop at svd.c:131
+within function svd
+for-like loop
+can perforate loop
+-----
+loop at svd.c:133
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:134: store to arrayidx326
+1 blocker
+-----
+loop at svd.c:137
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:138: store to arrayidx353
+1 blocker
+-----
+loop at svd.c:146
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:152: store to unsigned int
+ * svd.c:152: store to unsigned int
+ * svd.c:153: store to arrayidx431
+ * svd.c:155: store to unsigned int
+ * svd.c:155: store to unsigned int
+ * svd.c:157: store to k
+ * svd.c:157: store to k
+ * svd.c:159: store to k
+ * svd.c:159: store to k
+ * svd.c:160: store to arrayidx480
+ * svd.c:163: store to unsigned int
+ * svd.c:163: store to unsigned int
+ * svd.c:164: store to arrayidx498
+ * svd.c:164: store to arrayidx504
+ * svd.c:166: store to arrayidx514
+ * svd.c:167: store to __float128
+ * svd.c:168: store to long
+17 blockers
+-----
+loop at svd.c:152
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:153: store to arrayidx431
+1 blocker
+-----
+loop at svd.c:155
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:157: store to k
+ * svd.c:157: store to k
+ * svd.c:159: store to k
+ * svd.c:159: store to k
+ * svd.c:160: store to arrayidx480
+5 blockers
+-----
+loop at svd.c:157
+within function svd
+for-like loop
+can perforate loop
+-----
+loop at svd.c:159
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:160: store to arrayidx480
+1 blocker
+-----
+loop at svd.c:163
+within function svd
+for-like loop
+cannot perforate loop
+ * svd.c:164: store to arrayidx498
+ * svd.c:164: store to arrayidx504
 2 blockers
------
-loop at svd.c:114
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:115: store to arrayidx277
-1 blocker
------
-loop at svd.c:118
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:120: store to short
- * svd.c:120: store to k
- * svd.c:120: store to k
- * svd.c:121: store to short
- * svd.c:122: store to k
- * svd.c:122: store to k
- * svd.c:123: store to arrayidx325
-7 blockers
------
-loop at svd.c:120
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:121: store to short
-1 blocker
------
-loop at svd.c:122
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:123: store to arrayidx325
-1 blocker
------
-loop at svd.c:126
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:127: store to arrayidx352
-1 blocker
------
-loop at svd.c:134
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:140: store to unsigned int
- * svd.c:140: store to unsigned int
- * svd.c:141: store to arrayidx428
- * svd.c:143: store to unsigned int
- * svd.c:143: store to unsigned int
- * svd.c:145: store to short
- * svd.c:145: store to k
- * svd.c:145: store to k
- * svd.c:146: store to short
- * svd.c:147: store to k
- * svd.c:147: store to k
- * svd.c:148: store to arrayidx477
- * svd.c:151: store to unsigned int
- * svd.c:151: store to unsigned int
- * svd.c:152: store to arrayidx495
- * svd.c:152: store to arrayidx501
- * svd.c:154: store to arrayidx511
- * svd.c:155: store to __float128
- * svd.c:156: store to long
-19 blockers
------
-loop at svd.c:140
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:141: store to arrayidx428
-1 blocker
------
-loop at svd.c:143
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:145: store to short
- * svd.c:145: store to k
- * svd.c:145: store to k
- * svd.c:146: store to short
- * svd.c:147: store to k
- * svd.c:147: store to k
- * svd.c:148: store to arrayidx477
-7 blockers
------
-loop at svd.c:145
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:146: store to short
-1 blocker
------
-loop at svd.c:147
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:148: store to arrayidx477
-1 blocker
------
-loop at svd.c:151
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:152: store to arrayidx495
- * svd.c:152: store to arrayidx501
-2 blockers
------
-loop at svd.c:160
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:162: store to long
- * svd.c:163: store to __float128
- * svd.c:165: store to unsigned int
- * svd.c:165: store to unsigned int
- * svd.c:166: store to arrayidx542
- * svd.c:169: store to __float128
- * svd.c:172: store to unsigned int
- * svd.c:172: store to unsigned int
- * svd.c:174: store to short
- * svd.c:174: store to k
- * svd.c:174: store to k
- * svd.c:175: store to short
- * svd.c:176: store to float
- * svd.c:177: store to k
- * svd.c:177: store to k
- * svd.c:178: store to arrayidx608
- * svd.c:181: store to unsigned int
- * svd.c:181: store to unsigned int
- * svd.c:182: store to arrayidx635
- * svd.c:186: store to unsigned int
- * svd.c:186: store to unsigned int
- * svd.c:187: store to arrayidx648
- * svd.c:189: store to arrayidx658
-23 blockers
------
-loop at svd.c:165
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:166: store to arrayidx542
-1 blocker
 -----
 loop at svd.c:172
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:174: store to short
- * svd.c:174: store to k
- * svd.c:174: store to k
- * svd.c:175: store to short
- * svd.c:176: store to float
- * svd.c:177: store to k
- * svd.c:177: store to k
- * svd.c:178: store to arrayidx608
-8 blockers
------
-loop at svd.c:174
-within function svd
-for-like loop
-cannot perforate loop
- * svd.c:175: store to short
-1 blocker
+ * svd.c:174: store to long
+ * svd.c:175: store to __float128
+ * svd.c:177: store to unsigned int
+ * svd.c:177: store to unsigned int
+ * svd.c:178: store to arrayidx545
+ * svd.c:181: store to __float128
+ * svd.c:184: store to unsigned int
+ * svd.c:184: store to unsigned int
+ * svd.c:186: store to k
+ * svd.c:186: store to k
+ * svd.c:188: store to float
+ * svd.c:189: store to k
+ * svd.c:189: store to k
+ * svd.c:190: store to arrayidx611
+ * svd.c:193: store to unsigned int
+ * svd.c:193: store to unsigned int
+ * svd.c:194: store to arrayidx638
+ * svd.c:198: store to unsigned int
+ * svd.c:198: store to unsigned int
+ * svd.c:199: store to arrayidx651
+ * svd.c:201: store to arrayidx661
+21 blockers
 -----
 loop at svd.c:177
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:178: store to arrayidx608
+ * svd.c:178: store to arrayidx545
 1 blocker
 -----
-loop at svd.c:181
+loop at svd.c:184
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:182: store to arrayidx635
-1 blocker
+ * svd.c:186: store to k
+ * svd.c:186: store to k
+ * svd.c:188: store to float
+ * svd.c:189: store to k
+ * svd.c:189: store to k
+ * svd.c:190: store to arrayidx611
+6 blockers
 -----
 loop at svd.c:186
 within function svd
 for-like loop
+can perforate loop
+-----
+loop at svd.c:189
+within function svd
+for-like loop
 cannot perforate loop
- * svd.c:187: store to arrayidx648
+ * svd.c:190: store to arrayidx611
 1 blocker
 -----
 loop at svd.c:193
 within function svd
 for-like loop
-contains loop exit
 cannot perforate loop
------
-loop at svd.c:195
-within function svd
-for-like loop
-contains loop exit
-cannot perforate loop
+ * svd.c:194: store to arrayidx638
+1 blocker
 -----
 loop at svd.c:198
 within function svd
 for-like loop
+cannot perforate loop
+ * svd.c:199: store to arrayidx651
+1 blocker
+-----
+loop at svd.c:205
+within function svd
+for-like loop
 contains loop exit
 cannot perforate loop
 -----
-loop at svd.c:213
+loop at svd.c:207
+within function svd
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at svd.c:210
+within function svd
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at svd.c:226
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:215: store to float
- * svd.c:218: store to __float128
- * svd.c:219: store to unsigned char
- * svd.c:220: store to arrayidx729
- * svd.c:221: store to unsigned char
- * svd.c:222: store to char
- * svd.c:223: store to short
- * svd.c:224: store to unsigned int
- * svd.c:224: store to unsigned int
- * svd.c:226: store to unsigned long long
- * svd.c:227: store to ...
- * svd.c:228: store to arrayidx761
- * svd.c:229: store to arrayidx771
+ * svd.c:228: store to float
+ * svd.c:231: store to __float128
+ * svd.c:232: call to PYTHAG()
+ * svd.c:232: store to unsigned char
+ * svd.c:233: store to arrayidx735
+ * svd.c:234: store to unsigned char
+ * svd.c:235: store to char
+ * svd.c:237: store to unsigned int
+ * svd.c:237: store to unsigned int
+ * svd.c:239: store to unsigned long long
+ * svd.c:240: store to ...
+ * svd.c:241: store to arrayidx767
+ * svd.c:242: store to arrayidx777
 13 blockers
 -----
-loop at svd.c:224
+loop at svd.c:237
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:226: store to unsigned long long
- * svd.c:227: store to ...
- * svd.c:228: store to arrayidx761
- * svd.c:229: store to arrayidx771
+ * svd.c:239: store to unsigned long long
+ * svd.c:240: store to ...
+ * svd.c:241: store to arrayidx767
+ * svd.c:242: store to arrayidx777
 4 blockers
 -----
-loop at svd.c:240
+loop at svd.c:253
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:241: store to arrayidx817
+ * svd.c:254: store to arrayidx823
 1 blocker
 -----
-loop at svd.c:263
+loop at svd.c:277
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:265: store to int
- * svd.c:266: store to __float128
- * svd.c:267: store to unsigned long long
- * svd.c:268: store to unsigned char
- * svd.c:269: store to __float128
- * svd.c:270: store to ...
- * svd.c:271: store to arrayidx894
- * svd.c:272: store to char
- * svd.c:273: store to short
- * svd.c:274: store to float
- * svd.c:275: store to __float128
- * svd.c:276: store to unsigned char
- * svd.c:277: store to unsigned long long
- * svd.c:280: store to long long
- * svd.c:281: store to ...
- * svd.c:282: store to arrayidx932
- * svd.c:283: store to arrayidx942
- * svd.c:285: store to ...
- * svd.c:286: store to arrayidx953
- * svd.c:289: store to ...
- * svd.c:290: store to char
- * svd.c:291: store to short
- * svd.c:293: store to float
+ * svd.c:279: store to int
+ * svd.c:280: store to __float128
+ * svd.c:281: store to unsigned long long
+ * svd.c:282: store to unsigned char
+ * svd.c:283: store to __float128
+ * svd.c:284: call to PYTHAG()
+ * svd.c:284: store to ...
+ * svd.c:286: store to char
+ * svd.c:288: store to float
+ * svd.c:289: store to __float128
+ * svd.c:290: store to unsigned char
+ * svd.c:291: store to unsigned long long
  * svd.c:294: store to long long
- * svd.c:297: store to unsigned long long
- * svd.c:298: store to ...
- * svd.c:299: store to arrayidx993
- * svd.c:300: store to arrayidx1003
-28 blockers
+ * svd.c:295: store to ...
+ * svd.c:296: store to arrayidx938
+ * svd.c:297: store to arrayidx948
+ * svd.c:299: call to PYTHAG()
+ * svd.c:299: store to ...
+ * svd.c:300: store to arrayidx959
+ * svd.c:303: store to ...
+ * svd.c:304: store to char
+ * svd.c:307: store to float
+ * svd.c:308: store to long long
+ * svd.c:311: store to unsigned long long
+ * svd.c:312: store to ...
+ * svd.c:313: store to arrayidx999
+ * svd.c:314: store to arrayidx1009
+27 blockers
 -----
-loop at svd.c:278
+loop at svd.c:292
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:280: store to long long
- * svd.c:281: store to ...
- * svd.c:282: store to arrayidx932
- * svd.c:283: store to arrayidx942
+ * svd.c:294: store to long long
+ * svd.c:295: store to ...
+ * svd.c:296: store to arrayidx938
+ * svd.c:297: store to arrayidx948
 4 blockers
 -----
-loop at svd.c:295
+loop at svd.c:309
 within function svd
 for-like loop
 cannot perforate loop
- * svd.c:297: store to unsigned long long
- * svd.c:298: store to ...
- * svd.c:299: store to arrayidx993
- * svd.c:300: store to arrayidx1003
+ * svd.c:311: store to unsigned long long
+ * svd.c:312: store to ...
+ * svd.c:313: store to arrayidx999
+ * svd.c:314: store to arrayidx1009
 4 blockers
 -----
-loop at svd2.c:53
+loop at svd2.c:55
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:54: store to long
- * svd2.c:55: store to arrayidx
- * svd2.c:56: store to short
- * svd2.c:56: store to __float128
- * svd2.c:58: store to k
- * svd2.c:58: store to k
+ * svd2.c:56: store to long
+ * svd2.c:58: store to __float128
  * svd2.c:60: store to k
  * svd2.c:60: store to k
- * svd2.c:61: store to arrayidx30
- * svd2.c:62: store to short
- * svd2.c:64: store to float
- * svd2.c:65: store to __float128
- * svd2.c:66: store to unsigned char
- * svd2.c:67: store to arrayidx65
- * svd2.c:68: store to unsigned int
- * svd2.c:68: store to unsigned int
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:70: store to float
- * svd2.c:71: store to k
- * svd2.c:71: store to arrayidx100
- * svd2.c:71: store to k
- * svd2.c:73: store to k
- * svd2.c:73: store to arrayidx115
- * svd2.c:73: store to k
- * svd2.c:76: store to arrayidx124
- * svd2.c:77: store to short
- * svd2.c:77: store to __float128
- * svd2.c:79: store to k
- * svd2.c:79: store to k
- * svd2.c:81: store to k
- * svd2.c:81: store to k
- * svd2.c:82: store to arrayidx156
- * svd2.c:83: store to short
- * svd2.c:85: store to float
- * svd2.c:86: store to __float128
- * svd2.c:87: store to unsigned char
- * svd2.c:88: store to arrayidx197
- * svd2.c:89: store to k
- * svd2.c:89: store to arrayidx208
- * svd2.c:89: store to k
- * svd2.c:90: store to unsigned int
- * svd2.c:90: store to unsigned int
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:92: store to k
- * svd2.c:92: store to arrayidx243
- * svd2.c:92: store to k
- * svd2.c:94: store to k
- * svd2.c:94: store to arrayidx258
- * svd2.c:94: store to k
- * svd2.c:97: store to maxarg1
- * svd2.c:97: store to maxarg2
- * svd2.c:97: store to anorm
-58 blockers
------
-loop at svd2.c:58
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:58: store to scale
-1 blocker
+ * svd2.c:62: store to k
+ * svd2.c:62: store to k
+ * svd2.c:63: store to arrayidx30
+ * svd2.c:66: store to float
+ * svd2.c:69: store to __float128
+ * svd2.c:71: store to unsigned char
+ * svd2.c:72: store to arrayidx65
+ * svd2.c:73: store to unsigned int
+ * svd2.c:73: store to unsigned int
+ * svd2.c:74: store to k
+ * svd2.c:74: store to k
+ * svd2.c:75: store to float
+ * svd2.c:76: store to k
+ * svd2.c:76: store to arrayidx100
+ * svd2.c:76: store to k
+ * svd2.c:78: store to k
+ * svd2.c:78: store to arrayidx115
+ * svd2.c:78: store to k
+ * svd2.c:81: store to arrayidx124
+ * svd2.c:82: store to __float128
+ * svd2.c:84: store to k
+ * svd2.c:84: store to k
+ * svd2.c:86: store to k
+ * svd2.c:86: store to k
+ * svd2.c:87: store to arrayidx156
+ * svd2.c:90: store to float
+ * svd2.c:93: store to __float128
+ * svd2.c:94: store to unsigned char
+ * svd2.c:95: store to arrayidx198
+ * svd2.c:96: store to k
+ * svd2.c:96: store to k
+ * svd2.c:97: store to unsigned int
+ * svd2.c:97: store to unsigned int
+ * svd2.c:98: store to k
+ * svd2.c:98: store to k
+ * svd2.c:99: store to k
+ * svd2.c:99: store to arrayidx244
+ * svd2.c:99: store to k
+ * svd2.c:101: store to k
+ * svd2.c:101: store to arrayidx259
+ * svd2.c:101: store to k
+ * svd2.c:106: store to maxarg1
+ * svd2.c:106: store to maxarg2
+ * svd2.c:106: store to anorm
+48 blockers
 -----
 loop at svd2.c:60
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:61: store to arrayidx30
- * svd2.c:62: store to short
-2 blockers
------
-loop at svd2.c:68
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:69: store to short
- * svd2.c:69: store to k
- * svd2.c:70: store to float
- * svd2.c:71: store to k
- * svd2.c:71: store to arrayidx100
- * svd2.c:71: store to k
-8 blockers
------
-loop at svd2.c:69
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:69: store to short
+ * svd2.c:60: store to scale
 1 blocker
 -----
-loop at svd2.c:71
+loop at svd2.c:62
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:71: store to arrayidx100
+ * svd2.c:63: store to arrayidx30
 1 blocker
 -----
 loop at svd2.c:73
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:73: store to arrayidx115
+ * svd2.c:74: store to k
+ * svd2.c:74: store to k
+ * svd2.c:75: store to float
+ * svd2.c:76: store to k
+ * svd2.c:76: store to arrayidx100
+ * svd2.c:76: store to k
+6 blockers
+-----
+loop at svd2.c:74
+within function svd2
+for-like loop
+can perforate loop
+-----
+loop at svd2.c:76
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:76: store to arrayidx100
 1 blocker
 -----
-loop at svd2.c:79
+loop at svd2.c:78
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:79: store to scale
+ * svd2.c:78: store to arrayidx115
 1 blocker
 -----
-loop at svd2.c:81
+loop at svd2.c:84
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:82: store to arrayidx156
- * svd2.c:83: store to short
-2 blockers
------
-loop at svd2.c:89
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:89: store to arrayidx208
+ * svd2.c:84: store to scale
 1 blocker
 -----
-loop at svd2.c:90
+loop at svd2.c:86
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:91: store to short
- * svd2.c:91: store to k
- * svd2.c:92: store to k
- * svd2.c:92: store to arrayidx243
- * svd2.c:92: store to k
-7 blockers
------
-loop at svd2.c:91
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:91: store to short
+ * svd2.c:87: store to arrayidx156
 1 blocker
 -----
-loop at svd2.c:92
+loop at svd2.c:96
+within function svd2
+for-like loop
+can perforate loop
+-----
+loop at svd2.c:97
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:92: store to arrayidx243
+ * svd2.c:98: store to k
+ * svd2.c:98: store to k
+ * svd2.c:99: store to k
+ * svd2.c:99: store to arrayidx244
+ * svd2.c:99: store to k
+5 blockers
+-----
+loop at svd2.c:98
+within function svd2
+for-like loop
+can perforate loop
+-----
+loop at svd2.c:99
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:99: store to arrayidx244
 1 blocker
 -----
-loop at svd2.c:94
+loop at svd2.c:101
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:94: store to arrayidx258
+ * svd2.c:101: store to arrayidx259
 1 blocker
 -----
-loop at svd2.c:100
+loop at svd2.c:109
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:103: store to unsigned int
- * svd2.c:103: store to unsigned int
- * svd2.c:104: store to arrayidx312
- * svd2.c:105: store to unsigned int
- * svd2.c:105: store to unsigned int
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:107: store to k
- * svd2.c:107: store to arrayidx349
- * svd2.c:107: store to k
- * svd2.c:110: store to unsigned int
- * svd2.c:110: store to arrayidx365
- * svd2.c:110: store to arrayidx369
- * svd2.c:110: store to unsigned int
- * svd2.c:112: store to arrayidx377
- * svd2.c:113: store to __float128
- * svd2.c:114: store to long
-19 blockers
------
-loop at svd2.c:103
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:104: store to arrayidx312
-1 blocker
------
-loop at svd2.c:105
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:106: store to short
- * svd2.c:106: store to k
- * svd2.c:107: store to k
- * svd2.c:107: store to arrayidx349
- * svd2.c:107: store to k
-7 blockers
------
-loop at svd2.c:106
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:106: store to short
-1 blocker
------
-loop at svd2.c:107
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:107: store to arrayidx349
-1 blocker
------
-loop at svd2.c:110
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:110: store to arrayidx365
- * svd2.c:110: store to arrayidx369
-2 blockers
------
-loop at svd2.c:117
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:118: store to long
- * svd2.c:119: store to __float128
- * svd2.c:120: store to unsigned int
- * svd2.c:120: store to arrayidx403
- * svd2.c:120: store to unsigned int
+ * svd2.c:112: store to unsigned int
+ * svd2.c:112: store to unsigned int
+ * svd2.c:113: store to arrayidx314
+ * svd2.c:114: store to unsigned int
+ * svd2.c:114: store to unsigned int
+ * svd2.c:115: store to k
+ * svd2.c:115: store to k
+ * svd2.c:116: store to k
+ * svd2.c:116: store to arrayidx351
+ * svd2.c:116: store to k
+ * svd2.c:119: store to unsigned int
+ * svd2.c:119: store to arrayidx367
+ * svd2.c:119: store to arrayidx371
+ * svd2.c:119: store to unsigned int
+ * svd2.c:121: store to arrayidx379
  * svd2.c:122: store to __float128
- * svd2.c:123: store to unsigned int
- * svd2.c:123: store to unsigned int
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:125: store to float
- * svd2.c:126: store to k
- * svd2.c:126: store to arrayidx451
- * svd2.c:126: store to k
- * svd2.c:128: store to unsigned int
- * svd2.c:128: store to arrayidx466
- * svd2.c:128: store to unsigned int
- * svd2.c:131: store to unsigned int
- * svd2.c:131: store to arrayidx478
- * svd2.c:131: store to unsigned int
- * svd2.c:132: store to arrayidx486
-23 blockers
+ * svd2.c:123: store to long
+17 blockers
 -----
-loop at svd2.c:120
+loop at svd2.c:112
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:120: store to arrayidx403
+ * svd2.c:113: store to arrayidx314
 1 blocker
 -----
-loop at svd2.c:123
+loop at svd2.c:114
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:124: store to short
- * svd2.c:124: store to k
- * svd2.c:125: store to float
- * svd2.c:126: store to k
- * svd2.c:126: store to arrayidx451
- * svd2.c:126: store to k
-8 blockers
+ * svd2.c:115: store to k
+ * svd2.c:115: store to k
+ * svd2.c:116: store to k
+ * svd2.c:116: store to arrayidx351
+ * svd2.c:116: store to k
+5 blockers
 -----
-loop at svd2.c:124
+loop at svd2.c:115
+within function svd2
+for-like loop
+can perforate loop
+-----
+loop at svd2.c:116
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:124: store to short
+ * svd2.c:116: store to arrayidx351
 1 blocker
+-----
+loop at svd2.c:119
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:119: store to arrayidx367
+ * svd2.c:119: store to arrayidx371
+2 blockers
 -----
 loop at svd2.c:126
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:126: store to arrayidx451
-1 blocker
+ * svd2.c:127: store to long
+ * svd2.c:128: store to __float128
+ * svd2.c:129: store to unsigned int
+ * svd2.c:129: store to arrayidx405
+ * svd2.c:129: store to unsigned int
+ * svd2.c:131: store to __float128
+ * svd2.c:132: store to unsigned int
+ * svd2.c:132: store to unsigned int
+ * svd2.c:133: store to k
+ * svd2.c:133: store to k
+ * svd2.c:134: store to float
+ * svd2.c:135: store to k
+ * svd2.c:135: store to arrayidx453
+ * svd2.c:135: store to k
+ * svd2.c:137: store to unsigned int
+ * svd2.c:137: store to arrayidx468
+ * svd2.c:137: store to unsigned int
+ * svd2.c:140: store to unsigned int
+ * svd2.c:140: store to arrayidx480
+ * svd2.c:140: store to unsigned int
+ * svd2.c:141: store to arrayidx488
+21 blockers
 -----
-loop at svd2.c:128
+loop at svd2.c:129
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:128: store to arrayidx466
+ * svd2.c:129: store to arrayidx405
 1 blocker
 -----
-loop at svd2.c:131
+loop at svd2.c:132
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:131: store to arrayidx478
-1 blocker
+ * svd2.c:133: store to k
+ * svd2.c:133: store to k
+ * svd2.c:134: store to float
+ * svd2.c:135: store to k
+ * svd2.c:135: store to arrayidx453
+ * svd2.c:135: store to k
+6 blockers
+-----
+loop at svd2.c:133
+within function svd2
+for-like loop
+can perforate loop
 -----
 loop at svd2.c:135
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:138: store to long
- * svd2.c:138: store to long
- * svd2.c:148: store to short
- * svd2.c:149: store to int
- * svd2.c:149: store to int
- * svd2.c:150: store to float
- * svd2.c:151: store to arrayidx543
- * svd2.c:153: store to __float128
- * svd2.c:154: call to pythag()
- * svd2.c:154: store to unsigned char
- * svd2.c:155: store to arrayidx557
- * svd2.c:156: store to unsigned char
- * svd2.c:158: store to short
- * svd2.c:159: store to unsigned int
- * svd2.c:159: store to unsigned int
- * svd2.c:161: store to ...
- * svd2.c:162: store to arrayidx582
- * svd2.c:163: store to arrayidx589
- * svd2.c:167: store to ...
- * svd2.c:170: store to arrayidx608
- * svd2.c:171: store to unsigned int
- * svd2.c:171: store to arrayidx621
- * svd2.c:171: store to unsigned int
- * svd2.c:175: call to printf()
- * svd2.c:179: store to __float128
- * svd2.c:180: store to unsigned char
- * svd2.c:181: store to float
- * svd2.c:182: call to pythag()
- * svd2.c:182: store to __float128
- * svd2.c:183: store to float
- * svd2.c:184: store to short
- * svd2.c:185: store to unsigned int
- * svd2.c:185: store to unsigned int
- * svd2.c:186: store to int
- * svd2.c:187: store to __float128
- * svd2.c:189: store to unsigned char
- * svd2.c:190: store to __float128
- * svd2.c:191: call to pythag()
- * svd2.c:191: store to ...
- * svd2.c:192: store to arrayidx697
- * svd2.c:194: store to short
- * svd2.c:195: store to float
- * svd2.c:196: store to __float128
- * svd2.c:197: store to unsigned char
- * svd2.c:201: store to ...
- * svd2.c:202: store to arrayidx726
- * svd2.c:203: store to arrayidx733
- * svd2.c:205: call to pythag()
- * svd2.c:205: store to ...
- * svd2.c:206: store to arrayidx739
- * svd2.c:208: store to ...
- * svd2.c:210: store to short
- * svd2.c:212: store to float
- * svd2.c:216: store to ...
- * svd2.c:217: store to arrayidx772
- * svd2.c:218: store to arrayidx779
- * svd2.c:221: store to arrayidx787
- * svd2.c:222: store to arrayidx789
- * svd2.c:223: store to arrayidx791
-59 blockers
------
-loop at svd2.c:136
-within function svd2
-for-like loop
-contains loop exit
-cannot perforate loop
------
-loop at svd2.c:138
-within function svd2
-for-like loop
-contains loop exit
-cannot perforate loop
------
-loop at svd2.c:149
-within function svd2
-for-like loop
-contains loop exit
-cannot perforate loop
------
-loop at svd2.c:159
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:160: store to unsigned long long
- * svd2.c:161: store to ...
- * svd2.c:162: store to arrayidx582
- * svd2.c:163: store to arrayidx589
-4 blockers
------
-loop at svd2.c:171
-within function svd2
-for-like loop
-cannot perforate loop
- * svd2.c:171: store to arrayidx621
+ * svd2.c:135: store to arrayidx453
 1 blocker
 -----
-loop at svd2.c:185
+loop at svd2.c:137
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:186: store to int
- * svd2.c:187: store to __float128
- * svd2.c:188: store to unsigned long long
- * svd2.c:189: store to unsigned char
- * svd2.c:190: store to __float128
- * svd2.c:191: call to pythag()
- * svd2.c:191: store to ...
- * svd2.c:192: store to arrayidx697
- * svd2.c:193: store to char
- * svd2.c:194: store to short
- * svd2.c:195: store to float
- * svd2.c:196: store to __float128
- * svd2.c:197: store to unsigned char
- * svd2.c:198: store to unsigned long long
- * svd2.c:200: store to long long
- * svd2.c:201: store to ...
- * svd2.c:202: store to arrayidx726
- * svd2.c:203: store to arrayidx733
- * svd2.c:205: call to pythag()
- * svd2.c:205: store to ...
- * svd2.c:206: store to arrayidx739
- * svd2.c:208: store to ...
- * svd2.c:209: store to char
- * svd2.c:210: store to short
- * svd2.c:212: store to float
- * svd2.c:213: store to long long
- * svd2.c:215: store to unsigned long long
- * svd2.c:216: store to ...
- * svd2.c:217: store to arrayidx772
- * svd2.c:218: store to arrayidx779
-30 blockers
+ * svd2.c:137: store to arrayidx468
+1 blocker
 -----
-loop at svd2.c:199
+loop at svd2.c:140
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:200: store to long long
- * svd2.c:201: store to ...
- * svd2.c:202: store to arrayidx726
- * svd2.c:203: store to arrayidx733
+ * svd2.c:140: store to arrayidx480
+1 blocker
+-----
+loop at svd2.c:144
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:147: store to long
+ * svd2.c:147: store to long
+ * svd2.c:160: store to int
+ * svd2.c:160: store to int
+ * svd2.c:161: store to float
+ * svd2.c:164: store to __float128
+ * svd2.c:165: call to pythag()
+ * svd2.c:165: store to unsigned char
+ * svd2.c:166: store to arrayidx560
+ * svd2.c:167: store to unsigned char
+ * svd2.c:170: store to unsigned int
+ * svd2.c:170: store to unsigned int
+ * svd2.c:172: store to ...
+ * svd2.c:173: store to arrayidx585
+ * svd2.c:174: store to arrayidx592
+ * svd2.c:178: store to ...
+ * svd2.c:181: store to arrayidx611
+ * svd2.c:182: store to unsigned int
+ * svd2.c:182: store to arrayidx624
+ * svd2.c:182: store to unsigned int
+ * svd2.c:186: call to printf()
+ * svd2.c:190: store to __float128
+ * svd2.c:191: store to unsigned char
+ * svd2.c:192: store to float
+ * svd2.c:193: call to pythag()
+ * svd2.c:193: store to __float128
+ * svd2.c:194: store to float
+ * svd2.c:196: store to unsigned int
+ * svd2.c:196: store to unsigned int
+ * svd2.c:197: store to int
+ * svd2.c:198: store to __float128
+ * svd2.c:200: store to unsigned char
+ * svd2.c:201: store to __float128
+ * svd2.c:202: call to pythag()
+ * svd2.c:202: store to ...
+ * svd2.c:206: store to float
+ * svd2.c:207: store to __float128
+ * svd2.c:208: store to unsigned char
+ * svd2.c:212: store to ...
+ * svd2.c:213: store to arrayidx729
+ * svd2.c:214: store to arrayidx736
+ * svd2.c:216: call to pythag()
+ * svd2.c:216: store to ...
+ * svd2.c:217: store to arrayidx742
+ * svd2.c:219: store to ...
+ * svd2.c:223: store to float
+ * svd2.c:227: store to ...
+ * svd2.c:228: store to arrayidx775
+ * svd2.c:229: store to arrayidx782
+ * svd2.c:234: store to arrayidx794
+50 blockers
+-----
+loop at svd2.c:145
+within function svd2
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at svd2.c:147
+within function svd2
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at svd2.c:160
+within function svd2
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at svd2.c:170
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:171: store to unsigned long long
+ * svd2.c:172: store to ...
+ * svd2.c:173: store to arrayidx585
+ * svd2.c:174: store to arrayidx592
 4 blockers
 -----
-loop at svd2.c:214
+loop at svd2.c:182
 within function svd2
 for-like loop
 cannot perforate loop
- * svd2.c:215: store to unsigned long long
+ * svd2.c:182: store to arrayidx624
+1 blocker
+-----
+loop at svd2.c:196
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:197: store to int
+ * svd2.c:198: store to __float128
+ * svd2.c:199: store to unsigned long long
+ * svd2.c:200: store to unsigned char
+ * svd2.c:201: store to __float128
+ * svd2.c:202: call to pythag()
+ * svd2.c:202: store to ...
+ * svd2.c:204: store to char
+ * svd2.c:206: store to float
+ * svd2.c:207: store to __float128
+ * svd2.c:208: store to unsigned char
+ * svd2.c:209: store to unsigned long long
+ * svd2.c:211: store to long long
+ * svd2.c:212: store to ...
+ * svd2.c:213: store to arrayidx729
+ * svd2.c:214: store to arrayidx736
+ * svd2.c:216: call to pythag()
  * svd2.c:216: store to ...
- * svd2.c:217: store to arrayidx772
- * svd2.c:218: store to arrayidx779
+ * svd2.c:217: store to arrayidx742
+ * svd2.c:219: store to ...
+ * svd2.c:220: store to char
+ * svd2.c:223: store to float
+ * svd2.c:224: store to long long
+ * svd2.c:226: store to unsigned long long
+ * svd2.c:227: store to ...
+ * svd2.c:228: store to arrayidx775
+ * svd2.c:229: store to arrayidx782
+27 blockers
+-----
+loop at svd2.c:210
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:211: store to long long
+ * svd2.c:212: store to ...
+ * svd2.c:213: store to arrayidx729
+ * svd2.c:214: store to arrayidx736
+4 blockers
+-----
+loop at svd2.c:225
+within function svd2
+for-like loop
+cannot perforate loop
+ * svd2.c:226: store to unsigned long long
+ * svd2.c:227: store to ...
+ * svd2.c:228: store to arrayidx775
+ * svd2.c:229: store to arrayidx782
 4 blockers
 
