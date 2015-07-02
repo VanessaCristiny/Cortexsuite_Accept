@@ -1,5 +1,5 @@
 # Cortexsuite_Accept
-This project is adapting the benchmark Cortexsuite to work with approximate computation and ACCEPT.
+This project is adapting the Cortexsuite benchmark to work with approximate computation and ACCEPT.
 
 To run these applications is necessary to install ACCEPT.
 
