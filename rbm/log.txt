@@ -1,0 +1,494 @@
+FUNCTION PURITY
+-----
+checking function malloc
+definition not available
+-----
+checking function llvm.dbg.declare
+only reads memory
+-----
+checking function printf
+definition not available
+-----
+checking function gettimeofday
+definition not available
+-----
+checking function exp
+only reads memory
+-----
+checking function _fopen
+definition not available
+-----
+checking function fprintf
+definition not available
+-----
+checking function fclose
+definition not available
+-----
+checking function round
+only reads memory
+-----
+checking function llvm.memcpy.p0i8.p0i8.i64
+definition not available
+-----
+checking function fscanf
+definition not available
+-----
+checking function exit
+definition not available
+-----
+checking function accept_roi_begin at acceptrt.default.c:8
+precise-impure function: accept_roi_begin
+ * acceptrt.default.c:10: call to gettimeofday()
+ * acceptrt.default.c:11: store to time_begin
+2 blockers
+-----
+checking function accept_roi_end at acceptrt.default.c:14
+precise-impure function: accept_roi_end
+ * acceptrt.default.c:16: call to gettimeofday()
+ * acceptrt.default.c:20: call to _fopen()
+ * acceptrt.default.c:21: call to fprintf()
+ * acceptrt.default.c:22: call to fclose()
+4 blockers
+-----
+checking function photonStartTiming at includes/photonTiming.c:14
+precise-impure function: photonStartTiming
+ * includes/photonTiming.c:18: call to malloc()
+ * includes/photonTiming.c:19: indirect function call
+ * includes/photonTiming.c:19: store to arrayidx
+ * includes/photonTiming.c:19: store to arrayidx1
+4 blockers
+-----
+checking function photonReportTiming at includes/photonTiming.c:23
+precise-impure function: photonReportTiming
+ * includes/photonTiming.c:27: call to malloc()
+ * includes/photonTiming.c:31: store to arrayidx12
+ * includes/photonTiming.c:32: store to arrayidx14
+3 blockers
+-----
+checking function photonPrintTiming at includes/photonTiming.c:37
+precise-impure function: photonPrintTiming
+ * includes/photonTiming.c:40: call to printf()
+ * includes/photonTiming.c:42: call to printf()
+2 blockers
+-----
+checking function photonEndTiming at includes/photonTiming.c:45
+precise-impure function: photonEndTiming
+ * includes/photonTiming.c:48: call to malloc()
+ * includes/photonTiming.c:50: indirect function call
+ * includes/photonTiming.c:50: store to arrayidx
+ * includes/photonTiming.c:50: store to arrayidx1
+4 blockers
+-----
+checking function activateHiddenUnits at main.c:35
+precise-impure function: activateHiddenUnits
+ * main.c:37: call to accept_roi_begin()
+ * main.c:60: call to rand_twister()
+ * main.c:61: store to arrayidx29
+ * main.c:63: store to arrayidx31
+ * main.c:68: store to arrayidx38
+ * main.c:70: store to arrayidx41
+ * main.c:74: store to arrayidx47
+ * main.c:75: call to accept_roi_end()
+8 blockers
+-----
+checking function activateVisibleUnits at main.c:79
+precise-impure function: activateVisibleUnits
+ * main.c:81: call to accept_roi_begin()
+ * main.c:102: store to unsigned int
+ * main.c:102: store to unsigned int
+ * main.c:112: store to unsigned int
+ * main.c:112: store to unsigned int
+ * main.c:119: store to unsigned int
+ * main.c:119: store to unsigned int
+ * main.c:121: call to rand_twister()
+ * main.c:122: store to arrayidx55
+ * main.c:124: store to arrayidx58
+ * main.c:131: store to unsigned int
+ * main.c:131: store to unsigned int
+ * main.c:136: store to unsigned int
+ * main.c:136: store to unsigned int
+ * main.c:139: store to arrayidx87
+ * main.c:141: store to arrayidx91
+ * main.c:146: store to arrayidx100
+ * main.c:147: call to accept_roi_end()
+18 blockers
+-----
+checking function train at main.c:150
+precise-impure function: train
+ * main.c:158: call to llvm.memcpy.p0i8.p0i8.i64()
+ * main.c:159: store to arrayidx1
+ * main.c:168: store to void
+ * main.c:168: store to void
+ * main.c:174: store to arrayidx18
+ * main.c:186: store to void
+ * main.c:186: store to void
+ * main.c:192: store to arrayidx41
+ * main.c:197: store to void
+ * main.c:197: store to void
+10 blockers
+-----
+checking function processLine at main.c:206
+precise-impure function: processLine
+ * main.c:211: store to rating
+ * main.c:212: call to fscanf()
+ * main.c:214: store to arrayidx
+ * main.c:220: store to arrayidx8
+ * main.c:222: store to arrayidx14
+ * main.c:224: store to arrayidx18
+6 blockers
+-----
+checking function main at main.c:229
+precise-impure function: main
+ * main.c:235: call to _fopen()
+ * main.c:239: call to processLine()
+ * main.c:242: call to fclose()
+ * main.c:244: indirect function call
+ * main.c:254: call to train()
+ * main.c:274: call to _fopen()
+ * main.c:275: call to _fopen()
+ * main.c:282: call to processLine()
+ * main.c:283: store to arrayidx20
+ * main.c:286: call to activateHiddenUnits()
+ * main.c:288: call to activateVisibleUnits()
+ * main.c:304: call to printf()
+ * main.c:305: call to exit()
+ * main.c:312: call to printf()
+ * main.c:313: call to exit()
+ * main.c:315: store to arrayidx56
+ * main.c:319: call to fclose()
+ * main.c:320: indirect function call
+ * main.c:329: call to fprintf()
+ * main.c:330: call to fprintf()
+ * main.c:333: call to fclose()
+ * main.c:383: indirect function call
+ * main.c:384: indirect function call
+23 blockers
+-----
+checking function init_genrand at twister.c:58
+precise-impure function: init_genrand
+ * twister.c:60: store to intermediate:  store i64 %and, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !108, !quals !2
+ * twister.c:61: store to mti
+ * twister.c:61: store to mti
+ * twister.c:62: store to arrayidx5
+ * twister.c:68: store to arrayidx7
+5 blockers
+-----
+checking function init_by_array at twister.c:77
+precise-impure function: init_by_array
+ * twister.c:80: call to init_genrand()
+ * twister.c:84: store to arrayidx11
+ * twister.c:86: store to arrayidx13
+ * twister.c:88: store to intermediate:  store i64 %19, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !124, !quals !2
+ * twister.c:92: store to arrayidx39
+ * twister.c:94: store to arrayidx41
+ * twister.c:96: store to intermediate:  store i64 %36, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !135, !quals !2
+ * twister.c:99: store to intermediate:  store i64 2147483648, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !138, !quals !2
+8 blockers
+-----
+checking function genrand_int32 at twister.c:103
+precise-impure function: genrand_int32
+ * twister.c:113: call to init_genrand()
+ * twister.c:116: store to unsigned long long
+ * twister.c:117: store to arrayidx14
+ * twister.c:120: store to unsigned long long
+ * twister.c:121: store to arrayidx35
+ * twister.c:123: store to unsigned long long
+ * twister.c:124: store to intermediate:  store i64 %xor46, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 623), align 8, !dbg !128, !quals !2
+ * twister.c:126: store to mti
+ * twister.c:129: store to mti
+ * twister.c:129: store to unsigned long long
+ * twister.c:132: store to unsigned long long
+ * twister.c:133: store to unsigned long long
+ * twister.c:134: store to unsigned long long
+ * twister.c:135: store to unsigned long long
+14 blockers
+-----
+checking function genrand_int31 at twister.c:141
+precise-impure function: genrand_int31
+ * twister.c:143: call to genrand_int32()
+1 blocker
+-----
+checking function genrand_real1 at twister.c:147
+precise-impure function: genrand_real1
+ * twister.c:149: call to accept_roi_begin()
+ * twister.c:150: call to genrand_int32()
+2 blockers
+-----
+checking function genrand_real2 at twister.c:157
+precise-impure function: genrand_real2
+ * twister.c:159: call to accept_roi_begin()
+ * twister.c:160: call to genrand_int32()
+2 blockers
+-----
+checking function genrand_real3 at twister.c:167
+precise-impure function: genrand_real3
+ * twister.c:169: call to accept_roi_begin()
+ * twister.c:170: call to genrand_int32()
+2 blockers
+-----
+checking function genrand_res53 at twister.c:177
+precise-impure function: genrand_res53
+ * twister.c:179: call to accept_roi_begin()
+ * twister.c:180: call to genrand_int32()
+ * twister.c:180: call to genrand_int32()
+3 blockers
+-----
+checking function rand_twister at twister.c:187
+precise-impure function: rand_twister
+ * twister.c:189: call to accept_roi_begin()
+ * twister.c:190: call to genrand_real2()
+2 blockers
+
+
+LOOP OPTIMIZATION
+-----
+loop at main.c:41
+within function activateHiddenUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:46
+within function activateHiddenUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:55
+within function activateHiddenUnits
+for-like loop
+cannot perforate loop
+ * main.c:60: call to rand_twister()
+ * main.c:61: store to arrayidx29
+ * main.c:63: store to arrayidx31
+ * main.c:68: store to arrayidx38
+ * main.c:70: store to arrayidx41
+5 blockers
+-----
+loop at main.c:85
+within function activateVisibleUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:90
+within function activateVisibleUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:96
+within function activateVisibleUnits
+for-like loop
+cannot perforate loop
+ * main.c:102: store to unsigned int
+ * main.c:102: store to unsigned int
+ * main.c:112: store to unsigned int
+ * main.c:112: store to unsigned int
+ * main.c:119: store to unsigned int
+ * main.c:119: store to unsigned int
+ * main.c:121: call to rand_twister()
+ * main.c:122: store to arrayidx55
+ * main.c:124: store to arrayidx58
+ * main.c:131: store to unsigned int
+ * main.c:131: store to unsigned int
+ * main.c:136: store to unsigned int
+ * main.c:136: store to unsigned int
+ * main.c:139: store to arrayidx87
+ * main.c:141: store to arrayidx91
+15 blockers
+-----
+loop at main.c:102
+within function activateVisibleUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:112
+within function activateVisibleUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:119
+within function activateVisibleUnits
+for-like loop
+cannot perforate loop
+ * main.c:121: call to rand_twister()
+ * main.c:122: store to arrayidx55
+ * main.c:124: store to arrayidx58
+3 blockers
+-----
+loop at main.c:131
+within function activateVisibleUnits
+for-like loop
+can perforate loop
+-----
+loop at main.c:136
+within function activateVisibleUnits
+for-like loop
+cannot perforate loop
+ * main.c:139: store to arrayidx87
+ * main.c:141: store to arrayidx91
+2 blockers
+-----
+loop at main.c:153
+within function train
+for-like loop
+cannot perforate loop
+ * main.c:158: call to llvm.memcpy.p0i8.p0i8.i64()
+ * main.c:159: store to arrayidx1
+ * main.c:168: store to void
+ * main.c:168: store to void
+ * main.c:174: store to arrayidx18
+ * main.c:186: store to void
+ * main.c:186: store to void
+ * main.c:192: store to arrayidx41
+ * main.c:197: store to void
+ * main.c:197: store to void
+10 blockers
+-----
+loop at main.c:168
+within function train
+for-like loop
+cannot perforate loop
+ * main.c:174: store to arrayidx18
+1 blocker
+-----
+loop at main.c:173
+within function train
+for-like loop
+cannot perforate loop
+ * main.c:174: store to arrayidx18
+1 blocker
+-----
+loop at main.c:186
+within function train
+for-like loop
+cannot perforate loop
+ * main.c:192: store to arrayidx41
+1 blocker
+-----
+loop at main.c:191
+within function train
+for-like loop
+cannot perforate loop
+ * main.c:192: store to arrayidx41
+1 blocker
+-----
+loop at main.c:197
+within function train
+for-like loop
+can perforate loop
+-----
+loop at main.c:200
+within function train
+for-like loop
+can perforate loop
+-----
+loop at main.c:209
+within function processLine
+for-like loop
+cannot perforate loop
+ * main.c:211: store to rating
+ * main.c:212: call to fscanf()
+ * main.c:214: store to arrayidx
+ * main.c:220: store to arrayidx8
+ * main.c:222: store to arrayidx14
+ * main.c:224: store to arrayidx18
+6 blockers
+-----
+loop at main.c:217
+within function processLine
+for-like loop
+cannot perforate loop
+ * main.c:220: store to arrayidx8
+ * main.c:222: store to arrayidx14
+ * main.c:224: store to arrayidx18
+3 blockers
+-----
+loop at main.c:237
+within function main
+for-like loop
+cannot perforate loop
+ * main.c:239: call to processLine()
+1 blocker
+-----
+loop at main.c:250
+within function main
+for-like loop
+cannot perforate loop
+ * main.c:254: call to train()
+1 blocker
+-----
+loop at main.c:279
+within function main
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at main.c:292
+within function main
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at main.c:296
+within function main
+for-like loop
+contains loop exit
+cannot perforate loop
+-----
+loop at main.c:326
+within function main
+for-like loop
+cannot perforate loop
+ * main.c:329: call to fprintf()
+ * main.c:330: call to fprintf()
+2 blockers
+-----
+loop at main.c:328
+within function main
+for-like loop
+cannot perforate loop
+ * main.c:329: call to fprintf()
+1 blocker
+-----
+loop at twister.c:61
+within function init_genrand
+for-like loop
+cannot perforate loop
+ * twister.c:62: store to arrayidx5
+ * twister.c:68: store to arrayidx7
+2 blockers
+-----
+loop at twister.c:83
+within function init_by_array
+for-like loop
+cannot perforate loop
+ * twister.c:84: store to arrayidx11
+ * twister.c:86: store to arrayidx13
+ * twister.c:87: store to int
+ * twister.c:88: store to intermediate:  store i64 %19, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !124, !quals !2
+ * twister.c:88: store to int
+5 blockers
+-----
+loop at twister.c:91
+within function init_by_array
+for-like loop
+cannot perforate loop
+ * twister.c:92: store to arrayidx39
+ * twister.c:94: store to arrayidx41
+ * twister.c:96: store to intermediate:  store i64 %36, i64* getelementptr inbounds ([624 long long i64]* @mt, i32 0, i64 0), align 8, !dbg !135, !quals !2
+3 blockers
+-----
+loop at twister.c:115
+within function genrand_int32
+for-like loop
+cannot perforate loop
+ * twister.c:116: store to unsigned long long
+ * twister.c:117: store to arrayidx14
+2 blockers
+-----
+loop at twister.c:119
+within function genrand_int32
+for-like loop
+cannot perforate loop
+ * twister.c:120: store to unsigned long long
+ * twister.c:121: store to arrayidx35
+2 blockers
+
