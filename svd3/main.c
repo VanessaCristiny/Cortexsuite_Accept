@@ -104,7 +104,7 @@ int main(int argc, char ** argv)
 	/*
 	fWriteMatrix(v, "result", "result_V.txt");
 	*/
-	fWriteMatrix(v, "result", "result_U.txt");
+	//fWriteMatrix(v, "result", "result_U.txt");
 
 	//until here
 	free(u);

@@ -13,7 +13,7 @@ void writeMatrix(I2D* input, char* inpath, char* fileName)
     int rows,cols, i, j;
 
     sprintf(im, "%s/%s", inpath, fileName);
-    fp = fopen(im, "w");
+    fp = fopen(im, "a+");
 
     rows = input->height;
     cols = input->width;
@@ -22,7 +22,7 @@ void writeMatrix(I2D* input, char* inpath, char* fileName)
     {
         for(j=0; j<cols; j++)
         {
-            fprintf(fp, "%d\t", subsref(input, i, j));
+            fprintf(fp, "%d\n", subsref(input, i, j));
         }
         fprintf(fp, "\n");
     }

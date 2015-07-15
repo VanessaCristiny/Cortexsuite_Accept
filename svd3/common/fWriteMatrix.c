@@ -22,7 +22,7 @@ void fWriteMatrix(F2D* input, char* inpath, char* fileName)
     {
         for(j=0; j<cols; j++)
         {
-            fprintf(fp, "%f\t", subsref(input, i, j));
+            fprintf(fp, "%f\n", subsref(input, i, j));
         }
         fprintf(fp, "\n");
     }
