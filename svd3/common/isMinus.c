@@ -6,7 +6,7 @@ Author: Sravanthi Kota Venkata
 #include <stdlib.h>
 #include "sdvbs_common.h"
 
-I2D* isMinus(I2D* a, int b)
+I2D* isMinus(I2D* a, APPROX int b)
 {
     I2D *c;
     int i, j, rows, cols;

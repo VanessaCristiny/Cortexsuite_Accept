@@ -3,8 +3,9 @@ Author: Sravanthi Kota Venkata
 ********************************/
 
 #include "sdvbs_common.h"
+#include <enerc.h>
 
-F2D* ffTimes(F2D* a, float b)
+F2D* ffTimes(F2D* a, APPROX float b)
 {
     F2D *c;
     int i, j, rows, cols;

@@ -6,7 +6,7 @@ Author: Sravanthi Kota Venkata
 #include <stdlib.h>
 #include "sdvbs_common.h"
 
-F2D* fSetArray(int rows, int cols, float val)
+F2D* fSetArray(int rows, int cols, APPROX float val)
 {
     int i, j;
     F2D *out;

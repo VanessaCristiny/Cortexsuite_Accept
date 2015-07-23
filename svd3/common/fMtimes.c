@@ -2,12 +2,11 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
-#include<enerc.h>
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* fMtimes(F2D* a, F2D* b)
 {
-    accept_roi_begin();
     F2D *out;
     int m, p, p1, n, i, j, k;
     APPROX float temp;
@@ -29,10 +28,10 @@ F2D* fMtimes(F2D* a, F2D* b)
             {
                 temp += subsref(b,k,j) * subsref(a,i,k);
             }
-            subsref(out,i,j) = ENDORSE(temp);
+            subsref(out,i,j) = temp;
         }
     }
-    accept_roi_end();
+
     return out;
 }
 

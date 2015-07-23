@@ -2,6 +2,7 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 I2D* iSort(I2D* in, int dim)
@@ -21,8 +22,8 @@ I2D* iSort(I2D* in, int dim)
             for(j=i+1; j<rows; j++)
             {
                 int sik, sjk;
-                sik = subsref(sorted,i,k);
-                sjk = subsref(sorted,j,k);
+                sik = ENDORSE(subsref(sorted,i,k));
+                sjk = ENDORSE(subsref(sorted,j,k));
     
                 if(sik < sjk)
                 {

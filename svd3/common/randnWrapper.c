@@ -2,12 +2,13 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* randnWrapper(int m, int n)
 {
     F2D *out;
-    float seed;
+    APPROX float seed;
     int i,j;
 
     out = fSetArray(m, n, 0);
@@ -28,7 +29,7 @@ F2D* randnWrapper(int m, int n)
     {
         for(j=0; j<n; j++)
         {
-            float w;
+            APPROX float w;
             w = subsref(out,i,j);
             w = ((-2.0 * log(w))/w);
             subsref(out,i,j) = w;

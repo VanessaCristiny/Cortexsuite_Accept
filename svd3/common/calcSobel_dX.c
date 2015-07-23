@@ -2,13 +2,13 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* calcSobel_dX(F2D* imageIn)
-{   accept_roi_begin();
+{   
     int rows, cols;
     F2D *kernel_1, *kernel_2;
     APPROX float temp;
@@ -53,7 +53,7 @@ F2D* calcSobel_dX(F2D* imageIn)
             {
                 temp += subsref(imageIn,i,j+k) * asubsref(kernel_2,k+halfKernel);
             }
-            subsref(tempOut,i,j) = (ENDORSE(temp))/kernelSum_2;
+            subsref(tempOut,i,j) = temp/kernelSum_2;
         }
     }
     
@@ -66,14 +66,13 @@ F2D* calcSobel_dX(F2D* imageIn)
             {
                 temp += subsref(tempOut,(i+k),j) * asubsref(kernel_1,k+halfKernel);
             }
-            subsref(imageOut,i,j) = (ENDORSE(temp))/(float)kernelSum_1;
+            subsref(imageOut,i,j) = temp/(float)kernelSum_1;
         }
     }
 
     fFreeHandle(tempOut);
     fFreeHandle(kernel_1);
     fFreeHandle(kernel_2);
-    accept_roi_end();
     return imageOut;
     
 }

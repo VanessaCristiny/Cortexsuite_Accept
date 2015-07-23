@@ -53,6 +53,7 @@ void printIntSubMatrix(I2D *m, int size)
 
 int main(int argc, char ** argv)
 {
+	accept_roi_begin();
 	/*if (argc != 2)
 	{
 		printf("Usage: ./a.out [input]\n");
@@ -94,17 +95,15 @@ int main(int argc, char ** argv)
 		for (j = 0; j < v->height; j++)
 					subsref(v, j, i) = subsref(v, j, i) * subsref(s, 0, i);
 	}
-  stop = photonEndTiming();
+  	stop = photonEndTiming();
 
   	// I'm slightly modifying this part
   	
   	int temp = remove("result_U.txt");
 
 	fWriteMatrix(u, "result", "result_U.txt");
-	/*
-	fWriteMatrix(v, "result", "result_V.txt");
-	*/
-	//fWriteMatrix(v, "result", "result_U.txt");
+	
+	fWriteMatrix(v, "result", "result_U.txt");
 
 	//until here
 	free(u);
@@ -113,5 +112,8 @@ int main(int argc, char ** argv)
 
   elapsed = photonReportTiming(start,stop);
   photonPrintTiming(elapsed);
+
+  accept_roi_end();
+
   return 0;
 }

@@ -2,19 +2,18 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
-#include<enerc.h>
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 F2D* calcSobel_dY(F2D* imageIn)
 {
-    accept_roi_begin();
     int rows, cols;
     I2D *kernel_1, *kernel_2;
 	APPROX float temp;
     int kernelSize, startCol, endCol, halfKernel, startRow, endRow, i, j, kernelSum;
     int k, kernelSum_2, outputRows, outputCols;
     F2D *imageOut, *tempOut;
-    float kernelSum_1;
+    APPROX float kernelSum_1;
 
     rows = imageIn->height;
     cols = imageIn->width;
@@ -56,7 +55,7 @@ F2D* calcSobel_dY(F2D* imageIn)
             {
                 temp += subsref(imageIn,(i+k),j) * asubsref(kernel_1,k+halfKernel);
             }
-            subsref(tempOut,i,j) = (ENDORSE(temp))/kernelSum_1;
+            subsref(tempOut,i,j) = temp/kernelSum_1;
         }
     }
 
@@ -69,10 +68,10 @@ F2D* calcSobel_dY(F2D* imageIn)
             {
                 temp += subsref(tempOut,i,j+k) * asubsref(kernel_2,k+halfKernel);
             }
-            subsref(imageOut,i,j) = (ENDORSE(temp))/(float)kernelSum_2;
+            subsref(imageOut,i,j) = temp/(float)kernelSum_2;
         }
     }
-    accept_roi_end();
+
     fFreeHandle(tempOut);
     iFreeHandle(kernel_1);
     iFreeHandle(kernel_2);

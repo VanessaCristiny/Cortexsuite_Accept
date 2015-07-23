@@ -1,6 +1,8 @@
 /********************************
 Author: Sravanthi Kota Venkata
 ********************************/
+
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 int fSelfCheck(F2D* in1, char* path, float tol)
@@ -37,9 +39,10 @@ int fSelfCheck(F2D* in1, char* path, float tol)
         printf("Checking error: dimensions mismatch. Expected = %d, Observed = %d \n", count, (r1*c1));
         return -1;
     }
+
     for(i=0; i<r1*c1; i++)
     {
-        float inVal = asubsref(in1,i);
+        float inVal = ENDORSE(asubsref(in1,i));
 
         if( (inVal-buffer[i])>tol || (buffer[i]-inVal)>tol )
         {

@@ -50,6 +50,5 @@ I2D* iiConv2(I2D* a, I2D* b)
         }
     }
 
-
     return out;
 }

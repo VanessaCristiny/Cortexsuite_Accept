@@ -42,7 +42,6 @@ F2D* imageResize(F2D* imageIn)
     startRow = 2;  
     endRow = rows - 2;
 
-    accept_roi_begin();
     for(i=startRow; i<endRow; i++)
     {
         m = 0;
@@ -53,7 +52,7 @@ F2D* imageResize(F2D* imageIn)
             {
                 tempVal += subsref(imageIn,i,j+k) * asubsref(kernel,k+halfKernel);
             }
-            subsref(temp,i,m) = (ENDORSE(tempVal))/kernelSum;
+            subsref(temp,i,m) = tempVal/kernelSum;
             m = m+1;
         }
     }
@@ -68,11 +67,10 @@ F2D* imageResize(F2D* imageIn)
             {
                 tempVal += subsref(temp,(i+k),j) * asubsref(kernel,k+halfKernel);
             }
-            subsref(imageOut,m,j) = ((ENDORSE(tempVal))/kernelSum);
+            subsref(imageOut,m,j) = (tempVal/kernelSum);
         }    
         m = m+1;
     }
-    accept_roi_end();
 
     fFreeHandle(temp);
     iFreeHandle(kernel);

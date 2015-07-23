@@ -7,7 +7,7 @@ Author: Sravanthi Kota Venkata
 F2D* randWrapper(int m, int n)
 {
     F2D *out;
-    float seed;
+    APPROX float seed;
     int i,j;
 
     out = fSetArray(m, n, 0);

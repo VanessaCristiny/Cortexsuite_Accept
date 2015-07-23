@@ -2,6 +2,7 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 I2D* fSortIndices(F2D* input, int dim)
@@ -22,19 +23,19 @@ I2D* fSortIndices(F2D* input, int dim)
             subsref(ind,j,i) = 0;
 		}
 	}
-
+    
 if(dim == 1)
 {
     for(k=0; k<rows; k++)
     {
         for(i=0; i<cols; i++)
         {
-            float localMax = subsref(in,k,i);
+            APPROX float localMax = subsref(in,k,i);
             int localIndex = i;
             subsref(ind,k,i) = i;
             for(j=0; j<cols; j++)
             {
-                if(localMax < subsref(in,k,j))
+                if((ENDORSE(localMax)) < (ENDORSE(subsref(in,k,j))))
                 {
                     subsref(ind,k,i) = j;
                     localMax = subsref(in,k,j);
@@ -53,12 +54,12 @@ if(dim == 1)
     {
         for(i=0; i<rows; i++)
         {
-            float localMax = subsref(in,i,k);
+            APPROX float localMax = subsref(in,i,k);
             int localIndex = i;
             subsref(ind,i,k) = i;
             for(j=0; j<rows; j++)
             {
-                if(localMax < subsref(in,j,k))
+                if((ENDORSE(localMax)) < (ENDORSE(subsref(in,j,k))))
                 {
                     subsref(ind,i,k) = j;
                     localMax = subsref(in,j,k);

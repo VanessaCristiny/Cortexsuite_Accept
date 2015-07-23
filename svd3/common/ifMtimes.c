@@ -7,7 +7,6 @@ Author: Sravanthi Kota Venkata
 
 F2D* ifMtimes(I2D* a, F2D* b)
 {
-    accept_roi_begin();
     F2D *out;
     int m, p, p1, n, i, j, k;
     APPROX float temp;
@@ -19,8 +18,7 @@ F2D* ifMtimes(I2D* a, F2D* b)
     n = b->width;
 
     out = fMallocHandle(m,n);
-
-    
+   
     for(i=0; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -30,10 +28,9 @@ F2D* ifMtimes(I2D* a, F2D* b)
             {
                 temp += subsref(b,k,j) * subsref(a,i,k);
             }
-            subsref(out,i,j) = ENDORSE(temp);
+            subsref(out,i,j) = temp;
         }
     }
-    accept_roi_end();
     
     return out;
 }

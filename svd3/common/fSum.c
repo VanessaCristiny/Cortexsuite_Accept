@@ -23,20 +23,19 @@ F2D* fSum(F2D* inMat)
 
     outMat = fSetArray(1,Rcols,0);
 
-    accept_roi_begin();
     if( cols == 1)
     {    
         temp = 0;
         for( j=0; j<rows; j++)
             temp = temp + subsref(inMat,j,0);
-        asubsref(outMat,0) = ENDORSE(temp);
+        asubsref(outMat,0) = temp;
     }
     else if( rows == 1)
     {
         temp = 0;
         for( j=0; j<cols; j++)
             temp = temp + asubsref(inMat,j);
-        asubsref(outMat,0) = ENDORSE(temp);
+        asubsref(outMat,0) = temp;
     }
     else
     {
@@ -45,10 +44,9 @@ F2D* fSum(F2D* inMat)
             temp = 0;
             for( j=0; j<rows; j++)
                 temp = temp + subsref(inMat,j,i);
-            asubsref(outMat,i) = ENDORSE(temp);
+            asubsref(outMat,i) = temp;
         }
     }
-    accept_roi_end();
     
     return outMat;
 }

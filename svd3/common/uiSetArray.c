@@ -4,9 +4,10 @@ Author: Sravanthi Kota Venkata
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <enerc.h>
 #include "sdvbs_common.h"
 
-UI2D* uiSetArray(int rows, int cols, int val)
+UI2D* uiSetArray(int rows, int cols, APPROX int val)
 {
     int i, j;
     UI2D *out;

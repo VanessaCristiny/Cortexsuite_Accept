@@ -4,9 +4,10 @@ Author: Sravanthi Kota Venkata
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <enerc.h>
 #include "sdvbs_common.h"
 
-I2D* iSetArray(int rows, int cols, int val)
+I2D* iSetArray(int rows, int cols, APPROX int val)
 {
     int i, j;
     I2D *out;

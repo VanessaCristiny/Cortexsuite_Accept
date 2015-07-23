@@ -23,7 +23,7 @@
 /*#define PI 3.1415926535897932*/
 #define MIN(x,y) ( (x) < (y) ? (x) : (y) )
 #define MAX(x,y) ((x)>(y)?(x):(y))
-#define SIGN(a, b) ((b) >= 0.0 ? fabs(a) : -fabs(a))
+#define SIGN(a, b) ((b) >= 0.0 ? fabs(ENDORSE(a)) : -fabs(ENDORSE(a)))
 #define MAXINT 2147483647
 #define ASCII_TEXT_BORDER_WIDTH 4
 #define MAXHIST 100
@@ -53,7 +53,7 @@ typedef struct {
 /* grand tour history */
 typedef struct hist_rec {
   struct hist_rec *prev, *next;
-  APPROX float *basis[3];
+  float *basis[3];
   int pos;
 } hist_rec;
 

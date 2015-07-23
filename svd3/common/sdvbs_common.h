@@ -14,21 +14,21 @@ typedef struct
 {
     int width;
     int height;
-    int data[];
+    APPROX int data[];
 }I2D;
 
 typedef struct
 {
     int width;
     int height;
-    unsigned int data[];
+    APPROX unsigned int data[];
 }UI2D;
 
 typedef struct
 {
     int width;
     int height;
-    float data[];
+    APPROX float data[];
 }F2D;
 
 #define subsref(a,i,j) a->data[(i) * a->width + (j)]
@@ -50,8 +50,8 @@ void fFreeHandle(F2D* out);
 void uiFreeHandle(UI2D* out);
 
 /** Memory copy/set function **/
-I2D* iSetArray(int rows, int cols, int val);
-F2D* fSetArray(int rows, int cols, float val);
+I2D* iSetArray(int rows, int cols, APPROX int val);
+F2D* fSetArray(int rows, int cols, APPROX float val);
 I2D* iDeepCopy(I2D* in);
 F2D* fDeepCopy(F2D* in);
 I2D* iDeepCopyRange(I2D* in, int startRow, int numberRows, int startCol, int numberCols);
@@ -73,19 +73,19 @@ I2D* iReshape(I2D* in, int rows, int cols);
 
 
 /** Binary Operations **/
-F2D* fDivide(F2D* a, float b);
+F2D* fDivide(F2D* a, APPROX float b);
 F2D* fMdivide(F2D* a, F2D* b);
 F2D* ffDivide(F2D* a, F2D* b);
-F2D* ffTimes(F2D* a, float b);
+F2D* ffTimes(F2D* a, APPROX float b);
 F2D* fTimes(F2D* a, F2D* b);
 I2D* iTimes(I2D* a, I2D* b);
 F2D* fMtimes(F2D* a, F2D* b);
 F2D* ifMtimes(I2D* a, F2D* b);
 F2D* fMinus(F2D* a, F2D* b);
 I2D* iMinus(I2D* a, I2D* b);
-I2D* isMinus(I2D* a, int b);
+I2D* isMinus(I2D* a, APPROX int b);
 F2D* fPlus(F2D* a, F2D* b);
-I2D* isPlus(I2D* a, int b);
+I2D* isPlus(I2D* a, APPROX int b);
 
 
 /** Filtering operations **/
@@ -133,4 +133,3 @@ F2D * convertI2DtoF2D(I2D * in);
 I2D * convertF2DtoI2D(F2D * in);
 
 #endif
-

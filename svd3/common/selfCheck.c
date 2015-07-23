@@ -2,6 +2,7 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -13,7 +14,7 @@ int selfCheck(I2D* in1, char* path, int tol)
     FILE* fd;
     int count=0, *buffer, i, j;
     char file[100];
-    int* data = in1->data;
+    int* data = ENDORSE(in1->data);
     
     r1 = in1->height;
     c1 = in1->width;
@@ -50,7 +51,7 @@ int selfCheck(I2D* in1, char* path, int tol)
             return -1;
         }
     }
-   
+        
     fclose(fd);
     free(buffer); 
     printf("Verification\t\t- Successful\n");

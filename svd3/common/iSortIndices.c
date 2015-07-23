@@ -2,6 +2,7 @@
 Author: Sravanthi Kota Venkata
 ********************************/
 
+#include <enerc.h>
 #include "sdvbs_common.h"
 
 I2D* iSortIndices(I2D* in, int dim)
@@ -24,12 +25,12 @@ I2D* iSortIndices(I2D* in, int dim)
     {
         for(i=0; i<rows; i++)
         {
-            int localMax = subsref(in,i,k);
+            APPROX int localMax = subsref(in,i,k);
             int localIndex = i;
             subsref(ind,i,k) = i;
             for(j=0; j<rows; j++)
             {
-                if(localMax < subsref(in,j,k))
+                if((ENDORSE(localMax)) < (ENDORSE(subsref(in,j,k))))
                 {
                     subsref(ind,i,k) = j;
                     localMax = subsref(in,j,k);
@@ -39,7 +40,7 @@ I2D* iSortIndices(I2D* in, int dim)
             subsref(in,localIndex,k) = 0;
         }
     }
-
+    
     return ind;
 }
 

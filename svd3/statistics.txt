@@ -43,3 +43,93 @@ loop at common/calcSobel_dX.c:52 @ 2, loop at common/calcSobel_dY.c:55 @ 2, loop
 loop at svd.c:106 @ 1, loop at svd.c:128 @ 2, loop at svd.c:182 @ 2, loop at svd.c:88 @ 2
 0 % error
 1.0109 speedup
+
+________________________________________________________________
+
+07/15
+
+5 optimal, 32 suboptimal, 22 bad
+loop at svd2.c:74 @ 3
+0 % error
+1.0521 speedup
+loop at common/iSort.c:21 @ 1
+0 % error
+1.03656 speedup
+loop at common/fSort.c:16 @ 1
+0 % error
+1.02502 speedup
+loop at svd2.c:96 @ 4
+0 % error
+1.01142 speedup
+loop at common/fSum.c:46 @ 1
+0 % error
+1.0007 speedup
+
+______________________________________________________
+
+19 optimal, 196 suboptimal, 204 bad
+loop at svd.c:299 @ 1
+12.5823 % error
+1.28 +/- 0.06 speedup
+loop at svd.c:282 @ 2
+19.4604 % error
+1.26 +/- 0.09 speedup
+loop at svd.c:299 @ 2
+18.767775699999980 +/- 0.000000000000002 % error
+1.25 +/- 0.06 speedup
+loop at svd.c:282 @ 1
+12.9937 % error
+1.23 +/- 0.06 speedup
+loop at svd.c:179 @ 1
+15.648 % error
+1.20 +/- 0.05 speedup
+loop at common/calcSobel_dX.c:60 @ 1, loop at common/calcSobel_dX.c:62 @ 1, loop at common/calcSobel_dX.c:65 @ 1, loop at common/calcSobel_dY.c:54 @ 3, loop at common/calcSobel_dY.c:62 @ 1, loop at common/calcSobel_dY.c:67 @ 2, loop at common/convertF2DtoI2D.c:8 @ 1, loop at common/convertI2DtoF2D.c:9 @ 2, loop at common/fDeepCopyRange.c:18 @ 1, loop at common/fDeepCopyRange.c:19 @ 1, loop at common/fDivide.c:17 @ 1, loop at common/fFind3.c:31 @ 1, loop at common/fHorzcat.c:22 @ 1, loop at common/fMdivide.c:23 @ 1, loop at common/fMinus.c:17 @ 1, loop at common/fMtimes.c:22 @ 3, loop at common/fMtimes.c:24 @ 1, loop at common/fMtimes.c:27 @ 1, loop at common/fPlus.c:17 @ 1, loop at common/fReshape.c:19 @ 3, loop at common/fSetArray.c:15 @ 1, loop at common/fSetArray.c:16 @ 1, loop at common/fSort.c:19 @ 1, loop at common/fSort.c:21 @ 1, loop at common/fSortIndices.c:22 @ 1, loop at common/fSum.c:29 @ 1, loop at common/fSum.c:36 @ 1, loop at common/fSum.c:42 @ 1, loop at common/fSum.c:45 @ 1, loop at common/fTimes.c:17 @ 1, loop at common/fTranspose.c:19 @ 1, loop at common/fTranspose.c:21 @ 1, loop at common/ffConv2.c:27 @ 3, loop at common/ffConv2.c:29 @ 3, loop at common/ffConv2.c:31 @ 3, loop at common/ffConv2.c:34 @ 1, loop at common/ffConv2_dY.c:29 @ 1, loop at common/ffConv2_dY.c:43 @ 2, loop at common/ffConv2_dY.c:45 @ 1, loop at common/ffDivide.c:17 @ 3, loop at common/ffVertcat.c:20 @ 1, loop at common/ffVertcat.c:22 @ 1, loop at common/ffVertcat.c:26 @ 2, loop at common/ffiConv2.c:30 @ 2, loop at common/ffiConv2.c:34 @ 3, loop at common/ffiConv2.c:45 @ 1, loop at common/ffiConv2.c:47 @ 1, loop at common/fiConv2.c:30 @ 3, loop at common/fiConv2.c:32 @ 1, loop at common/fiConv2.c:34 @ 2, loop at common/fiConv2.c:45 @ 1, loop at common/fiDeepCopy.c:19 @ 1, loop at common/horzcat.c:25 @ 1, loop at common/iDeepCopy.c:18 @ 1, loop at common/iDeepCopy.c:19 @ 2, loop at common/iDeepCopyRange.c:18 @ 2, loop at common/iDeepCopyRange.c:19 @ 1, loop at common/iHorzcat.c:23 @ 2, loop at common/iMinus.c:17 @ 1, loop at common/iReshape.c:19 @ 1, loop at common/iReshape.c:20 @ 1, loop at common/iSetArray.c:15 @ 2, loop at common/iSetArray.c:16 @ 3, loop at common/iSort.c:18 @ 2, loop at common/iSortIndices.c:21 @ 3, loop at common/iSortIndices.c:26 @ 3, loop at common/iTimes.c:17 @ 2, loop at common/iTranspose.c:20 @ 1, loop at common/iVertcat.c:22 @ 2, loop at common/iVertcat.c:26 @ 1, loop at common/ifDeepCopy.c:20 @ 1, loop at common/ifMtimes.c:22 @ 1, loop at common/ifMtimes.c:24 @ 2, loop at common/ifMtimes.c:27 @ 1, loop at common/iiConv2.c:30 @ 1, loop at common/iiConv2.c:34 @ 2, loop at common/iiConv2.c:45 @ 3, loop at common/iiConv2.c:47 @ 2, loop at common/imageBlur.c:52 @ 3, loop at common/imageBlur.c:55 @ 3, loop at common/imageResize.c:51 @ 1, loop at common/imageResize.c:61 @ 1, loop at common/imageResize.c:63 @ 1, loop at common/isMinus.c:19 @ 3, loop at common/isPlus.c:17 @ 1, loop at common/randWrapper.c:16 @ 1, loop at common/randnWrapper.c:19 @ 1, loop at common/randnWrapper.c:30 @ 1, loop at common/uiSetArray.c:15 @ 1, loop at common/uiSetArray.c:16 @ 1, loop at svd.c:101 @ 1, loop at svd.c:153 @ 1, loop at svd.c:188 @ 1, loop at svd.c:227 @ 3, loop at svd.c:243 @ 1, loop at svd.c:299 @ 1, loop at svd.c:67 @ 1, loop at svd2.c:110 @ 3, loop at svd2.c:113 @ 1, loop at svd2.c:114 @ 2, loop at svd2.c:117 @ 3, loop at svd2.c:127 @ 2, loop at svd2.c:131 @ 3, loop at svd2.c:133 @ 1, loop at svd2.c:138 @ 1, loop at svd2.c:168 @ 2, loop at svd2.c:180 @ 2, loop at svd2.c:208 @ 1, loop at svd2.c:223 @ 2, loop at svd2.c:58 @ 1, loop at svd2.c:60 @ 3, loop at svd2.c:72 @ 2, loop at svd2.c:74 @ 2, loop at svd2.c:76 @ 1, loop at svd2.c:82 @ 2, loop at svd2.c:84 @ 1, loop at svd2.c:94 @ 3, loop at svd2.c:96 @ 1, loop at svd2.c:99 @ 2
+16.1767 % error
+1.20 +/- 0.05 speedup
+loop at common/fReshape.c:19 @ 3
+0 % error
+1.20 +/- 0.05 speedup
+loop at main.c:95 @ 1
+10.0423880699999781 +/- 0.0000000000000008 % error
+1.18 +/- 0.05 speedup
+loop at svd.c:91 @ 2
+20.9154 % error
+1.18 +/- 0.05 speedup
+loop at common/isMinus.c:19 @ 3
+0 % error
+1.18 +/- 0.05 speedup
+loop at svd.c:153 @ 1
+3.59436 % error
+1.17 +/- 0.05 speedup
+loop at svd2.c:94 @ 2
+0 % error
+1.16 +/- 0.05 speedup
+loop at sortSVDResult.c:33 @ 1
+9.0802212150000123 +/- 0.0000000000000008 % error
+1.15 +/- 0.06 speedup
+loop at common/calcSobel_dX.c:65 @ 1, loop at common/calcSobel_dY.c:54 @ 3, loop at common/calcSobel_dY.c:62 @ 1, loop at common/fDeepCopyRange.c:19 @ 1, loop at common/fFind3.c:31 @ 1, loop at common/fHorzcat.c:22 @ 1, loop at common/fMdivide.c:23 @ 1, loop at common/fMinus.c:17 @ 1, loop at common/fMtimes.c:22 @ 3, loop at common/fMtimes.c:24 @ 1, loop at common/fMtimes.c:27 @ 1, loop at common/fPlus.c:17 @ 1, loop at common/fReshape.c:19 @ 3, loop at common/fSetArray.c:15 @ 1, loop at common/fSetArray.c:16 @ 1, loop at common/fSort.c:19 @ 1, loop at common/fSort.c:21 @ 1, loop at common/fSortIndices.c:22 @ 1, loop at common/fSum.c:29 @ 1, loop at common/fSum.c:45 @ 1, loop at common/fTimes.c:17 @ 1, loop at common/fTranspose.c:19 @ 1, loop at common/fTranspose.c:21 @ 1, loop at common/ffConv2.c:27 @ 3, loop at common/ffConv2.c:29 @ 3, loop at common/ffConv2.c:31 @ 3, loop at common/ffConv2.c:34 @ 1, loop at common/ffConv2_dY.c:29 @ 1, loop at common/ffConv2_dY.c:43 @ 2, loop at common/ffDivide.c:17 @ 3, loop at common/ffVertcat.c:22 @ 1, loop at common/ffVertcat.c:26 @ 2, loop at common/ffiConv2.c:30 @ 2, loop at common/ffiConv2.c:34 @ 3, loop at common/ffiConv2.c:45 @ 1, loop at common/fiConv2.c:30 @ 3, loop at common/fiConv2.c:32 @ 1, loop at common/fiConv2.c:34 @ 2, loop at common/horzcat.c:25 @ 1, loop at common/iDeepCopyRange.c:18 @ 2, loop at common/iHorzcat.c:23 @ 2, loop at common/iReshape.c:19 @ 1, loop at common/iSetArray.c:16 @ 3, loop at common/iSortIndices.c:21 @ 3, loop at common/iSortIndices.c:26 @ 3, loop at common/iTranspose.c:20 @ 1, loop at common/iVertcat.c:26 @ 1, loop at common/ifMtimes.c:22 @ 1, loop at common/ifMtimes.c:24 @ 2, loop at common/ifMtimes.c:27 @ 1, loop at common/iiConv2.c:30 @ 1, loop at common/iiConv2.c:45 @ 3, loop at common/iiConv2.c:47 @ 2, loop at common/imageBlur.c:52 @ 3, loop at common/imageBlur.c:55 @ 3, loop at common/imageResize.c:61 @ 1, loop at common/imageResize.c:63 @ 1, loop at common/isMinus.c:19 @ 3, loop at common/isPlus.c:17 @ 1, loop at common/randnWrapper.c:19 @ 1, loop at common/randnWrapper.c:30 @ 1, loop at common/uiSetArray.c:15 @ 1, loop at svd.c:101 @ 1, loop at svd.c:188 @ 1, loop at svd.c:243 @ 1, loop at svd.c:67 @ 1, loop at svd2.c:110 @ 3, loop at svd2.c:113 @ 1, loop at svd2.c:114 @ 2, loop at svd2.c:117 @ 3, loop at svd2.c:127 @ 2, loop at svd2.c:131 @ 3, loop at svd2.c:133 @ 1, loop at svd2.c:168 @ 2, loop at svd2.c:208 @ 1, loop at svd2.c:58 @ 1, loop at svd2.c:60 @ 3, loop at svd2.c:72 @ 2, loop at svd2.c:76 @ 1, loop at svd2.c:84 @ 1, loop at svd2.c:94 @ 3
+0.000259455 % error
+1.14 +/- 0.05 speedup
+loop at common/calcSobel_dX.c:65 @ 1, loop at common/calcSobel_dY.c:54 @ 3, loop at common/calcSobel_dY.c:62 @ 1, loop at common/fDeepCopyRange.c:19 @ 1, loop at common/fFind3.c:31 @ 1, loop at common/fHorzcat.c:22 @ 1, loop at common/fMdivide.c:23 @ 1, loop at common/fMinus.c:17 @ 1, loop at common/fMtimes.c:24 @ 1, loop at common/fMtimes.c:27 @ 1, loop at common/fPlus.c:17 @ 1, loop at common/fReshape.c:19 @ 3, loop at common/fSetArray.c:15 @ 1, loop at common/fSetArray.c:16 @ 1, loop at common/fSort.c:19 @ 1, loop at common/fSort.c:21 @ 1, loop at common/fSortIndices.c:22 @ 1, loop at common/fSum.c:29 @ 1, loop at common/fSum.c:45 @ 1, loop at common/fTimes.c:17 @ 1, loop at common/fTranspose.c:19 @ 1, loop at common/fTranspose.c:21 @ 1, loop at common/ffConv2.c:27 @ 3, loop at common/ffConv2.c:29 @ 3, loop at common/ffConv2.c:31 @ 3, loop at common/ffConv2.c:34 @ 1, loop at common/ffConv2_dY.c:29 @ 1, loop at common/ffConv2_dY.c:43 @ 2, loop at common/ffDivide.c:17 @ 3, loop at common/ffVertcat.c:22 @ 1, loop at common/ffVertcat.c:26 @ 2, loop at common/ffiConv2.c:30 @ 2, loop at common/ffiConv2.c:34 @ 3, loop at common/ffiConv2.c:45 @ 1, loop at common/fiConv2.c:32 @ 1, loop at common/fiConv2.c:34 @ 2, loop at common/iDeepCopyRange.c:18 @ 2, loop at common/iHorzcat.c:23 @ 2, loop at common/iReshape.c:19 @ 1, loop at common/iSetArray.c:16 @ 3, loop at common/iSortIndices.c:21 @ 3, loop at common/iSortIndices.c:26 @ 3, loop at common/iVertcat.c:26 @ 1, loop at common/ifMtimes.c:22 @ 1, loop at common/ifMtimes.c:24 @ 2, loop at common/ifMtimes.c:27 @ 1, loop at common/iiConv2.c:30 @ 1, loop at common/iiConv2.c:45 @ 3, loop at common/iiConv2.c:47 @ 2, loop at common/imageBlur.c:52 @ 3, loop at common/imageBlur.c:55 @ 3, loop at common/imageResize.c:61 @ 1, loop at common/imageResize.c:63 @ 1, loop at common/isMinus.c:19 @ 3, loop at common/isPlus.c:17 @ 1, loop at common/randnWrapper.c:19 @ 1, loop at common/randnWrapper.c:30 @ 1, loop at common/uiSetArray.c:15 @ 1, loop at svd.c:188 @ 1, loop at svd.c:243 @ 1, loop at svd.c:67 @ 1, loop at svd2.c:110 @ 3, loop at svd2.c:113 @ 1, loop at svd2.c:114 @ 2, loop at svd2.c:117 @ 3, loop at svd2.c:127 @ 2, loop at svd2.c:131 @ 3, loop at svd2.c:133 @ 1, loop at svd2.c:168 @ 2, loop at svd2.c:208 @ 1, loop at svd2.c:58 @ 1, loop at svd2.c:60 @ 3, loop at svd2.c:84 @ 1, loop at svd2.c:94 @ 3
+0.000247315 % error
+1.13 +/- 0.07 speedup
+loop at common/fiConv2.c:30 @ 3
+0 % error
+1.11 +/- 0.06 speedup
+loop at common/iiConv2.c:47 @ 1
+0 % error
+1.09 +/- 0.06 speedup
+loop at common/imageResize.c:51 @ 1
+0 % error
+1.08 +/- 0.05 speedup
+loop at common/iReshape.c:20 @ 1
+0 % error
+1.07 +/- 0.05 speedup
+
+_________________________________________________________________________
+
+
+
+
+
+

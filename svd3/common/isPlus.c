@@ -3,8 +3,9 @@ Author: Sravanthi Kota Venkata
 ********************************/
 
 #include "sdvbs_common.h"
+#include <enerc.h>
 
-I2D* isPlus(I2D* a, int b)
+I2D* isPlus(I2D* a, APPROX int b)
 {
     I2D *c;
     int i, j, rows, cols;
