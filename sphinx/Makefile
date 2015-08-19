@@ -10,5 +10,5 @@ SOURCES := main.c $(wildcard includes/*.c) $(wildcard pocketsphinx/*.c) $(wildca
 
 RUNARGS := small/audio.raw language_model/turtle/ out.txt
 
-ACCEPT_DIR := ../../accept
+ACCEPT_DIR := ../../../repos/accept
 include $(ACCEPT_DIR)/accept.mk
