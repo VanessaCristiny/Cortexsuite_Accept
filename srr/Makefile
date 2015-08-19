@@ -7,5 +7,5 @@ SOURCES := App.c BmpHandler.c Motion Estimation.c SRREngine.c SystemMatrices.c
 
 RUNARGS := 
 
-ACCEPT_DIR := ../../accept
+ACCEPT_DIR := ../../../repos/accept
 include $(ACCEPT_DIR)/accept.mk
