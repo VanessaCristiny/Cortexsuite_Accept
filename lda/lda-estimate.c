@@ -24,7 +24,7 @@
  *
  */
 
-APPROX double doc_e_step(document* doc, APPROX double* gamma, double** phi,
+APPROX double doc_e_step(document* doc, APPROX double* gamma, APPROX double** phi,
                   lda_model* model, lda_suffstats* ss)
 {
     APPROX double likelihood;
@@ -48,7 +48,7 @@ APPROX double doc_e_step(document* doc, APPROX double* gamma, double** phi,
     {
         for (k = 0; k < model->num_topics; k++)
         {
-            ss->class_word[k][doc->words[n]] += doc->counts[n]*phi[n][k];
+            ss->class_word[k][doc->words[n]] += (ENDORSE(doc->counts[n]*phi[n][k]));
             ss->class_total[k] += doc->counts[n]*phi[n][k];
         }
     }
@@ -114,7 +114,7 @@ void run_em(char* start, char* directory, corpus* corpus)
     int d, n;
     lda_model *model = NULL;
     APPROX double **var_gamma;
-    double **phi;
+    APPROX double **phi;
 
     // allocate variational parameters
 
@@ -220,7 +220,7 @@ void run_em(char* start, char* directory, corpus* corpus)
     {
         if ((d % 100) == 0) printf("final e step document %d\n",d);
         likelihood += ENDORSE(lda_inference(&(corpus->docs[d]), model, var_gamma[d], phi));
-        write_word_assignment(w_asgn_file, &(corpus->docs[d]), phi, model);
+        write_word_assignment(w_asgn_file, &(corpus->docs[d]), (ENDORSE(phi)), model);
     }
     fclose(w_asgn_file);
     fclose(likelihood_file);
@@ -266,7 +266,7 @@ void infer(char* model_root, char* save, corpus* corpus)
     int i, d, n;
     lda_model *model;
     APPROX double **var_gamma, likelihood;
-    double **phi;
+    APPROX double **phi;
     document* doc;
 
     model = load_lda_model(model_root);
@@ -315,7 +315,7 @@ int main(int argc, char* argv[])
 
     long t1;
     //**Timing**//
-    unsigned int* start, *stop, *elapsed;
+   // unsigned int* start, *stop, *elapsed;
 
     (void) time(&t1);
     seedMT(t1);

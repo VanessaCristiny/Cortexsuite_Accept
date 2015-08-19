@@ -49,7 +49,7 @@ typedef struct
 
 typedef struct
 {
-    double** class_word;
+    APPROX double** class_word;
     APPROX double* class_total;
     APPROX double alpha_suffstats;
     int num_docs;

@@ -11,7 +11,7 @@
 APPROX float VAR_CONVERGED;
 int VAR_MAX_ITER;
 
-APPROX double lda_inference(document*, lda_model*, APPROX double*, double**);
+APPROX double lda_inference(document*, lda_model*, APPROX double*, APPROX double**);
 APPROX double compute_likelihood(document*, lda_model*, double**, double*);
 
 #endif

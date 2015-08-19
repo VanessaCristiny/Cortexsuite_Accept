@@ -27,7 +27,7 @@ int NTOPICS;
 
 APPROX double doc_e_step(document* doc,
                   APPROX double* gamma,
-                  double** phi,
+                  APPROX double** phi,
                   lda_model* model,
                   lda_suffstats* ss);
 

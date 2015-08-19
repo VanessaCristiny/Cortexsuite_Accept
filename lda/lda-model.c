@@ -35,7 +35,7 @@ void lda_mle(lda_model* model, lda_suffstats* ss, int estimate_alpha)
     {
         for (w = 0; w < model->num_terms; w++)
         {
-            if (ss->class_word[k][w] > 0)
+            if ((ENDORSE(ss->class_word[k][w])) > 0)
             {
                 model->log_prob_w[k][w] =
                     ENDORSE(log(ss->class_word[k][w]) -

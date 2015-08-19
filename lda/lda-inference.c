@@ -24,7 +24,7 @@
  *
  */
 
-APPROX double lda_inference(document* doc, lda_model* model, APPROX double* var_gamma, double** phi)
+APPROX double lda_inference(document* doc, lda_model* model, APPROX double* var_gamma, APPROX double** phi)
 {
     APPROX double converged = 1;
     APPROX double phisum = 0, likelihood = 0;
@@ -54,8 +54,8 @@ APPROX double lda_inference(document* doc, lda_model* model, APPROX double* var_
             {
                 oldphi[k] = phi[n][k];
                 phi[n][k] =
-                    (ENDORSE(digamma_gam[k] +
-                    model->log_prob_w[k][doc->words[n]]));
+                    (digamma_gam[k] +
+                    model->log_prob_w[k][doc->words[n]]);
 
                 if (k > 0)
                     phisum = log_sum(phisum, phi[n][k]);
@@ -74,7 +74,7 @@ APPROX double lda_inference(document* doc, lda_model* model, APPROX double* var_
             }
         }
 
-        likelihood = compute_likelihood(doc, model, phi, (ENDORSE(var_gamma)));
+        likelihood = compute_likelihood(doc, model, (ENDORSE(phi)), (ENDORSE(var_gamma)));
         assert(!isnan((ENDORSE(likelihood))));
         converged = (likelihood_old - likelihood) / likelihood_old;
         likelihood_old = likelihood;
