@@ -8,5 +8,5 @@ SOURCES := includes/photonTiming.c main.c twister.c
 
 RUNARGS := out.txt
 
-ACCEPT_DIR := ../../accept
+ACCEPT_DIR := ../../../repos/accept
 include $(ACCEPT_DIR)/accept.mk
