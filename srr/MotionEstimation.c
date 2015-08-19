@@ -1,7 +1,6 @@
 #include "MotionEstimation.h"
 #include <enerc.h>
 
-accept_roi_begin();
 MV mv[l*l] ;
 
 HRESULT GetMotionVectors()
@@ -215,6 +214,5 @@ HRESULT GetMotionVectors()
 	mv[15].x = 0.75;    mv[15].y = 0.75;
 	#endif
 
-	accept_roi_end();
     return hr;	
 }

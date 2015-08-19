@@ -11,17 +11,15 @@ double** A1bar1;
 double** Abar11;
 double** Abar1bar1;
 
-double** AT00;
-double** AT10;
-double** AT01;
-double** AT11;
-double** ATbar10;
-double** AT0bar1;
-double** AT1bar1;
-double** ATbar11;
-double** ATbar1bar1;
-
-accept_roi_begin();
+APPROX double** AT00;
+APPROX double** AT10;
+APPROX double** AT01;
+APPROX double** AT11;
+APPROX double** ATbar10;
+APPROX double** AT0bar1;
+APPROX double** AT1bar1;
+APPROX double** ATbar11;
+APPROX double** ATbar1bar1;
 
 APPROX double BT00[(l*l)][(l*l)]       = {{0}};
 APPROX double BT10[(l*l)][(l*l)]       = {{0}};
@@ -45,15 +43,13 @@ APPROX double S10T[(l*l)][(l*l)] = {{0}};
 APPROX double S11T[(l*l)][(l*l)] = {{0}};
 
 
-APPROX double D1[(l*l)][(l*l)] = {{0}};
-APPROX double D[(l*l)] = {0};
+ double D1[(l*l)][(l*l)] = {{0}};
+ double D[(l*l)] = {0};
 //double D[(l*l)][(l*l)] = {0};
 
-accept_roi_end();
 
 void flushShift()
 {
-    accept_roi_begin();
 	int i,j;
     for(i = 0;i<l*l;i++)
     {
@@ -65,7 +61,6 @@ void flushShift()
             S11[i][j] = 0.0;
         }
     }
-    accept_roi_end();
 }
 
 void MatMul1 (double mat1[][(l*l)], double mat2[][(l*l)], double result[][(l*l)])
@@ -108,8 +103,7 @@ int calc(int i,int j)
 
 void CalcShiftMat(double x, double y)
 {
-    accept_roi_begin();
-    APPROX double dx,dy;
+     double dx,dy;
 	if (x >= 0)
 		x = x - floor(x);
 	else
@@ -123,15 +117,15 @@ void CalcShiftMat(double x, double y)
     dx = x * l;
     dy = y * l;
 
-    APPROX double dxCap, dyCap;
+     double dxCap, dyCap;
     dxCap = floor(dx);
     dyCap = floor(dy);
 
-    APPROX double dxBar, dyBar;
+     double dxBar, dyBar;
     dxBar = dx - dxCap;
     dyBar = dy - dyCap;
 
-    APPROX double w1,w2,w3,w4;
+     double w1,w2,w3,w4;
     w1 = (1-dxBar)*(1-dyBar);
     w2 = dxBar * (1-dyBar);
     w3 = (1-dxBar) * dyBar;
@@ -285,13 +279,11 @@ void CalcShiftMat(double x, double y)
             k++;
         }
     }
-    accept_roi_end();
     
 }
 
 HRESULT CalculateA()
 {
-    accept_roi_begin();
 
 	HRESULT hr = SUCCESS;
 
@@ -310,7 +302,7 @@ HRESULT CalculateA()
     for(k = 0;k<l*l;k++)
     {
         //get New x and y
-        CalcShiftMat(mv[k].x,mv[k].y);
+        CalcShiftMat((ENDORSE(mv[k].x)),(ENDORSE(mv[k].y)));
         
         //Calculate Transpose of all S
         for(i = 0;i<(l*l);i++)
@@ -325,21 +317,21 @@ HRESULT CalculateA()
         }
                
         // Calculate 16 shift-transpose matrices
-        APPROX double temp[(l*l)][(l*l)] = {{0}};
-        APPROX double temp1[(l*l)][(l*l)] = {{0}};
-        APPROX double temp2[(l*l)][(l*l)] = {{0}};
-        APPROX double temp3[(l*l)][(l*l)] = {{0}};
-        APPROX double temp4[(l*l)][(l*l)] = {{0}};
+         double temp[(l*l)][(l*l)] = {{0}};
+         double temp1[(l*l)][(l*l)] = {{0}};
+         double temp2[(l*l)][(l*l)] = {{0}};
+         double temp3[(l*l)][(l*l)] = {{0}};
+         double temp4[(l*l)][(l*l)] = {{0}};
 
 
-        MatMul1(D1,S00,temp);
-        MatMul1(S00T,temp,temp1);
-        MatMul1(D1,S11,temp);
-        MatMul1(S11T,temp,temp2);
-        MatMul1(D1,S10,temp);
-        MatMul1(S10T,temp,temp3);
-        MatMul1(D1,S01,temp);
-        MatMul1(S01T,temp,temp4);
+        MatMul1(D1,(ENDORSE(S00)),temp);
+        MatMul1((ENDORSE(S00T)),temp,temp1);
+        MatMul1(D1,(ENDORSE(S11)),temp);
+        MatMul1((ENDORSE(S11T)),temp,temp2);
+        MatMul1(D1,(ENDORSE(S10)),temp);
+        MatMul1((ENDORSE(S10T)),temp,temp3);
+        MatMul1(D1,(ENDORSE(S01)),temp);
+        MatMul1((ENDORSE(S01T)),temp,temp4);
         //Assign these to A00
         for(i = 0;i<(l*l);i++)
         {
@@ -355,14 +347,14 @@ HRESULT CalculateA()
         }
         printf("\n\n\n\n");*/
 
-        MatMul1(D1,S01,temp);
-        MatMul1(S00T,temp,temp1);
-        MatMul1(D1,S11,temp);
-        MatMul1(S10T,temp,temp2);
-        MatMul1(D1,S00,temp);
-        MatMul1(S01T,temp,temp3);
-        MatMul1(D1,S10,temp);
-        MatMul1(S11T,temp,temp4);
+        MatMul1(D1,(ENDORSE(S01)),temp);
+        MatMul1((ENDORSE(S00T)),temp,temp1);
+        MatMul1(D1,(ENDORSE(S11)),temp);
+        MatMul1((ENDORSE(S10T)),temp,temp2);
+        MatMul1(D1,(ENDORSE(S00)),temp);
+        MatMul1((ENDORSE(S01T)),temp,temp3);
+        MatMul1(D1,(ENDORSE(S10)),temp);
+        MatMul1((ENDORSE(S11T)),temp,temp4);
         //Assign these to A01 and A0bar1
         for(i = 0;i<(l*l);i++)
         {
@@ -373,14 +365,14 @@ HRESULT CalculateA()
             }
         }
         
-        MatMul1(D1,S10,temp);
-        MatMul1(S00T,temp,temp1);
-        MatMul1(D1,S11,temp);
-        MatMul1(S01T,temp,temp2);
-        MatMul1(D1,S01,temp);
-        MatMul1(S11T,temp,temp3);
-        MatMul1(D1,S00,temp);
-        MatMul1(S10T,temp,temp4);
+        MatMul1(D1,(ENDORSE(S10)),temp);
+        MatMul1((ENDORSE(S00T)),temp,temp1);
+        MatMul1(D1,(ENDORSE(S11)),temp);
+        MatMul1((ENDORSE(S01T)),temp,temp2);
+        MatMul1(D1,(ENDORSE(S01)),temp);
+        MatMul1((ENDORSE(S11T)),temp,temp3);
+        MatMul1(D1,(ENDORSE(S00)),temp);
+        MatMul1((ENDORSE(S10T)),temp,temp4);
         //Assign these to A10 and Abar10
         for(i = 0;i<(l*l);i++)
         {
@@ -391,14 +383,14 @@ HRESULT CalculateA()
             }
         }
         
-        MatMul1(D1,S11,temp);
-        MatMul1(S00T,temp,temp1);
-        MatMul1(D1,S01,temp);
-        MatMul1(S10T,temp,temp2);
-        MatMul1(D1,S10,temp);
-        MatMul1(S01T,temp,temp3);
-        MatMul1(D1,S00,temp);
-        MatMul1(S11T,temp,temp4);
+        MatMul1(D1,(ENDORSE(S11)),temp);
+        MatMul1((ENDORSE(S00T)),temp,temp1);
+        MatMul1(D1,(ENDORSE(S01)),temp);
+        MatMul1((ENDORSE(S10T)),temp,temp2);
+        MatMul1(D1,(ENDORSE(S10)),temp);
+        MatMul1((ENDORSE(S01T)),temp,temp3);
+        MatMul1(D1,(ENDORSE(S00)),temp);
+        MatMul1((ENDORSE(S11T)),temp,temp4);
         //Assign these to A11 and Abar11 and A1bar1 and Abar1bar1
         for(i = 0;i<(l*l);i++)
         {
@@ -413,12 +405,12 @@ HRESULT CalculateA()
 
         //Creating AT matrices
         
-        if(mv[k].x<0 && mv[k].y<0)
+        if((ENDORSE(mv[k].x))<0 && (ENDORSE(mv[k].y))<0)
         {
-            MatMul1_(S00,D,BTbar1bar1[k]);
-            MatMul1_(S01,D,BTbar10[k]);
-            MatMul1_(S10,D,BT0bar1[k]);
-            MatMul1_(S11,D,BT00[k]);
+            MatMul1_((ENDORSE(S00)),D,(ENDORSE(BTbar1bar1[k])));
+            MatMul1_((ENDORSE(S01)),D,(ENDORSE(BTbar10[k])));
+            MatMul1_((ENDORSE(S10)),D,(ENDORSE(BT0bar1[k])));
+            MatMul1_((ENDORSE(S11)),D,(ENDORSE(BT00[k])));
 
 			/*MatMul1(D, S00, BTbar1bar1);
 			MatMul1(D, S01, BTbar10);
@@ -426,24 +418,24 @@ HRESULT CalculateA()
 			MatMul1(D, S11, BT00);*/
 
         }
-        else if(mv[k].x<0 && mv[k].y>=0)
+        else if((ENDORSE(mv[k].x))<0 && (ENDORSE(mv[k].y))>=0)
         {
-            MatMul1_(S00,D,BTbar10[k]);
-            MatMul1_(S01,D,BTbar11[k]);
-            MatMul1_(S10,D,BT00[k]);
-            MatMul1_(S11,D,BT01[k]);
+            MatMul1_((ENDORSE(S00)),D,(ENDORSE(BTbar10[k])));
+            MatMul1_((ENDORSE(S01)),D,(ENDORSE(BTbar11[k])));
+            MatMul1_((ENDORSE(S10)),D,(ENDORSE(BT00[k])));
+            MatMul1_((ENDORSE(S11)),D,(ENDORSE(BT01[k])));
 
 			/*MatMul1(D, S00, BTbar10);
 			MatMul1(D, S01, BTbar11);
 			MatMul1(D, S10, BT00);
 			MatMul1(D, S11, BT01);*/
         }
-        else if(mv[k].x>=0 && mv[k].y<0)
+        else if((ENDORSE(mv[k].x))>=0 && (ENDORSE(mv[k].y))<0)
         {
-            MatMul1_(S00,D,BT0bar1[k]);
-            MatMul1_(S01,D,BT00[k]);
-            MatMul1_(S10,D,BT1bar1[k]);
-            MatMul1_(S11,D,BT10[k]);
+            MatMul1_((ENDORSE(S00)),D,(ENDORSE(BT0bar1[k])));
+            MatMul1_((ENDORSE(S01)),D,(ENDORSE(BT00[k])));
+            MatMul1_((ENDORSE(S10)),D,(ENDORSE(BT1bar1[k])));
+            MatMul1_((ENDORSE(S11)),D,(ENDORSE(BT10[k])));
 
 			/*MatMul1(D, S00, BT0bar1);
 			MatMul1(D, S01, BT00);
@@ -452,10 +444,10 @@ HRESULT CalculateA()
         }
         else
         {
-            MatMul1_(S00,D,BT00[k]);
-            MatMul1_(S01,D,BT01[k]);
-            MatMul1_(S10,D,BT10[k]);
-            MatMul1_(S11,D,BT11[k]);
+            MatMul1_((ENDORSE(S00)),D,(ENDORSE(BT00[k])));
+            MatMul1_((ENDORSE(S01)),D,(ENDORSE(BT01[k])));
+            MatMul1_((ENDORSE(S10)),D,(ENDORSE(BT10[k])));
+            MatMul1_((ENDORSE(S11)),D,(ENDORSE(BT11[k])));
 
 			/*MatMul1(D, S00, BT00);
 			MatMul1(D, S01, BT01);
@@ -491,6 +483,5 @@ HRESULT CalculateA()
         
         flushShift();
     }
-    accept_roi_end();
 	return hr;
 }

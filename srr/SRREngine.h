@@ -7,12 +7,12 @@
 
 extern double*** f;
 
-void MatMul (double** mat1, double mat2[], double result[]);
-void MatMul_ (double** mat1, double** mat2, double result[(l*l)][(l*l)]);
+void MatMul (APPROX double** mat1, double mat2[], APPROX double result[]);
+void MatMul_ (APPROX double** mat1, APPROX double** mat2, APPROX double result[(l*l)][(l*l)]);
 void MatAdd(double mat1[],double mat2[]);
 void MatSub(double mat1[],double mat2[], double res[]);
 //void Invert2(double *mat, double *dst);
-void GaussSeidel(double** A1,double* X,double* Y);
+void GaussSeidel(APPROX double** A1, APPROX double* X, APPROX double* Y);
 void Gauss(int rn, int pn);
 void get_g(int rn,int pn);
 void flush_b();

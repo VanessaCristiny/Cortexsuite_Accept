@@ -84,8 +84,7 @@ void ConvertGrayScaletoRGB(unsigned char* bitmapImage, double*** grayscale, int 
 	int imageIdx = 0;
 	int temp = 0;
 
-	accept_roi_begin();
-	AAPROX double max = 0;
+	APPROX double max = 0;
 	APPROX double min = 0;
 
 	for (i = 0; i < y; i++)
@@ -101,7 +100,7 @@ void ConvertGrayScaletoRGB(unsigned char* bitmapImage, double*** grayscale, int 
 		for (j = 0; j < x; j++)
 			for (k = 0; k < (l*l); k++)
 			{
-				temp = (int)((grayscale[i + 1][j + 1][k] - min) * 255 / (max - min));
+				temp = (int)(ENDORSE((grayscale[i + 1][j + 1][k] - min) * 255 / (max - min)));
 				int Yindex = i*l + (int)floor((double)k / l);
 				int Xindex = j*l + k%l;
 				imageIdx = 3*((x*l)*(y*l - Yindex - 1) + Xindex);
@@ -111,7 +110,6 @@ void ConvertGrayScaletoRGB(unsigned char* bitmapImage, double*** grayscale, int 
 				bitmapImage[imageIdx] = (unsigned char)((298 * (temp - 16) + 128) >> 8); //temp;//
 				//imageIdx += 3;
 			}
-	accept_roi_end();
 }
 
 void WriteBMPFile(const char *filename, BITMAPINFOHEADER *bitmapInfoHeader, BITMAPFILEHEADER *bitmapFileHeader, unsigned char *bitmapImage)

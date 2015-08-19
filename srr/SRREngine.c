@@ -1,21 +1,19 @@
 #include "SRREngine.h"
 #include <enerc.h>
 
-accept_roi_begin();
 //buffer for HR image :->
 double ***f;
 
 //double b [n/l][(l*l)]  = {0};
-APPROX double b[x_dim][(l*l)] = {{0}};
-APPROX double g [(l*l)]       = {0};
-APPROX double gCap [(l*l)]    = {0};
+ double b[x_dim][(l*l)] = {{0}};
+ double g [(l*l)]       = {0};
+ double gCap [(l*l)]    = {0};
 
 //Regularization Matrix
-APPROX double TikReg [(l*l)][(l*l)] = {{0}};
+ double TikReg [(l*l)][(l*l)] = {{0}};
 //Transpose of A00
 double** A00T;
 
-accept_roi_end();
 //MATRIX MULTIPLICATION ON l square RANGE
 void MatMul (double** mat1, double mat2[], double result[])
 {
@@ -60,11 +58,10 @@ void MatSub(double mat1[],double mat2[], double res[])
 
 void GaussSeidel(double** A1,double* X,double* Y)
 {
-    accept_roi_begin();
-	//double temp[(l*l)];
+    //double temp[(l*l)];
 	//int flag = 0;
     int i,j;
-    APPROX double A[(l*l)][(l*l)];
+     double A[(l*l)][(l*l)];
     for(i = 0;i<(l*l);i++)
 	{
 		for(j = 0;j<(l*l);j++)
@@ -109,26 +106,22 @@ void GaussSeidel(double** A1,double* X,double* Y)
         if(flag == 1) break;*/
         
 	}
-    accept_roi_end();
 }
 
 //THIS FUNCTION SOLVES THE LINEAR EQUATION (A00)*(f) = (b) ON l^2 RANGE ... 
 void Gauss(int rn, int pn)/***/
 {
-    accept_roi_begin();
-    APPROX double mat[(l*l)];
+     double mat[(l*l)];
 	int i;
 	//double res[(l*l)] = {0};
     for(i = 0;i<(l*l);i++)
         mat[i] = b[pn-1][i];
 	//MatMul(A00T,mat,res);
     GaussSeidel(A00,f[rn][pn],mat);
-    accept_roi_end();
 }
 
 void get_g(int rn,int pn)
 {
-    accept_roi_begin();
 	int i;
     if(rn<0 || pn<0 || rn>=y_dim ||pn>=x_dim)
     {
@@ -142,12 +135,12 @@ void get_g(int rn,int pn)
 			int temp_pn = 0;
 			int temp_rn = 0;
 			//if(abs(mv[i].x) > (double)1.0) pn -= floor(mv[i].x);
-			if (mv[i].x >(double)1.0) temp_pn = pn - floor(mv[i].x);
-			else if (mv[i].x <(double)-1.0) temp_pn = pn + abs(floor(mv[i].x)) - 1;
+			if ((ENDORSE(mv[i].x)) >(double)1.0) temp_pn = pn - floor((ENDORSE(mv[i].x)));
+			else if ((ENDORSE(mv[i].x)) <(double)-1.0) temp_pn = pn + abs(floor((ENDORSE(mv[i].x)))) - 1;
 			else temp_pn = pn;
 			//if(abs(mv[i].y) > (double)1.0) rn -= floor(mv[i].y);
-			if (mv[i].y >(double)1.0) temp_rn = rn - floor(mv[i].x);
-			else if (mv[i].y < (double)-1.0) temp_rn = rn + abs(floor(mv[i].x)) - 1;
+			if ((ENDORSE(mv[i].y)) >(double)1.0) temp_rn = rn - floor((ENDORSE(mv[i].x)));
+			else if ((ENDORSE(mv[i].y)) < (double)-1.0) temp_rn = rn + abs(floor((ENDORSE(mv[i].x)))) - 1;
 			else temp_rn = rn;
 			//if (rn < 0 || pn < 0 || rn >= n / l || pn >= n / l) g[i] = 0;
 			if (temp_rn < 0) temp_rn = 0;
@@ -157,17 +150,14 @@ void get_g(int rn,int pn)
 			g[i] = LR[i][temp_rn][temp_pn];
 		}
     }
-    accept_roi_end();
 }
 
 void flush_b()
 {
-    accept_roi_begin();
 	int i,j;
     for(j = 0;j<x_dim;j++)
         for(i = 0;i<l*l;i++)
             b[j][i] = 0;
-    accept_roi_end();
 }
 
 void flush_arr(double temp[])
@@ -179,9 +169,8 @@ void flush_arr(double temp[])
 
 void get_b(int rn)
 {
-    accept_roi_begin();
 	int i,j;
-    APPROX double temp1[l*l] = {0},temp2[l*l] = {0};
+     double temp1[l*l] = {0},temp2[l*l] = {0};
     flush_b();
 	for (i = 1 ; i <= x_dim ; i++)
     {
@@ -256,25 +245,21 @@ void get_b(int rn)
 		flush_arr(temp2);
         
     }
-    accept_roi_end();
 }
 
 void modify_b(int rn, int pn)
 {
-    accept_roi_begin();
-    APPROX double temp1[l*l] = {0};
-    APPROX double temp2[l*l] = {0};
+     double temp1[l*l] = {0};
+     double temp2[l*l] = {0};
 
     MatMul(Abar10,f[rn][pn-1],temp1);
     MatMul(A10,f[rn][pn+1],temp2);
     MatAdd(temp1,temp2);
     MatSub(b[pn-1],temp1,b[pn-1]);
-    accept_roi_end();
 }
 
 void solve_pixel(int rn, int pn)
 {
-    accept_roi_begin();
     modify_b(rn,pn);
     /*if(rn == 1 && pn == 1)
     {
@@ -285,12 +270,10 @@ void solve_pixel(int rn, int pn)
     //Solve for A00f = b;
     //GaussSeidel(A00,f[rn][pn],b[pn-1]);
     Gauss(rn,pn);
-    accept_roi_end();
 }
 
 void solve_row(int rn)
 {
-    accept_roi_begin();
     get_b(rn);
 	int i;
     for (i = 1; i<=x_dim ; i+=2)
@@ -302,7 +285,6 @@ void solve_row(int rn)
         solve_pixel(rn,i);
     }
     flush_b();
-    accept_roi_end();
 }
 
 HRESULT SRREngine123()

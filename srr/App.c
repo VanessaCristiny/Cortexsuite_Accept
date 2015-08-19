@@ -3,6 +3,7 @@
 #include "SystemMatrices.h"
 #include "SRREngine.h"
 #include <string.h>
+#include <enerc.h>
 
 
 double*** LR;
@@ -330,9 +331,9 @@ void FreeImgMem()
 int main(int argc, char *argv[])
 {
   //**Timing**/
-  unsigned int* start, *stop, *elapsed;
+  //unsigned int* start, *stop, *elapsed;
 
-
+  accept_roi_begin();
   HRESULT hr;
   //__int64 start = 0, end = 0, freq = 0;
   //float timeSec = 0.0f;
@@ -353,7 +354,7 @@ int main(int argc, char *argv[])
 
   //QueryPerformanceCounter((LARGE_INTEGER *)&start);
 
-  start = photonStartTiming();
+  //start = photonStartTiming();
   hr = CalculateA();
   if(hr == FAIL)
     printf("SYSTEM MATRICES COMPUTATION FAILURE!!");
@@ -367,9 +368,9 @@ int main(int argc, char *argv[])
   if(hr == FAIL)
     printf("ENGINE FAILURE!!");
 
-  stop = photonEndTiming();
-  elapsed = photonReportTiming(start,stop);
-  photonPrintTiming(elapsed);
+  //stop = photonEndTiming();
+  //elapsed = photonReportTiming(start,stop);
+  //photonPrintTiming(elapsed);
 
 
   /*QueryPerformanceCounter((LARGE_INTEGER *)&end);
@@ -379,6 +380,7 @@ int main(int argc, char *argv[])
   FreeMemOfA();
   hr = WriteHR();
   FreeImgMem();
+  accept_roi_end();
   //printf("\nTotal Time  :  %f \nAverage Time  :  %f\n", timeSec, timeSec/(l*l-1));
   //getch();
   return 0;
