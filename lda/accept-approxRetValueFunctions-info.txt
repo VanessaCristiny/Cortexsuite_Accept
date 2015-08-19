@@ -1,0 +1,11 @@
+alhood
+d_alhood
+d2_alhood
+opt_alpha
+doc_e_step
+lda_inference
+compute_likelihood
+log_sum
+trigamma
+digamma
+log_gamma
